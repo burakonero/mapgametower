@@ -5438,8 +5438,9 @@ box-shadow: 1px 1px 1px #000000;}
 			// TODO
 			// **************************************** HATA BURADA ==================================================================
 			// cok hizli girildiginde "usercode" larin hepsi 4 oluyor
-			
-			setTimeout(function(){
+			  window.onload = function () { 
+				
+				setTimeout(function(){
 				socket.emit('getbrowser1',{});
 				usercode = ax;
 				var usera = usercode;
@@ -5449,7 +5450,11 @@ box-shadow: 1px 1px 1px #000000;}
 				document.getElementById("h11").innerHTML = "You are Player "+usercode%4+"";
 				if(usercode%4 == 0){document.getElementById("h11").innerHTML = "You are Player 4";}
 									
-			}, 19000); 
+			}, 1000); 
+			
+			newInvite();
+			}
+			
 					
 			
 				
