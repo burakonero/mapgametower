@@ -5485,7 +5485,7 @@ box-shadow: 1px 1px 1px #000000;}
 					if(data.u1 % 4 == 2 && check2.checked == true){disselectAll();socket.emit('attackbuttonsocket',room);}
 					if(data.u1 % 4 == 3 && check3.checked == true){disselectAll();socket.emit('attackbuttonsocket',room);}
 					if(data.u1 % 4 == 0 && check4.checked == true){disselectAll();socket.emit('attackbuttonsocket',room);}
-					}, 900); 
+					}, 2000); 
 					
 					if(data.u1%4 == 0){document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML+ "\n^^Player 4 has left the game^^";}else{
 					document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML+ "\n^^Player "+data.u1%4+" has left the game^^";}
@@ -6603,7 +6603,7 @@ else if(document.getElementById("che4").checked == true && usercode%4 == 0){sock
 								if(check3.checked == true && isp3left == 1 ){socket.emit('attackbuttonsocket',room);}
 						
 								if(check4.checked == true && isp4left == 1 ){socket.emit('attackbuttonsocket',room);}
-							}, 1500); 
+							}, 2500); 
 							
 					}
 				});
