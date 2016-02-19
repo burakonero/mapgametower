@@ -5439,7 +5439,7 @@ box-shadow: 1px 1px 1px #000000;}
 			// **************************************** HATA BURADA ==================================================================
 			// cok hizli girildiginde "usercode" larin hepsi 4 oluyor
 			
-			/*	
+				
 				setTimeout(function(){
 				socket.emit('getbrowser1',{});
 				usercode = ax;
@@ -5450,9 +5450,9 @@ box-shadow: 1px 1px 1px #000000;}
 				document.getElementById("h11").innerHTML = "You are Player "+usercode%4+"";
 				if(usercode%4 == 0){document.getElementById("h11").innerHTML = "You are Player 4";}
 									
-			}, 4000); 
+			}, 17000); 
 			
-			*/
+			
 			
 					
 			
@@ -6649,7 +6649,7 @@ else if(document.getElementById("che4").checked == true && usercode%4 == 0){sock
 		//This function works as soon as client is connected 
 		socket.on('usernum', function(data){
 			
-				getplayernumber();				
+							
 				document.getElementById("onlineplayertext").innerHTML = "";
 				$hone1.append("Online players = "+data.uo);
 				if(data.u1%4 == 1){
