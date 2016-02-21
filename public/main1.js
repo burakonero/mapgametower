@@ -341,7 +341,7 @@ var mainState = {
 			
 		//********ILK TAKIMLAR BELIRLENIYOR***************
 						
-		
+						/*
 						document.getElementById("img2").src = "countries/img2red.png";
 						document.getElementById("img55").src = "countries/img55blue.png";
 						document.getElementById("img77").src = "countries/img77green.png";
@@ -351,9 +351,11 @@ var mainState = {
 						imgteams[55] = 2;
 						imgteams[77] = 3;
 						imgteams[99] = 4;
+						calculateteam();
+						printcounter();
+						*/
 		
-		calculateteam();
-		printcounter();
+		
 				
 		
 		

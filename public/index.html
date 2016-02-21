@@ -5454,7 +5454,7 @@ box-shadow: 1px 1px 1px #000000;}
 				document.getElementById("h11").innerHTML = "You are Player "+usercode%4+"";
 				if(usercode%4 == 0){document.getElementById("h11").innerHTML = "You are Player 4";}
 									
-			}, 15000); 
+			}, 5000); 
 					
 			
 				
@@ -6654,7 +6654,7 @@ else if(document.getElementById("che4").checked == true && usercode%4 == 0){sock
 				$hone1.append("Online players = "+data.uo);
 				if(data.u1%4 == 1){
 				document.getElementById("player1").style.visibility='visible';
-				
+						
 				}
 				else if(data.u1%4 == 2){
 				document.getElementById("player1").style.visibility='visible';
@@ -6671,10 +6671,36 @@ else if(document.getElementById("che4").checked == true && usercode%4 == 0){sock
 				document.getElementById("waitmap1").style.visibility='hidden';
 				document.getElementById("roomtext").click();
 				//************************************* OYUNUN BASLADIGI YER BURASI **********************************************************
+				//**** AYNI ULKE SECILME IHTIMALI BUG INI KAPAT 1!!!!!!!!!!11!!!!!
+				setTimeout(function(){
+				if(room == data.ro){
+						
+						var stra1 = data.rand.toString();
+						var stra2 = ((data.rand*99)%126).toString();
+						var stra3 = ((data.rand*77)%126).toString();
+						var stra4 = ((data.rand*4)%126).toString();
+						
+						document.getElementById("img".concat(stra1)).src = "countries/img".concat(stra1).concat("red.png");
+						document.getElementById("img".concat(stra2)).src = "countries/img".concat(stra2).concat("blue.png");
+						document.getElementById("img".concat(stra3)).src = "countries/img".concat(stra3).concat("green.png");
+						document.getElementById("img".concat(stra4)).src = "countries/img".concat(stra4).concat("yellow.png");
+						
+						imgteams[data.rand] = 1;
+						imgteams[(data.rand*99)%126] = 2;
+						imgteams[(data.rand*77)%126] = 3;
+						imgteams[(data.rand*4)%126] = 4;
+						
+						calculateteam();
+						printcounter();
+						
+					}
+					}, 7000); 
+					
 				if(timestarted == false){
 					timess = 100;
 					var myVar = setInterval(myTimer, 1000);
 					timestarted = true;
+					
 				}
 						if(usercode%4 == 1 && check1.checked == true){
 						document.getElementById("attackbutton").style.visibility='visible';
@@ -6690,12 +6716,12 @@ else if(document.getElementById("che4").checked == true && usercode%4 == 0){sock
 						}
 				
 				//------------ aktivasyon------------
+				
+				
 						setTimeout(function(){
 						if(check1.checked == true){
 							document.getElementById("h15").innerHTML = "Waiting for Player1's move";
 							document.getElementById("arrow1").style.visibility='visible';
-							
-							
 							}
 						else if(check2.checked == true){
 							document.getElementById("h15").innerHTML = "Waiting for Player2's move";
