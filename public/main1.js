@@ -343,12 +343,12 @@ var mainState = {
 						
 		
 						document.getElementById("img2").src = "countries/img2red.png";
-						document.getElementById("img3").src = "countries/img3blue.png";
+						document.getElementById("img3").src = "countries/img55blue.png";
 						document.getElementById("img77").src = "countries/img77green.png";
 						document.getElementById("img99").src = "countries/img99yellow.png";
 						
 						imgteams[2] = 1;
-						imgteams[3] = 2;
+						imgteams[55] = 2;
 						imgteams[77] = 3;
 						imgteams[99] = 4;
 		
