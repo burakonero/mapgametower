@@ -10,7 +10,8 @@
 	div.console{
 		position: absolute;
 		top:0px;
-		left:1390px;
+		left:1420px;
+		
 	}
 
 	div.a{
@@ -31,13 +32,15 @@
 	}
 	#h11{
 		position:absolute;
-		left:15px;
+		left:20px;
 		top:20px;
 		z-index:170;
+		color: #FFFFFF;
+		font-family: Comic Sans MS;
 	}
 	#h15{
 		position:absolute;
-		left:1080px;
+		left:1130px;
 		top:20px;
 		z-index:170;
 	}
@@ -53,7 +56,7 @@
 	}
 	
 	body{
-		background-image:url(countries/green_cup.png);
+		background-image:url(countries/wild_oliva.png);
 		}
 	.gred0{
 		background-color:#FF0000;
@@ -5222,28 +5225,28 @@ box-shadow: 1px 1px 1px #000000;}
 	.player1flor{
 		position:absolute;
 		left:315px;top:760px;
-		border: 1px solid #707070 ;
+		border: 1px solid #FFFFFF ;
 		box-shadow: 1px 1px 1px #000000;
 
 	}
 	.player2flor{
 		position:absolute;
 		left:515px;top:760px;
-		border: 1px solid #707070 ;
+		border: 1px solid #FFFFFF ;
 		box-shadow: 1px 1px 1px #000000;
 
 	}
 	.player3flor{
 		position:absolute;
 		left:715px;top:760px;
-		border: 1px solid #707070 ;
+		border: 1px solid #FFFFFF ;
 		box-shadow: 1px 1px 1px #000000;
 
 	}
 	.player4flor{
 		position:absolute;
 		left:915px;top:760px;
-		border: 1px solid #707070 ;
+		border: 1px solid #FFFFFF ;
 		box-shadow: 1px 1px 1px #000000;
 
 	}
@@ -5308,9 +5311,8 @@ box-shadow: 1px 1px 1px #000000;}
 	#chat{
 		position:absolute;
 		position:absolute;
-		left: 1390px;
+		left: 1420px;
 		top: 505px;
-		
 		
 	}
 	#sendbutton{
@@ -5419,6 +5421,9 @@ box-shadow: 1px 1px 1px #000000;}
 			var check3 = document.getElementById("che3");
 			var check4 = document.getElementById("che4");
 			
+			var timess = 100;
+			var timestarted = false;
+	
 			document.getElementById("player1").style.visibility='hidden';
 			document.getElementById("player2").style.visibility='hidden';
 			document.getElementById("player3").style.visibility='hidden';
@@ -5439,8 +5444,7 @@ box-shadow: 1px 1px 1px #000000;}
 			// **************************************** HATA BURADA ==================================================================
 			// cok hizli girildiginde "usercode" larin hepsi 4 oluyor
 			
-				
-				setTimeout(function(){
+			setTimeout(function(){
 				socket.emit('getbrowser1',{});
 				usercode = ax;
 				var usera = usercode;
@@ -5450,10 +5454,7 @@ box-shadow: 1px 1px 1px #000000;}
 				document.getElementById("h11").innerHTML = "You are Player "+usercode%4+"";
 				if(usercode%4 == 0){document.getElementById("h11").innerHTML = "You are Player 4";}
 									
-			}, 17000); 
-			
-			
-			
+			}, 1500); 
 					
 			
 				
@@ -5485,7 +5486,7 @@ box-shadow: 1px 1px 1px #000000;}
 					if(data.u1 % 4 == 2 && check2.checked == true){disselectAll();socket.emit('attackbuttonsocket',room);}
 					if(data.u1 % 4 == 3 && check3.checked == true){disselectAll();socket.emit('attackbuttonsocket',room);}
 					if(data.u1 % 4 == 0 && check4.checked == true){disselectAll();socket.emit('attackbuttonsocket',room);}
-					}, 2000); 
+					}, 900); 
 					
 					if(data.u1%4 == 0){document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML+ "\n^^Player 4 has left the game^^";}else{
 					document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML+ "\n^^Player "+data.u1%4+" has left the game^^";}
@@ -6488,7 +6489,7 @@ else if(document.getElementById("che4").checked == true && usercode%4 == 0){sock
 				
 				// ????????????????? HATA VAR DATA ROOM SAYISI DEGIL KI ?????????????????????
 				if(data.realroom == room){
-					
+					timess = 100;
 					if (data.winorloose == 1){buton11();document.getElementById("playerwho").innerHTML = data;
 							}
 					else if(data.winorloose == 2){buton22();document.getElementById("playerwho").innerHTML = data;}
@@ -6498,19 +6499,30 @@ else if(document.getElementById("che4").checked == true && usercode%4 == 0){sock
 						if(usercode%4 == 1 && check1.checked == true){
 						document.getElementById("h16").innerHTML = "IT IS YOUR TURN!";
 						document.getElementById("attackbutton").style.visibility='visible';
+						
 							
 							}
 						else if(usercode%4 == 2 && check2.checked == true){
 						document.getElementById("h16").innerHTML = "IT IS YOUR TURN!";
-						document.getElementById("attackbutton").style.visibility='visible';}
+						document.getElementById("attackbutton").style.visibility='visible';
+						
+							
+							}
 							
 						else if(usercode%4 == 3 && check3.checked == true){
 						document.getElementById("h16").innerHTML = "IT IS YOUR TURN!";
-						document.getElementById("attackbutton").style.visibility='visible';}
+						document.getElementById("attackbutton").style.visibility='visible';
+						
+							
+							}
 							
 						else if(usercode%4 == 0 && check4.checked == true){
 						document.getElementById("h16").innerHTML = "IT IS YOUR TURN!";
-						document.getElementById("attackbutton").style.visibility='visible';}
+						document.getElementById("attackbutton").style.visibility='visible';
+						
+							
+							
+							}
 						
 						
 						else{document.getElementById("attackbutton").style.visibility='hidden';
@@ -6532,6 +6544,8 @@ else if(document.getElementById("che4").checked == true && usercode%4 == 0){sock
 							document.getElementById("arrow2").style.visibility='hidden';
 							document.getElementById("arrow3").style.visibility='hidden';
 							document.getElementById("arrow4").style.visibility='hidden';
+							
+							
 							
 							
 								}
@@ -6603,7 +6617,7 @@ else if(document.getElementById("che4").checked == true && usercode%4 == 0){sock
 								if(check3.checked == true && isp3left == 1 ){socket.emit('attackbuttonsocket',room);}
 						
 								if(check4.checked == true && isp4left == 1 ){socket.emit('attackbuttonsocket',room);}
-							}, 2500); 
+							}, 1500); 
 							
 					}
 				});
@@ -6632,24 +6646,10 @@ else if(document.getElementById("che4").checked == true && usercode%4 == 0){sock
 				});
 				return i;
 			}
-		function getplayernumber(){
-				setTimeout(function(){
-				socket.emit('getbrowser1',{});
-				usercode = ax;
-				var usera = usercode;
-				for(;usera>0;usera--){
-					if(usera%4-1 == 0){room++;}
-				}
-				document.getElementById("h11").innerHTML = "You are Player "+usercode%4+"";
-				if(usercode%4 == 0){document.getElementById("h11").innerHTML = "You are Player 4";}
-									
-			}, 4000); 
-			}
-			
 		//This function works as soon as client is connected 
 		socket.on('usernum', function(data){
 			
-							
+								
 				document.getElementById("onlineplayertext").innerHTML = "";
 				$hone1.append("Online players = "+data.uo);
 				if(data.u1%4 == 1){
@@ -6671,9 +6671,14 @@ else if(document.getElementById("che4").checked == true && usercode%4 == 0){sock
 				document.getElementById("waitmap1").style.visibility='hidden';
 				document.getElementById("roomtext").click();
 				//************************************* OYUNUN BASLADIGI YER BURASI **********************************************************
-						
+				if(timestarted == false){
+					timess = 100;
+					var myVar = setInterval(myTimer, 1000);
+					timestarted = true;
+				}
 						if(usercode%4 == 1 && check1.checked == true){
 						document.getElementById("attackbutton").style.visibility='visible';
+						
 						if(isp1left == true){document.getElementById("attackbutton").click();}}
 						else if(usercode%4 == 2 && check2.checked == true){
 						document.getElementById("attackbutton").style.visibility='visible';}
@@ -6688,7 +6693,10 @@ else if(document.getElementById("che4").checked == true && usercode%4 == 0){sock
 						setTimeout(function(){
 						if(check1.checked == true){
 							document.getElementById("h15").innerHTML = "Waiting for Player1's move";
-							document.getElementById("arrow1").style.visibility='visible';}
+							document.getElementById("arrow1").style.visibility='visible';
+							
+							
+							}
 						else if(check2.checked == true){
 							document.getElementById("h15").innerHTML = "Waiting for Player2's move";
 							document.getElementById("arrow2").style.visibility='visible';}
@@ -6713,9 +6721,57 @@ else if(document.getElementById("che4").checked == true && usercode%4 == 0){sock
 
 
 			});
-			
-
+		function myTimer() {
+    
+				document.getElementById("timetext").innerHTML = timess+ " Seconds left...";
+				timess--;
+								
+				if (timess==-1){socket.emit('attackbuttonsocket',room);}
+						
+						}
+		$( "#howtoplay" ).mouseover(function() {
+		document.getElementById("te1").style.visibility = "visible";
 		});
+		$( "#howtoplay" ).mouseout(function() {
+		document.getElementById("te1").style.visibility = "hidden";
+		});
+		$( "#howtoplay" ).click(function() {
+		if(document.getElementById("howtoplay").style.width == "40px"){
+		document.getElementById("howtoplay").style.width = "500px";
+		document.getElementById("howtoplay").style.opacity = "1";}
+		else{document.getElementById("howtoplay").style.width = "40px";
+		document.getElementById("howtoplay").style.opacity = "0.5";}
+		});
+		
+		$( "#playagain" ).mouseover(function() {
+		document.getElementById("te2").style.visibility = "visible";
+		});
+		$( "#playagain" ).mouseout(function() {
+		document.getElementById("te2").style.visibility = "hidden";
+		});
+		$( "#playagain" ).click(function() {
+		if(document.getElementById("playagain").style.width == "40px"){
+		document.getElementById("playagain").style.width = "500px";
+		document.getElementById("playagain").style.opacity = "1";}
+		else{document.getElementById("playagain").style.width = "40px";
+		document.getElementById("playagain").style.opacity = "0.5";}
+		});
+		
+		$( "#credits" ).mouseover(function() {
+		document.getElementById("te3").style.visibility = "visible";
+		});
+		$( "#credits" ).mouseout(function() {
+		document.getElementById("te3").style.visibility = "hidden";
+		});
+		$( "#credits" ).click(function() {
+		if(document.getElementById("credits").style.width == "40px"){
+		document.getElementById("credits").style.width = "500px";
+		document.getElementById("credits").style.opacity = "1";}
+		else{document.getElementById("credits").style.width = "40px";
+		document.getElementById("credits").style.opacity = "0.5";}
+		});
+		
+	});
 		
 	
 	</script>
@@ -6731,10 +6787,10 @@ else if(document.getElementById("che4").checked == true && usercode%4 == 0){sock
 	<div id="gameDiv"> </div>
 
 
-	<img class="player1flor" id="player1flor" src="countries/player2wait.gif"></img>
-	<img class="player2flor" id="player1flor" src="countries/player2wait.gif"></img>
-	<img class="player3flor" id="player3flor" src="countries/player2wait.gif"></img>
-	<img class="player4flor" id="player4flor" src="countries/player2wait.gif"></img>
+	<img class="player1flor" id="player1flor" src="countries/playerwait2.gif"></img>
+	<img class="player2flor" id="player1flor" src="countries/playerwait2.gif"></img>
+	<img class="player3flor" id="player3flor" src="countries/playerwait2.gif"></img>
+	<img class="player4flor" id="player4flor" src="countries/playerwait2.gif"></img>
 	
 	<img class="attackbutton" id="attackbutton" src="countries/attackbutton1.png" onmouseover="this.src='countries/attackbutton2.png';" onmouseout="this.src='countries/attackbutton1.png';" style="box-shadow: 0px"></img>
 	
@@ -7011,7 +7067,7 @@ else if(document.getElementById("che4").checked == true && usercode%4 == 0){sock
 	
 	<img class="waitmap1" id="waitmap1" src="countries/waitmap1.png"></img>
 	
-	<img id="chartlines" style="position:absolute;top:15px; left: 1405px;" src="countries/chartlines1.png" ></img>
+	<img id="chartlines" style="position:absolute;top:15px; left: 1435px;" src="countries/chartlines1.png" ></img>
 	
     <div class="console">
 
@@ -7028,11 +7084,11 @@ else if(document.getElementById("che4").checked == true && usercode%4 == 0){sock
 	 </div>
 	
 	<h id="h11" style="text-shadow:1px 1px 1px #000000;"><br></h>
-	<textarea disabled id="h15" style="overflow:hidden;  width:200px;height:80px; border:0px; background:transparent; resize:none;font-family: Comic Sans MS;">here is h15<br></textarea>
+	<textarea disabled id="h15" style="overflow:hidden;  width:200px;height:80px; border:0px;text-shadow:1px 1px 1px #000000; background:transparent;color:#FFFFFF; resize:none;font-size:15px;font-family: Comic Sans MS;"></textarea>
 	<text id="errortext" class="erroetext" style="position:absolute; top:600px; left:600px; font-size: 20px;font-family: Comic Sans MS; color:red;"></text>
 	<h id="h16" style="text-shadow:1px 1px 1px #000000; font-size:20px;font-family:ARIAL;"></h>
 	<text  id="onlineplayertext" style="font-family: Comic Sans MS;">yazi</text><br>
-	
+	<text  id="timetext" style="font-family: Comic Sans MS;font-size:20px;position:absolute;top:770px;left:1120px;text-shadow:1px 1px 1px #FFFFFF;"></text>
 	<div id="chat">
 		<img id="roomtext"  src="countries/room1.png"; style="border: 0px; width:208px;height:38px; position:absolute;top:-35px;" onmouseover="this.src='countries/room2.png';" onmouseout="this.src='countries/room1.png';"></img>
 		<img id="globaltext" src="countries/global1.png" style="border: 0px; width:208px;height:38px; position:absolute; left:203px; top:-35px;" onmouseover="this.src='countries/global2.png';" onmouseout="this.src='countries/global1.png';"></img>
@@ -7044,6 +7100,14 @@ Type /c to see commands"></textarea>
         <button type="submit" id="sendbutton" >SEND</button>
 	</div>
 	
+	<div id="howtoplay" style="position:absolute; top:10px; left:1370px; width:40px;height:275px;background-color:#F5A9A9;z-index:190;opacity:0.5;">
+	<div style="position:relative; top:10px; left:70px;visibility:hidden;">asdasf</div></div>
+	<div id="playagain" style="position:absolute; top:290px; left:1370px; width:40px;height:270px;background-color:#D0F5A9;z-index:191;opacity:0.5;"></div>
+	<div id="credits" style="position:absolute; top:565px; left:1370px; width:40px;height:300px;background-color:#CEF6F5;z-index:192;opacity:0.5;"  ></div>
+	
+	<text id="te1" style="position:absolute; top:15px; left:1380px;  font-size:20px;color:#FFFFFF; visibility:hidden;" >H<br>O<br>W<br><br>T<br>O<br><br>P<br>L<br>A<br>Y</text>
+	<text id="te2" style="position:absolute; top:300px; left:1380px; font-size:20px;color:#FFFFFF; visibility:hidden;" >P<br>L<br>A<br>Y<br><br>A<br>G<br>A<br>I<br>N</text>
+	<text id="te3" style="position:absolute; top:620px; left:1380px; font-size:20px;color:#FFFFFF; visibility:hidden;">C<br>R<br>E<br>D<br>I<br>T<br>S</text>
 	
 	<font id="h6" class="h6" >h6 here</font>
 	
@@ -7078,7 +7142,7 @@ Type /c to see commands"></textarea>
 	<div id="usercard4" class="usercard4" style="background-color:#D6D600; width:140px; height:180px; position: absolute; top:567px; left:905px; z-index:178; border-radius: 15px; border:2px solid #000000; display:none;">
 	<text style="color:white;"><br>Registiration feature is coming soon !!<br>---<br>username: ***<br>games won: ***<br>games played: ***<br>Level: ***</text></div>
 
-	<div id="sea" style="background-color:#EFFBFB; position:absolute; top:10px;left:10px; width:1350px; height:850px; opacity:0.6; z-index:-1; border: 2px solid #FFFFFF;box-shadow: 1px 1px 1px #888888;"></div>
+	<div id="sea" style="background-color:#D6F6FF; position:absolute; top:10px;left:10px; width:1350px; height:850px; opacity:0.4; z-index:-1; border: 2px solid #FFFFFF;box-shadow: 1px 1px 1px #888888;"></div>
 	
 	<div id="divdene" class="divdene" style="position:absolute;left:500px;top:200px;background-color:grey; z-index: 178; visibility:hidden;">
 	<font style="color:red;" id="playertool"></font>
