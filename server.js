@@ -31,10 +31,14 @@ io.sockets.on('connection', function(socket){
 	usernumm1++;
 	usernumm++;
 	usernum1[usernumm1] =  socket.id;
-	var xx1 = Math.floor((Math.random() * 126) + 1);
-	io.sockets.emit('usernum', {u1: usernumm1, uo:usernumm, ro: findroom(), unu: findusernum(), rand: xx1});
+	var xx1 = Math.floor((Math.random() * 36) + 1);
+	var xx2 = Math.floor((Math.random() * 30) + 37);
+	var xx3 = Math.floor((Math.random() * 26) + 66);
+	var xx4 = Math.floor((Math.random() * 35) + 92);
+	io.sockets.emit('usernum', {u1: usernumm1, uo:usernumm, ro: findroom(), unu: findusernum(), rand1: xx1, rand2: xx2, rand3: xx3, rand4: xx4});
 	
-	console.log('___User '+usernumm+'usernum1 = '+usernumm1+' has connected and its usercode is : '+findusernum()+' its id is :'+socket.id);
+	
+	console.log('___User '+usernumm+' "usernum1" = '+usernumm1+' has connected and its usercode is : '+findusernum()+' its id is : '+socket.id);
 	
 	
 
