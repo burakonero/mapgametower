@@ -3496,10 +3496,15 @@
 						//TODO??????????????????????????????????????????
 						//??????????????????????????????????????????????
 						//BURAYA PLAY AGAIN TUSU EKLE
-						if (team1 == 0 && team2 == 0 && team3 == 0){document.getElementById("errortext").innerHTML = "Player 4 won ! <br>";}
-						else if(team2 == 0 && team3 == 0 && team4 == 0){document.getElementById("errortext").innerHTML = "Player 1 won ! <br>";}
-						else if(team1 == 0 && team3 == 0 && team4 == 0){document.getElementById("errortext").innerHTML = "Player 2 won ! <br>";}
-						else if(team1 == 0 && team2 == 0 && team4 == 0){document.getElementById("errortext").innerHTML = "Player 3 won ! <br>";}
+						if ( (team1 == 0 || isp1left == 1) && (team2 == 0 || isp2left == 1) && (team3 == 0 || isp3left == 1) ){document.getElementById("errortext").innerHTML = "Game is over !<br>Player 4 won ! <br>";
+							document.getElementById("playagain").click();
+							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[system]PLAYER 4 WON ! click play again. ";}
+						else if( (team2 == 0 || isp2left == 1) && (team3 == 0 || isp3left == 1) && (team4 == 0 ||  isp4left == 1) ){document.getElementById("errortext").innerHTML = "Game is over !<br>Player 1 won ! <br>";
+						document.getElementById("playagain").click();document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[system]PLAYER 1 WON ! click play again. ";}
+						else if( (team1 == 0 || isp1left == 1) && (team3 == 0 || isp3left == 1) && (team4 == 0 ||  isp4left == 1) ){document.getElementById("errortext").innerHTML = "Game is over !<br>Player 2 won ! <br>";
+						document.getElementById("playagain").click();document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[system]PLAYER 2 WON ! click play again. ";}
+						else if( (team1 == 0 || isp1left == 1) && (team2 == 0 || isp2left == 1) && (team4 == 0 ||  isp4left == 1)){document.getElementById("errortext").innerHTML = "Game is over !<br>Player 3 won ! <br>";
+						document.getElementById("playagain").click();document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[system]PLAYER 3 WON ! click play again. ";}
 						else{}
 					
                     }, 1500);
@@ -3546,6 +3551,7 @@
                 $hone1.append("Online players = " + data.uo);
                 if (data.u1 % 4 == 1) {
                     document.getElementById("player1").style.visibility = 'visible';
+					 
 
                 } else if (data.u1 % 4 == 2) {
                     document.getElementById("player1").style.visibility = 'visible';
@@ -3565,7 +3571,7 @@
                     //****
                     setTimeout(function() {
                         if (room == data.ro) {
-
+							if (ax % 4 == 1) {document.getElementById("attackbutton").style.visibility = 'visible';}
                             var stra1 = data.rand1.toString();
                             var stra2 = data.rand2.toString();
                             var stra3 = data.rand3.toString();
@@ -3684,9 +3690,13 @@
                 if (document.getElementById("howtoplay").style.width == "40px") {
                     document.getElementById("howtoplay").style.width = "500px";
                     document.getElementById("howtoplay").style.opacity = "1";
+					document.getElementById("howtoplay").style.left = "910px";
+					document.getElementById("howtotext").style.display = 'block';
                 } else {
                     document.getElementById("howtoplay").style.width = "40px";
                     document.getElementById("howtoplay").style.opacity = "0.5";
+					document.getElementById("howtotext").style.display = 'none';
+					document.getElementById("howtoplay").style.left = "1370px";
                 }
             });
 
@@ -3700,9 +3710,13 @@
                 if (document.getElementById("playagain").style.width == "40px") {
                     document.getElementById("playagain").style.width = "500px";
                     document.getElementById("playagain").style.opacity = "1";
+					document.getElementById("playagain").style.left = "910px";
+					document.getElementById("playagaintext").style.display = 'block';
                 } else {
                     document.getElementById("playagain").style.width = "40px";
                     document.getElementById("playagain").style.opacity = "0.5";
+					document.getElementById("playagain").style.left = "1370px";
+					document.getElementById("playagaintext").style.display = 'none';
                 }
             });
 
@@ -3716,9 +3730,11 @@
                 if (document.getElementById("credits").style.width == "40px") {
                     document.getElementById("credits").style.width = "500px";
                     document.getElementById("credits").style.opacity = "1";
+					document.getElementById("credits").style.left = "910px";
                 } else {
                     document.getElementById("credits").style.width = "40px";
                     document.getElementById("credits").style.opacity = "0.5";
+					document.getElementById("credits").style.left = "1370px";
                 }
             });
 
@@ -4053,9 +4069,18 @@ Type /c to see commands"></textarea>
         </div>
 
         <div id="howtoplay" style="position:absolute; top:10px; left:1370px; width:40px;height:275px;background-color:#F5A9A9;z-index:190;opacity:0.5;">
-            <div style="position:relative; top:10px; left:70px;visibility:hidden;">asdasf</div>
+            <div id="howtotext" style="position:relative; top:10px; left:10px;display:none;font-size: 15px;font-family: Comic Sans MS;text-shadow:0.5px 0.5px 1px #000000;"><text>*You may attack only one empty country at once.
+			<br>*Your change to win while attacking an empty country is 70%.
+			<br>*You may attack multiple countries if the target is an opppenent.
+			<br>*Your change to win is 50% while attacking an opponent.
+			<br>*You cannot attack 2 different oppenent in the same time.
+			<br>*You can pass through the countries which are connected with 
+			<br>dashed lines.
+			</text></div>
         </div>
-        <div id="playagain" style="position:absolute; top:290px; left:1370px; width:40px;height:270px;background-color:#D0F5A9;z-index:191;opacity:0.5;"></div>
+        <div id="playagain" style="position:absolute; top:290px; left:1370px; width:40px;height:270px;background-color:#D0F5A9;z-index:191;opacity:0.5;">
+		<div id="playagaintext" style="display:none;">
+		<button onclick="location.href='http://themapgame.com';" style="position:relative; background-color:#74DF00; top:20px; left:20px;width:420px;height:230px;"><text style="text-shadow:1px 1px 1px #000000;font-size:70px;font-family:Comic Sans MS;color:white;">PLAY AGAIN</text></button></div></div>
         <div id="credits" style="position:absolute; top:565px; left:1370px; width:40px;height:300px;background-color:#CEF6F5;z-index:192;opacity:0.5;"></div>
 
         <text id="te1" style="position:absolute; top:15px; left:1380px;  font-size:20px;color:#FFFFFF; visibility:hidden;">H
@@ -4079,17 +4104,17 @@ Type /c to see commands"></textarea>
             <br>A
             <br>I
             <br>N</text>
-        <text id="te3" style="position:absolute; top:620px; left:1380px; font-size:20px;color:#FFFFFF; visibility:hidden;">C
-            <br>R
-            <br>E
-            <br>D
-            <br>I
-            <br>T
-            <br>S</text>
+        <text id="te3" style="position:absolute; top:620px; left:1380px; font-size:20px;color:#FFFFFF; visibility:hidden;">I
+            <br>N
+            <br>F
+            <br>O
+            </text>
 
         <font id="h6" class="h6">h6 here</font>
 
-
+		<div class="line-top"></div>
+		<div class="line-top2"></div>
+		
         <div id="divreg" style="display:none;background-color:#FBFBEF; position:absolute; top:200px;left:400px; width:220px; height:325px; z-index:177; border: 2px solid #FFFFFF;box-shadow: 5px 5px 3px #888888;">
             <img id="closedivreg" src="countries/choosenimg.png" style="position:absolute; right:0px;top:0px;width:40px;height:40px;"></img>
             Login

@@ -7847,3 +7847,39 @@
             background-color: ##FBFBEF;
             border: 1px;
         }
+		.line-top {
+			position: absolute;
+			top:370px;
+			left:480px;
+			width: 100px;
+			height:60px;
+			z-index: -1;
+			opacity:0.4;
+			background: transparent;
+			border: none;
+			border-top: dashed 2px white;
+			padding: 40px 40px;
+			border-radius: 50%;
+			margin: 20px -50px 0;
+			-ms-transform: rotate(-40deg); /* IE 9 */
+			-webkit-transform: rotate(-40deg); /* Chrome, Safari, Opera */
+			transform: rotate(-40deg);
+		}
+		.line-top2 {
+			position: absolute;
+			top:140px;
+			left:535px;
+			width: 30px;
+			height:20px;
+			z-index: -1;
+			opacity:0.4;
+			background: transparent;
+			border: none;
+			border-top: dashed 2px white;
+			padding: 40px 40px;
+			border-radius: 30%;
+			margin: 20px -50px 0;
+			-ms-transform: rotate(40deg); /* IE 9 */
+			-webkit-transform: rotate(40deg); /* Chrome, Safari, Opera */
+			transform: rotate(40deg);
+		}
