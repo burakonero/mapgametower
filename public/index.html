@@ -94,7 +94,7 @@
                 if (usercode % 4 == 0) {
                     document.getElementById("h11").innerHTML = "You are Player 4";
                 }
-            }, 19000);
+            }, 22000);
 
 
 
@@ -137,19 +137,19 @@
 
                         if (data.u1 % 4 == 1 && check1.checked == true && fourthcame == true) {
                             disselectAll();
-                            socket.emit('attackbuttonsocket', room);
+                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
                         }
                         if (data.u1 % 4 == 2 && check2.checked == true && fourthcame == true) {
                             disselectAll();
-                            socket.emit('attackbuttonsocket', room);
+                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
                         }
                         if (data.u1 % 4 == 3 && check3.checked == true && fourthcame == true) {
                             disselectAll();
-                            socket.emit('attackbuttonsocket', room);
+                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
                         }
                         if (data.u1 % 4 == 0 && check4.checked == true && fourthcame == true) {
                             disselectAll();
-                            socket.emit('attackbuttonsocket', room);
+                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
                         }
                     }, 900);
 
@@ -270,17 +270,17 @@
                     isp4left = 1;
                 } else {}
                 if ((usercode % 4 == 1 && check1.checked == true) || (usercode % 4 == 2 && check2.checked == true) || (usercode % 4 == 3 && check3.checked == true) || (usercode % 4 == 0 && check4.checked == true)) {
-                    socket.emit('attackbuttonsocket', room);
+                    socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
 
                     /*
 				setTimeout(function(){
-						if(check1.checked == true && isp1left == 1 ){socket.emit('attackbuttonsocket',room);}
+						if(check1.checked == true && isp1left == 1 ){socket.emit('attackbuttonsocket',{r1: room, ua1: underattack});}
 						
-						if(check2.checked == true && isp2left == 1 ){socket.emit('attackbuttonsocket',room);}
+						if(check2.checked == true && isp2left == 1 ){socket.emit('attackbuttonsocket',{r1: room, ua1: underattack});}
 						
-						if(check3.checked == true && isp3left == 1 ){socket.emit('attackbuttonsocket',room);}
+						if(check3.checked == true && isp3left == 1 ){socket.emit('attackbuttonsocket',{r1: room, ua1: underattack});}
 						
-						if(check4.checked == true && isp4left == 1 ){socket.emit('attackbuttonsocket',room);}
+						if(check4.checked == true && isp4left == 1 ){socket.emit('attackbuttonsocket',{r1: room, ua1: underattack});}
 						
 				}, 600); 		
 				*/
@@ -317,7 +317,7 @@
 
                 var input = $("input[name='checkListItem']").val();
                 if (input == "/c") {
-                    document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\nTo make ally: \tally <player number>\nTo make asd: \t asd some code";
+                    document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\nTo make ally: \tally <player number>\nTo accept ally\t accept <player number>\nTo make asd: \t asd some code";
                 } else if (input == "/console") {
                     document.getElementById("divdene").style.visibility = "visible";
                 } else {}
@@ -3479,19 +3479,19 @@
 
                     setTimeout(function() {
                         if (check1.checked == true && isp1left == 1) {
-                            socket.emit('attackbuttonsocket', room);
+                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
                         }
 
-                        if (check2.checked == true && isp2left == 1) {
-                            socket.emit('attackbuttonsocket', room);
+                        else if (check2.checked == true && isp2left == 1) {
+                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
                         }
 
-                        if (check3.checked == true && isp3left == 1) {
-                            socket.emit('attackbuttonsocket', room);
+                        else if (check3.checked == true && isp3left == 1) {
+                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
                         }
 
-                        if (check4.checked == true && isp4left == 1) {
-                            socket.emit('attackbuttonsocket', room);
+                        else if (check4.checked == true && isp4left == 1) {
+                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
                         }
 						//TODO??????????????????????????????????????????
 						//??????????????????????????????????????????????
@@ -3507,7 +3507,7 @@
 						document.getElementById("playagain").click();document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[system]PLAYER 3 WON ! click play again. ";}
 						else{}
 					
-                    }, 1500);
+                    }, 2500);
 					
 
                 }
@@ -3593,7 +3593,7 @@
 
 
                             if (isp1left == true) {
-                                socket.emit('attackbuttonsocket', room);
+                                socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
                             }
                             fourthcame = true;
 
@@ -3620,7 +3620,7 @@
 					
 
                         }
-                    }, 20000);
+                    }, 24000);
 
                     if (timestarted == false) {
                         timess = 100;
@@ -3675,7 +3675,7 @@
                 if (timess == -1) {
 						socket.emit('disselectAll1',{});
 						 setTimeout(function() {
-						socket.emit('attackbuttonsocket', room);
+						socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
 						}, 100);
                 }
 

@@ -76,10 +76,14 @@ io.sockets.on('connection', function(socket){
 	});
 	
 	socket.on('attackbuttonsocket', function(data){
-		var xx = Math.floor((Math.random() * 2) + 1);
-		
+		if(data.ua1 == 0){
+			var randxs = Math.floor((Math.random() * 10) + 1);
+		if(randxs <= 7){xx=1;}else{xx=2;}}
+		else{
+			var xx = Math.floor((Math.random() * 2) + 1);
+		}
 			
-		if(data == findroom()){io.sockets.emit('attackbuttonsocketf', {winorloose: xx, realroom: findroom() });}else{}
+		if(data.r1 == findroom()){io.sockets.emit('attackbuttonsocketf', {winorloose: xx, realroom: findroom() });}else{}
 		
 		
 		 
