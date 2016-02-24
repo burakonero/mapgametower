@@ -3577,21 +3577,7 @@
 						document.getElementById("attackbutton").style.visibility = 'visible';
                     }
 					
-					
-					
-					
-
-                        }
-                    }, 20000);
-
-                    if (timestarted == false) {
-                        timess = 100;
-                        var myVar = setInterval(myTimer, 1000);
-                        timestarted = true;
-
-                    }
-
-                    setTimeout(function() {
+					setTimeout(function() {
                         if (check1.checked == true) {
                             document.getElementById("h15").innerHTML = "Waiting for Player1's move";
                             document.getElementById("arrow1").style.visibility = 'visible';
@@ -3615,6 +3601,20 @@
                     setTimeout(function() {
                         document.getElementById("h15").scrollTop = document.getElementById("h15").scrollHeight;
                     }, 10);
+					
+					
+
+                        }
+                    }, 20000);
+
+                    if (timestarted == false) {
+                        timess = 100;
+                        var myVar = setInterval(myTimer, 1000);
+                        timestarted = true;
+
+                    }
+
+                    
 
                     //------------ aktivasyon------------
 					
