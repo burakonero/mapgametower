@@ -55,6 +55,12 @@ io.sockets.on('connection', function(socket){
 		 
 	});
 	
+	socket.on('disselectAll1', function(){
+		
+		io.sockets.emit('disselectAllf', {u1: findusernum(), uo:usernumm, ro: findroom()} );
+		 
+	});
+	
 	socket.on('sendmessageg1', function(data){
 		
 		io.sockets.emit('sendmessagegf', data);

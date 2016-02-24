@@ -113,8 +113,11 @@
                 } else {}
 
             });
-
-            socket.on('disconnuser', function(data) {
+			
+		//*********************************************************************
+		//******** THIS FUNCTION IS RUN WHEN A CLIENT IS DISCONNECTED *********
+		//*********************************************************************
+			socket.on('disconnuser', function(data) {
                 if (data.ro == room) {
                     //document.getElementById("h11").innerHTML = ""+data.u1+"-"+data.ro;
 
@@ -160,6 +163,24 @@
 
             });
 
+			socket.on('disselectAllf', function(data) {
+				if (data.ro == room) {
+						if (data.u1 % 4 == 1 && check1.checked == true) {
+                            disselectAll();
+                        }
+                        if (data.u1 % 4 == 2 && check2.checked == true) {
+                            disselectAll();
+                        }
+                        if (data.u1 % 4 == 3 && check3.checked == true) {
+                            disselectAll();
+                        }
+                        if (data.u1 % 4 == 0 && check4.checked == true) {
+                            disselectAll();
+                        }
+                
+				} else {}
+			});
+			
             socket.on('button1f', function(data) {
                 buton11();
                 if (document.getElementById("che").checked == true && data == 1) {
@@ -3328,6 +3349,7 @@
                 // ????????????????? HATA VAR DATA ROOM SAYISI DEGIL KI ?????????????????????
                 if (data.realroom == room) {
                     timess = 100;
+					
                     if (data.winorloose == 1) {
                         buton11();
                         document.getElementById("playerwho").innerHTML = data;
@@ -3471,7 +3493,17 @@
                         if (check4.checked == true && isp4left == 1) {
                             socket.emit('attackbuttonsocket', room);
                         }
+						//TODO??????????????????????????????????????????
+						//??????????????????????????????????????????????
+						//BURAYA PLAY AGAIN TUSU EKLE
+						if (team1 == 0 && team2 == 0 && team3 == 0){document.getElementById("errortext").innerHTML = "Player 4 won ! <br>";}
+						else if(team2 == 0 && team3 == 0 && team4 == 0){document.getElementById("errortext").innerHTML = "Player 1 won ! <br>";}
+						else if(team1 == 0 && team3 == 0 && team4 == 0){document.getElementById("errortext").innerHTML = "Player 2 won ! <br>";}
+						else if(team1 == 0 && team2 == 0 && team4 == 0){document.getElementById("errortext").innerHTML = "Player 3 won ! <br>";}
+						else{}
+					
                     }, 1500);
+					
 
                 }
             });
@@ -3560,7 +3592,7 @@
                             fourthcame = true;
 
 					/*
-					if (data.u1 % 4 == 1 && check1.checked == true) {
+					if (data.unu % 4 == 1 && check1.checked == true) {
 						document.getElementById("attackbutton").style.visibility = 'visible';
                     } else if (data.u1 % 4 == 2 && check2.checked == true) {
                         document.getElementById("attackbutton").style.visibility = 'visible';
@@ -3577,7 +3609,21 @@
 						document.getElementById("attackbutton").style.visibility = 'visible';
                     }
 					
-					setTimeout(function() {
+					
+					
+					
+
+                        }
+                    }, 20000);
+
+                    if (timestarted == false) {
+                        timess = 100;
+                        var myVar = setInterval(myTimer, 1000);
+                        timestarted = true;
+
+                    }
+
+                    setTimeout(function() {
                         if (check1.checked == true) {
                             document.getElementById("h15").innerHTML = "Waiting for Player1's move";
                             document.getElementById("arrow1").style.visibility = 'visible';
@@ -3601,20 +3647,6 @@
                     setTimeout(function() {
                         document.getElementById("h15").scrollTop = document.getElementById("h15").scrollHeight;
                     }, 10);
-					
-					
-
-                        }
-                    }, 20000);
-
-                    if (timestarted == false) {
-                        timess = 100;
-                        var myVar = setInterval(myTimer, 1000);
-                        timestarted = true;
-
-                    }
-
-                    
 
                     //------------ aktivasyon------------
 					
@@ -3635,7 +3667,10 @@
                 timess--;
 
                 if (timess == -1) {
-                    socket.emit('attackbuttonsocket', room);
+						socket.emit('disselectAll1',{});
+						 setTimeout(function() {
+						socket.emit('attackbuttonsocket', room);
+						}, 100);
                 }
 
             }
@@ -4002,7 +4037,7 @@
         </h>
         <textarea disabled id="h15" style="overflow:hidden;  width:200px;height:80px; border:0px;text-shadow:1px 1px 1px #000000; background:transparent;color:#FFFFFF; resize:none;font-size:15px;font-family: Comic Sans MS;"></textarea>
         <text id="errortext" class="erroetext" style="position:absolute; top:600px; left:600px; font-size: 20px;font-family: Comic Sans MS; color:red;"></text>
-        <h id="h16" style="text-shadow:1px 1px 1px #000000; font-size:20px;font-family:ARIAL;"></h>
+        <h id="h16" style="text-shadow:1px 1px 2px #3B170B; font-size:20px;font-family:ARIAL;"></h>
         <text id="onlineplayertext" style="font-family: Comic Sans MS;">yazi</text>
         <br>
         <text id="timetext" style="font-family: Comic Sans MS;font-size:20px;position:absolute;top:770px;left:1120px;text-shadow:1px 1px 1px #FFFFFF;"></text>
