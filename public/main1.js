@@ -24,6 +24,8 @@ var choosentogive1 = [127];
 var img = [127];
 var imgteams = [127];
 var dene;
+var p1lost ,p2lost, p3lost, p4lost = false;
+
 
 //These represents which countries has border with which countries.
 var borders = []; 
@@ -522,16 +524,16 @@ var mainState = {
 					else if(imgteams[i] == 4){team4++;}
 					else{}
 					}
-				if (team1 == 0){	errortext.className = "errortext";
+				if (team1 == 0 && p1lost != true){	errortext.className = "errortext";p1lost = true;
 									document.getElementById("errortext").innerHTML = "Player 1 LOST!";
 									errortext.className = "errortextop";isp1left = 1;}
-				else if(team2 == 0){errortext.className = "errortext";
+				else if(team2 == 0 && p2lost != true){errortext.className = "errortext";p2lost = true;
 									document.getElementById("errortext").innerHTML = "Player 2 LOST!";
 									errortext.className = "errortextop";isp2left = 1;}
-				else if(team3 == 0){errortext.className = "errortext";
+				else if(team3 == 0 && p3lost != true){errortext.className = "errortext";p3lost = true;
 									document.getElementById("errortext").innerHTML = "Player 3 LOST!";
 									errortext.className = "errortextop";isp3left = 1;}
-				else if(team4 == 0){errortext.className = "errortext";
+				else if(team4 == 0 && p4lost != true){errortext.className = "errortext";p4lost = true;
 									document.getElementById("errortext").innerHTML = "Player 4 LOST!";
 									errortext.className = "errortextop";isp4left = 1;}
 				else{}
