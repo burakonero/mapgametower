@@ -80,7 +80,7 @@
             // TODO
             // **************************************** HATA BURADA ==================================================================
             // cok hizli girildiginde "usercode" larin hepsi 4 oluyor
-
+			document.getElementById("h11").innerHTML = " LOADING... ";
             setTimeout(function() {
                 //socket.emit('getbrowser1', {});
                 usercode = ax;
@@ -94,7 +94,7 @@
                 if (usercode % 4 == 0) {
                     document.getElementById("h11").innerHTML = "You are Player 4";
                 }
-            }, 22000);
+            }, 23000);
 
 
 
@@ -257,6 +257,40 @@
 
             var attackbutton = document.getElementById("attackbutton");
             attackbutton.addEventListener('click', function() {
+			
+				setTimeout(function() {
+                        if (check1.checked == true && isp1left == 1) {
+                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
+                        }
+
+                        else if (check2.checked == true && isp2left == 1) {
+                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
+                        }
+
+                        else if (check3.checked == true && isp3left == 1) {
+                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
+                        }
+
+                        else if (check4.checked == true && isp4left == 1) {
+                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
+                        }
+						//TODO??????????????????????????????????????????
+						//??????????????????????????????????????????????
+						//BURAYA PLAY AGAIN TUSU EKLE
+						if ( (team1 == 0 || isp1left == 1) && (team2 == 0 || isp2left == 1) && (team3 == 0 || isp3left == 1) ){document.getElementById("errortext").innerHTML = "Game is over !<br>Player 4 won ! <br>";
+							document.getElementById("playagain").click();
+							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[system]PLAYER 4 WON ! click play again. ";}
+						else if( (team2 == 0 || isp2left == 1) && (team3 == 0 || isp3left == 1) && (team4 == 0 ||  isp4left == 1) ){document.getElementById("errortext").innerHTML = "Game is over !<br>Player 1 won ! <br>";
+						document.getElementById("playagain").click();document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[system]PLAYER 1 WON ! click play again. ";}
+						else if( (team1 == 0 || isp1left == 1) && (team3 == 0 || isp3left == 1) && (team4 == 0 ||  isp4left == 1) ){document.getElementById("errortext").innerHTML = "Game is over !<br>Player 2 won ! <br>";
+						document.getElementById("playagain").click();document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[system]PLAYER 2 WON ! click play again. ";}
+						else if( (team1 == 0 || isp1left == 1) && (team2 == 0 || isp2left == 1) && (team4 == 0 ||  isp4left == 1)){document.getElementById("errortext").innerHTML = "Game is over !<br>Player 3 won ! <br>";
+						document.getElementById("playagain").click();document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[system]PLAYER 3 WON ! click play again. ";}
+						else{}
+					
+                    }, 1000);
+				
+				
                 if (team1 == 0) {
                     isp1left = 1;
                 } else {}
@@ -3477,37 +3511,7 @@
                         document.getElementById("arrow3").style.visibility = 'hidden';
                     }
 
-                    setTimeout(function() {
-                        if (check1.checked == true && isp1left == 1) {
-                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
-                        }
-
-                        else if (check2.checked == true && isp2left == 1) {
-                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
-                        }
-
-                        else if (check3.checked == true && isp3left == 1) {
-                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
-                        }
-
-                        else if (check4.checked == true && isp4left == 1) {
-                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
-                        }
-						//TODO??????????????????????????????????????????
-						//??????????????????????????????????????????????
-						//BURAYA PLAY AGAIN TUSU EKLE
-						if ( (team1 == 0 || isp1left == 1) && (team2 == 0 || isp2left == 1) && (team3 == 0 || isp3left == 1) ){document.getElementById("errortext").innerHTML = "Game is over !<br>Player 4 won ! <br>";
-							document.getElementById("playagain").click();
-							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[system]PLAYER 4 WON ! click play again. ";}
-						else if( (team2 == 0 || isp2left == 1) && (team3 == 0 || isp3left == 1) && (team4 == 0 ||  isp4left == 1) ){document.getElementById("errortext").innerHTML = "Game is over !<br>Player 1 won ! <br>";
-						document.getElementById("playagain").click();document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[system]PLAYER 1 WON ! click play again. ";}
-						else if( (team1 == 0 || isp1left == 1) && (team3 == 0 || isp3left == 1) && (team4 == 0 ||  isp4left == 1) ){document.getElementById("errortext").innerHTML = "Game is over !<br>Player 2 won ! <br>";
-						document.getElementById("playagain").click();document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[system]PLAYER 2 WON ! click play again. ";}
-						else if( (team1 == 0 || isp1left == 1) && (team2 == 0 || isp2left == 1) && (team4 == 0 ||  isp4left == 1)){document.getElementById("errortext").innerHTML = "Game is over !<br>Player 3 won ! <br>";
-						document.getElementById("playagain").click();document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[system]PLAYER 3 WON ! click play again. ";}
-						else{}
-					
-                    }, 10);
+                   
 					
 
                 }
@@ -3620,7 +3624,7 @@
 					
 
                         }
-                    }, 24000);
+                    }, 27000);
 
                     if (timestarted == false) {
                         timess = 100;
