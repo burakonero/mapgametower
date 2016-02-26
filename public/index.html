@@ -3543,6 +3543,7 @@
 					
 					
 					setTimeout(function() {
+					
                         if (check1.checked == true && isp1left == 1) {
                             socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
                         }
@@ -3557,7 +3558,7 @@
 
                         else if (check4.checked == true && isp4left == 1) {
                             socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
-                        }
+                        }else{}
 						
 					
 						}, 2000);
