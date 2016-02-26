@@ -3511,33 +3511,33 @@
                         document.getElementById("arrow3").style.visibility = 'hidden';
                     }
 
-                   //TODO??????????????????????????????????????????
+						//TODO??????????????????????????????????????????
 						//??????????????????????????????????????????????
 						//BURAYA PLAY AGAIN TUSU EKLE
-						if ( (team1 == 0 || isp1left == 1) && (team2 == 0 || isp2left == 1) && (team3 == 0 || isp3left == 1) ){document.getElementById("errortext").innerHTML = "Game is over !<br>Player 4 won ! <br>";
+						if ( (team1 == 0 || isp1left == 1) && (team2 == 0 || isp2left == 1) && (team3 == 0 || isp3left == 1) ){
+							document.getElementById("errortext").innerHTML = "Game is over !<br>Player 4 won ! <br>";
 							clearTimeout(myVar);
-							document.getElementById("errortext").innerHTML = "PLAYER 4 WON !";
 							document.getElementById("attackbutton").style.visibility = 'hidden';
 							document.getElementById("playhand").style.visibility = "visible";
-							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[system] PLAYER 4 WON ! click play again. ";}
-						else if( (team2 == 0 || isp2left == 1) && (team3 == 0 || isp3left == 1) && (team4 == 0 ||  isp4left == 1) ){document.getElementById("errortext").innerHTML = "Game is over !<br>Player 1 won ! <br>";
+							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[SYSTEM] PLAYER 4 WON ! Click play again. ";}
+						else if( (team2 == 0 || isp2left == 1) && (team3 == 0 || isp3left == 1) && (team4 == 0 ||  isp4left == 1) ){
+						document.getElementById("errortext").innerHTML = "Game is over !<br>Player 1 won ! <br>";
 							clearTimeout(myVar);
-							document.getElementById("errortext").innerHTML = "PLAYER 1 WON !";
 							document.getElementById("attackbutton").style.visibility = 'hidden';
 							document.getElementById("playhand").style.visibility = "visible";
-							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[system] PLAYER 1 WON ! click play again. ";}
-						else if( (team1 == 0 || isp1left == 1) && (team3 == 0 || isp3left == 1) && (team4 == 0 ||  isp4left == 1) ){document.getElementById("errortext").innerHTML = "Game is over !<br>Player 2 won ! <br>";
+							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[SYSTEM] PLAYER 1 WON ! Click play again. ";}
+						else if( (team1 == 0 || isp1left == 1) && (team3 == 0 || isp3left == 1) && (team4 == 0 ||  isp4left == 1) ){
+						document.getElementById("errortext").innerHTML = "Game is over !<br>Player 2 won ! <br>";
 							clearTimeout(myVar);
-							document.getElementById("errortext").innerHTML = "PLAYER 2 WON !";
 							document.getElementById("attackbutton").style.visibility = 'hidden';
 							document.getElementById("playhand").style.visibility = "visible";
-							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[system] PLAYER 2 WON ! click play again. ";}
-						else if( (team1 == 0 || isp1left == 1) && (team2 == 0 || isp2left == 1) && (team4 == 0 ||  isp4left == 1)){document.getElementById("errortext").innerHTML = "Game is over !<br>Player 3 won ! <br>";
+							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[SYSTEM] PLAYER 2 WON ! Click play again. ";}
+						else if( (team1 == 0 || isp1left == 1) && (team2 == 0 || isp2left == 1) && (team4 == 0 ||  isp4left == 1)){
+						document.getElementById("errortext").innerHTML = "Game is over !<br>Player 3 won ! <br>";
 							clearTimeout(myVar);
-							document.getElementById("errortext").innerHTML = "PLAYER 3 WON !";
 							document.getElementById("attackbutton").style.visibility = 'hidden';
 							document.getElementById("playhand").style.visibility = "visible";
-							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[system] PLAYER 3 WON ! click play again. ";}
+							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[SYSTEM] PLAYER 3 WON ! Click play again. ";}
 						else{}
 					
 					
