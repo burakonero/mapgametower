@@ -526,16 +526,20 @@ var mainState = {
 					}
 				if (team1 == 0 && p1lost != true){	errortext.className = "errortext";p1lost = true;
 									document.getElementById("errortext").innerHTML = "Player 1 LOST!";
-									errortext.className = "errortextop";isp1left = 1;}
+									errortext.className = "errortextop";isp1left = 1;
+									document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[system] Player 1 Lost. ";}
 				else if(team2 == 0 && p2lost != true){errortext.className = "errortext";p2lost = true;
 									document.getElementById("errortext").innerHTML = "Player 2 LOST!";
-									errortext.className = "errortextop";isp2left = 1;}
+									errortext.className = "errortextop";isp2left = 1;
+									document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[system] Player 2 Lost. ";}
 				else if(team3 == 0 && p3lost != true){errortext.className = "errortext";p3lost = true;
 									document.getElementById("errortext").innerHTML = "Player 3 LOST!";
-									errortext.className = "errortextop";isp3left = 1;}
+									errortext.className = "errortextop";isp3left = 1;
+									document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[system] Player 3 Lost. ";}
 				else if(team4 == 0 && p4lost != true){errortext.className = "errortext";p4lost = true;
 									document.getElementById("errortext").innerHTML = "Player 4 LOST!";
-									errortext.className = "errortextop";isp4left = 1;}
+									errortext.className = "errortextop";isp4left = 1;
+									document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[system] Player 4 Lost. ";}
 				else{}
 				
 					printcounter();
@@ -544,6 +548,9 @@ var mainState = {
 					ggreen.className = "ggreen"+team3.toString();
 					gyellow.className = "gyellow"+team4.toString();
 					gwhite.className = ("gwhite"+(126-team1-team2-team3-team4)).toString();
+				
+						
+						
 		}
 		
 	function buton22(){

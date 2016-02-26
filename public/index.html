@@ -75,7 +75,7 @@
 
             document.getElementById("divreg").style.visibility = "hidden";
 
-
+			document.getElementById("playhand").style.visibility = "hidden";
 
             // TODO
             // **************************************** HATA BURADA ==================================================================
@@ -90,10 +90,13 @@
                         room++;
                     }
                 }
+				document.getElementById("h11").innerHTML = " Defining countries randomly... ";
+				setTimeout(function() {
                 document.getElementById("h11").innerHTML = "You are Player " + usercode % 4 + "";
                 if (usercode % 4 == 0) {
                     document.getElementById("h11").innerHTML = "You are Player 4";
                 }
+				}, 5000);
             }, 23000);
 
 
@@ -158,8 +161,37 @@
                     } else {
                         document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n^^Player " + data.u1 % 4 + " has left the game^^";
                     }
-
+					
+					
+					//TODO??????????????????????????????????????????
+						//??????????????????????????????????????????????
+						//BURAYA PLAY AGAIN TUSU EKLE
+						if ( (team1 == 0 || isp1left == 1) && (team2 == 0 || isp2left == 1) && (team3 == 0 || isp3left == 1) ){document.getElementById("errortext").innerHTML = "Game is over !<br>Player 4 won ! <br>";
+							document.getElementById("errortext").innerHTML = "PLAYER 4 WON !";
+							document.getElementById("attackbutton").style.visibility = 'hidden';
+							document.getElementById("playhand").style.visibility = "visible";
+							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[system]PLAYER 4 WON ! click play again. ";}
+						else if( (team2 == 0 || isp2left == 1) && (team3 == 0 || isp3left == 1) && (team4 == 0 ||  isp4left == 1) ){document.getElementById("errortext").innerHTML = "Game is over !<br>Player 1 won ! <br>";
+							document.getElementById("errortext").innerHTML = "PLAYER 1 WON !";
+							document.getElementById("attackbutton").style.visibility = 'hidden';
+							document.getElementById("playhand").style.visibility = "visible";
+							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[system]PLAYER 1 WON ! click play again. ";}
+						else if( (team1 == 0 || isp1left == 1) && (team3 == 0 || isp3left == 1) && (team4 == 0 ||  isp4left == 1) ){document.getElementById("errortext").innerHTML = "Game is over !<br>Player 2 won ! <br>";
+							document.getElementById("errortext").innerHTML = "PLAYER 2 WON !";
+							document.getElementById("attackbutton").style.visibility = 'hidden';
+							document.getElementById("playhand").style.visibility = "visible";
+							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[system]PLAYER 2 WON ! click play again. ";}
+						else if( (team1 == 0 || isp1left == 1) && (team2 == 0 || isp2left == 1) && (team4 == 0 ||  isp4left == 1)){document.getElementById("errortext").innerHTML = "Game is over !<br>Player 3 won ! <br>";
+							document.getElementById("errortext").innerHTML = "PLAYER 1 WON !";
+							document.getElementById("attackbutton").style.visibility = 'hidden';
+							document.getElementById("playhand").style.visibility = "visible";
+							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[system]PLAYER 3 WON ! click play again. ";}
+						else{}
+						
+						
                 } else {}
+				
+				
 
             });
 
@@ -258,38 +290,6 @@
             var attackbutton = document.getElementById("attackbutton");
             attackbutton.addEventListener('click', function() {
 			
-				setTimeout(function() {
-                        if (check1.checked == true && isp1left == 1) {
-                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
-                        }
-
-                        else if (check2.checked == true && isp2left == 1) {
-                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
-                        }
-
-                        else if (check3.checked == true && isp3left == 1) {
-                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
-                        }
-
-                        else if (check4.checked == true && isp4left == 1) {
-                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
-                        }
-						//TODO??????????????????????????????????????????
-						//??????????????????????????????????????????????
-						//BURAYA PLAY AGAIN TUSU EKLE
-						if ( (team1 == 0 || isp1left == 1) && (team2 == 0 || isp2left == 1) && (team3 == 0 || isp3left == 1) ){document.getElementById("errortext").innerHTML = "Game is over !<br>Player 4 won ! <br>";
-							document.getElementById("playagain").click();
-							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[system]PLAYER 4 WON ! click play again. ";}
-						else if( (team2 == 0 || isp2left == 1) && (team3 == 0 || isp3left == 1) && (team4 == 0 ||  isp4left == 1) ){document.getElementById("errortext").innerHTML = "Game is over !<br>Player 1 won ! <br>";
-						document.getElementById("playagain").click();document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[system]PLAYER 1 WON ! click play again. ";}
-						else if( (team1 == 0 || isp1left == 1) && (team3 == 0 || isp3left == 1) && (team4 == 0 ||  isp4left == 1) ){document.getElementById("errortext").innerHTML = "Game is over !<br>Player 2 won ! <br>";
-						document.getElementById("playagain").click();document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[system]PLAYER 2 WON ! click play again. ";}
-						else if( (team1 == 0 || isp1left == 1) && (team2 == 0 || isp2left == 1) && (team4 == 0 ||  isp4left == 1)){document.getElementById("errortext").innerHTML = "Game is over !<br>Player 3 won ! <br>";
-						document.getElementById("playagain").click();document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[system]PLAYER 3 WON ! click play again. ";}
-						else{}
-					
-                    }, 1000);
-				
 				
                 if (team1 == 0) {
                     isp1left = 1;
@@ -3511,8 +3511,57 @@
                         document.getElementById("arrow3").style.visibility = 'hidden';
                     }
 
-                   
+                   //TODO??????????????????????????????????????????
+						//??????????????????????????????????????????????
+						//BURAYA PLAY AGAIN TUSU EKLE
+						if ( (team1 == 0 || isp1left == 1) && (team2 == 0 || isp2left == 1) && (team3 == 0 || isp3left == 1) ){document.getElementById("errortext").innerHTML = "Game is over !<br>Player 4 won ! <br>";
+							clearTimeout(myVar);
+							document.getElementById("errortext").innerHTML = "PLAYER 4 WON !";
+							document.getElementById("attackbutton").style.visibility = 'hidden';
+							document.getElementById("playhand").style.visibility = "visible";
+							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[system] PLAYER 4 WON ! click play again. ";}
+						else if( (team2 == 0 || isp2left == 1) && (team3 == 0 || isp3left == 1) && (team4 == 0 ||  isp4left == 1) ){document.getElementById("errortext").innerHTML = "Game is over !<br>Player 1 won ! <br>";
+							clearTimeout(myVar);
+							document.getElementById("errortext").innerHTML = "PLAYER 1 WON !";
+							document.getElementById("attackbutton").style.visibility = 'hidden';
+							document.getElementById("playhand").style.visibility = "visible";
+							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[system] PLAYER 1 WON ! click play again. ";}
+						else if( (team1 == 0 || isp1left == 1) && (team3 == 0 || isp3left == 1) && (team4 == 0 ||  isp4left == 1) ){document.getElementById("errortext").innerHTML = "Game is over !<br>Player 2 won ! <br>";
+							clearTimeout(myVar);
+							document.getElementById("errortext").innerHTML = "PLAYER 2 WON !";
+							document.getElementById("attackbutton").style.visibility = 'hidden';
+							document.getElementById("playhand").style.visibility = "visible";
+							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[system] PLAYER 2 WON ! click play again. ";}
+						else if( (team1 == 0 || isp1left == 1) && (team2 == 0 || isp2left == 1) && (team4 == 0 ||  isp4left == 1)){document.getElementById("errortext").innerHTML = "Game is over !<br>Player 3 won ! <br>";
+							clearTimeout(myVar);
+							document.getElementById("errortext").innerHTML = "PLAYER 3 WON !";
+							document.getElementById("attackbutton").style.visibility = 'hidden';
+							document.getElementById("playhand").style.visibility = "visible";
+							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[system] PLAYER 3 WON ! click play again. ";}
+						else{}
 					
+					
+					
+					setTimeout(function() {
+                        if (check1.checked == true && isp1left == 1) {
+                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
+                        }
+
+                        else if (check2.checked == true && isp2left == 1) {
+                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
+                        }
+
+                        else if (check3.checked == true && isp3left == 1) {
+                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
+                        }
+
+                        else if (check4.checked == true && isp4left == 1) {
+                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
+                        }
+						
+					
+						}, 2000);
+				
 
                 }
             });
@@ -3617,6 +3666,7 @@
 					
 					if (ax == 1 && check1.checked == true) {
 						document.getElementById("attackbutton").style.visibility = 'visible';
+						document.getElementById("h16").innerHTML = "IT IS YOUR TURN!";
                     }
 					
 					
@@ -4181,6 +4231,8 @@ Type /c to see commands"></textarea>
                 <br>Level: ***</text>
         </div>
 
+		<img id="playhand" src="countries/playhand.gif" style="width:140px; height:30px; position: absolute; top:400px; left:1220px; z-index:170; "></img> 
+		 
         <div id="sea" style="background-color:#D6F6FF; position:absolute; top:10px;left:10px; width:1350px; height:850px; opacity:0.4; z-index:-1; border: 2px solid #FFFFFF;box-shadow: 1px 1px 1px #888888;"></div>
 
         <div id="divdene" class="divdene" style="position:absolute;left:500px;top:200px;background-color:grey; z-index: 178; visibility:hidden;">
