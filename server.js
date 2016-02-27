@@ -83,7 +83,7 @@ io.sockets.on('connection', function(socket){
 			var xx = Math.floor((Math.random() * 2) + 1);
 		}
 			
-		if(data.r1 == findroom()){io.sockets.emit('attackbuttonsocketf', {winorloose: xx, realroom: findroom() });}else{}
+		if(data.r1 == findroom()){io.sockets.emit('attackbuttonsocketf', {winorloose: xx, realroom: findroom(), user1: findusernum() });}else{}
 		
 		
 		 

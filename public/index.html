@@ -97,7 +97,7 @@
                     document.getElementById("h11").innerHTML = "You are Player 4";
                 }
 				}, 5000);
-            }, 24000);
+            }, 27000);
 
 
 
@@ -140,19 +140,19 @@
 
                         if (data.u1 % 4 == 1 && check1.checked == true && fourthcame == true) {
                             disselectAll();
-                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
+                            pass1();
                         }
                         if (data.u1 % 4 == 2 && check2.checked == true && fourthcame == true) {
                             disselectAll();
-                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
+                            pass1();
                         }
                         if (data.u1 % 4 == 3 && check3.checked == true && fourthcame == true) {
                             disselectAll();
-                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
+                            pass1();
                         }
                         if (data.u1 % 4 == 0 && check4.checked == true && fourthcame == true) {
                             disselectAll();
-                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
+                            pass1();
                         }
                     }, 900);
 
@@ -515,7 +515,7 @@
             socket.on('attackbuttonsocketf', function(data) {
 
 
-                // ????????????????? HATA VAR DATA ROOM SAYISI DEGIL KI ?????????????????????
+                // ????????????????? socket attackbutton birden fazla kez çalışıyor ?????????????????????
                 if (data.realroom == room) {
                     timess = 100;
 					
@@ -682,93 +682,12 @@
 					
 					
 					
-					if(ax%4 == 1 && isp1left != 1){
-                        if (check1.checked == true && isp1left == 1) {
-                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
-                        }
-
-                        else if (check2.checked == true && isp2left == 1) {
-                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
-                        }
-
-                        else if (check3.checked == true && isp3left == 1) {
-                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
-                        }
-
-                        else if (check4.checked == true && isp4left == 1) {
-                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
-                        }else{}
-						
 					
+						//todo
+						if ((check1.checked == true && isp1left == 1) || (check2.checked == true && isp2left == 1) || (check3.checked == true && isp3left == 1) || (check4.checked == true && isp4left == 1) ){
+						pass1();
 						
-					}
-					else if(ax%4 == 2 && isp2left != 1){
-					
-						if (check1.checked == true && isp1left == 1) {
-                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
-                        }
-
-                        else if (check2.checked == true && isp2left == 1) {
-                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
-                        }
-
-                        else if (check3.checked == true && isp3left == 1) {
-                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
-                        }
-
-                        else if (check4.checked == true && isp4left == 1) {
-                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
-                        }else{}
-						
-					
-						
-						
-					}
-					else if(ax%4 == 3 && isp3left != 1){
-					
-						if (check1.checked == true && isp1left == 1) {
-                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
-                        }
-
-                        else if (check2.checked == true && isp2left == 1) {
-                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
-                        }
-
-                        else if (check3.checked == true && isp3left == 1) {
-                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
-                        }
-
-                        else if (check4.checked == true && isp4left == 1) {
-                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
-                        }else{}
-						
-					
-						
-						
-					}
-					else if(ax%4 == 0 && isp4left != 1){
-					
-						if (check1.checked == true && isp1left == 1) {
-                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
-                        }
-
-                        else if (check2.checked == true && isp2left == 1) {
-                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
-                        }
-
-                        else if (check3.checked == true && isp3left == 1) {
-                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
-                        }
-
-                        else if (check4.checked == true && isp4left == 1) {
-                            socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
-                        }else{}
-						
-					
-						
-						
-					}else{}
-					
+						}
 					
 					}, 1000);
 				
@@ -789,7 +708,122 @@
                 }
             });
 
+			
+			function pass1() {
+						
+					
+						if(document.getElementById('che').checked == true){
+						
+							setTimeout(function() {
+									document.getElementById("h15").scrollTop = document.getElementById("h15").scrollHeight;
+								}, 10);
 
+								document.getElementById("h15").innerHTML = document.getElementById("h15").innerHTML + "&#13;&#10;Player 1's turn passed!";
+								
+								document.getElementById("h15").innerHTML = document.getElementById("h15").innerHTML + "&#13;&#10;Waiting for Player2's move";
+								document.getElementById("arrow2").style.visibility = 'visible';
+								document.getElementById("arrow1").style.visibility = 'hidden';
+								document.getElementById("arrow3").style.visibility = 'hidden';
+								document.getElementById("arrow4").style.visibility = 'hidden';
+								
+								
+							document.getElementById('che').checked = false;
+							document.getElementById('che2').checked = true;
+							document.getElementById('che3').checked = false;
+							document.getElementById('che4').checked = false;}
+						else if(document.getElementById('che2').checked == true){
+						
+							setTimeout(function() {
+									document.getElementById("h15").scrollTop = document.getElementById("h15").scrollHeight;
+								}, 10);
+
+								document.getElementById("h15").innerHTML = document.getElementById("h15").innerHTML + "&#13;&#10;Player 2's turn passed!";
+								
+								document.getElementById("h15").innerHTML = document.getElementById("h15").innerHTML + "&#13;&#10;Waiting for Player3's move";
+								document.getElementById("arrow2").style.visibility = 'hidden';
+								document.getElementById("arrow1").style.visibility = 'hidden';
+								document.getElementById("arrow3").style.visibility = 'visible';
+								document.getElementById("arrow4").style.visibility = 'hidden';
+						
+							document.getElementById('che').checked = false;
+							document.getElementById('che2').checked = false;
+							document.getElementById('che3').checked = true;
+							document.getElementById('che4').checked = false;}
+						else if(document.getElementById('che3').checked == true){
+						
+							setTimeout(function() {
+									document.getElementById("h15").scrollTop = document.getElementById("h15").scrollHeight;
+								}, 10);
+
+
+								document.getElementById("h15").innerHTML = document.getElementById("h15").innerHTML + "&#13;&#10;Player 3's turn passed!";
+								
+								document.getElementById("h15").innerHTML = document.getElementById("h15").innerHTML + "&#13;&#10;Waiting for Player4's move";
+								document.getElementById("arrow4").style.visibility = 'visible';
+								document.getElementById("arrow2").style.visibility = 'hidden';
+								document.getElementById("arrow1").style.visibility = 'hidden';
+								document.getElementById("arrow3").style.visibility = 'hidden';
+								
+							document.getElementById('che').checked = false;
+							document.getElementById('che2').checked = false;
+							document.getElementById('che3').checked = false;
+							document.getElementById('che4').checked = true;}
+						else if(document.getElementById('che4').checked == true){
+							
+							setTimeout(function() {
+                            document.getElementById("h15").scrollTop = document.getElementById("h15").scrollHeight;
+								}, 10);
+
+							document.getElementById("h15").innerHTML = document.getElementById("h15").innerHTML + "&#13;&#10;Player 4's turn passed!";
+                        
+							document.getElementById("h15").innerHTML = document.getElementById("h15").innerHTML + "&#13;&#10;Waiting for Player1's move";
+							document.getElementById("arrow1").style.visibility = 'visible';
+							document.getElementById("arrow2").style.visibility = 'hidden';
+							document.getElementById("arrow3").style.visibility = 'hidden';
+							document.getElementById("arrow4").style.visibility = 'hidden';
+							
+							document.getElementById('che3').checked = false;
+							document.getElementById('che2').checked = false;
+							document.getElementById('che').checked = true;
+							document.getElementById('che4').checked = false;}
+						else{}
+						
+						if (ax % 4 == 1 && check1.checked == true) {
+                        document.getElementById("h16").innerHTML = "IT IS YOUR TURN!";
+                        document.getElementById("attackbutton").style.visibility = 'visible';
+
+
+                    } else if (ax % 4 == 2 && check2.checked == true) {
+                        document.getElementById("h16").innerHTML = "IT IS YOUR TURN!";
+                        document.getElementById("attackbutton").style.visibility = 'visible';
+
+
+                    } else if (ax % 4 == 3 && check3.checked == true) {
+                        document.getElementById("h16").innerHTML = "IT IS YOUR TURN!";
+                        document.getElementById("attackbutton").style.visibility = 'visible';
+
+
+                    } else if (ax % 4 == 0 && check4.checked == true) {
+                        document.getElementById("h16").innerHTML = "IT IS YOUR TURN!";
+                        document.getElementById("attackbutton").style.visibility = 'visible';
+
+
+
+                    } else {
+                        document.getElementById("attackbutton").style.visibility = 'hidden';
+                        document.getElementById("h16").innerHTML = "";
+                    }
+					
+						//todo
+						setTimeout(function() {
+									if ((check1.checked == true && isp1left == 1) || (check2.checked == true && isp2left == 1) || (check3.checked == true && isp3left == 1) || (check4.checked == true && isp4left == 1) ){
+									pass1();
+									}
+								}, 1000);
+						
+						
+			
+			}
             function getbrowser() {
                     var i;
                     socket.emit('getbrowser1', {});
@@ -805,6 +839,7 @@
 				tshasmade = true;
                   
                 }	
+				
             //This function works as soon as a client is connected 
             socket.on('usernum', function(data) {
 
@@ -880,7 +915,7 @@
                     }
 					
 					}
-                    }, 27000);
+                    }, 32000);
 
                     if (timestarted == false) {
                         timess = 100;
