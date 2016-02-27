@@ -157,35 +157,39 @@
                     }, 900);
 
                     if (data.u1 % 4 == 0) {
-                        document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n^^Player 4 has left the game^^";
+                        document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[SYSTEM]Player 4 has left the game!";
                     } else {
-                        document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n^^Player " + data.u1 % 4 + " has left the game^^";
+                        document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[SYSTEM]Player " + data.u1 % 4 + " has left the game!";
                     }
 					
 					
 					//TODO??????????????????????????????????????????
 						//??????????????????????????????????????????????
 						//BURAYA PLAY AGAIN TUSU EKLE
-						if ( (team1 == 0 || isp1left == 1) && (team2 == 0 || isp2left == 1) && (team3 == 0 || isp3left == 1) ){document.getElementById("errortext").innerHTML = "Game is over !<br>Player 4 won ! <br>";
-							document.getElementById("errortext").innerHTML = "PLAYER 4 WON !";
+						if ( (team1 == 0 || isp1left == 1) && (team2 == 0 || isp2left == 1) && (team3 == 0 || isp3left == 1) ){
+							document.getElementById("errortext").innerHTML = "Game is over !<br>Player 4 won ! <br>";
+							//clearTimeout(myVar);
 							document.getElementById("attackbutton").style.visibility = 'hidden';
 							document.getElementById("playhand").style.visibility = "visible";
-							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[system]PLAYER 4 WON ! click play again. ";}
-						else if( (team2 == 0 || isp2left == 1) && (team3 == 0 || isp3left == 1) && (team4 == 0 ||  isp4left == 1) ){document.getElementById("errortext").innerHTML = "Game is over !<br>Player 1 won ! <br>";
-							document.getElementById("errortext").innerHTML = "PLAYER 1 WON !";
+							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[SYSTEM] PLAYER 4 WON ! Click play again. ";}
+						else if( (team2 == 0 || isp2left == 1) && (team3 == 0 || isp3left == 1) && (team4 == 0 ||  isp4left == 1) ){
+						document.getElementById("errortext").innerHTML = "Game is over !<br>Player 1 won ! <br>";
+							//clearTimeout(myVar);
 							document.getElementById("attackbutton").style.visibility = 'hidden';
 							document.getElementById("playhand").style.visibility = "visible";
-							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[system]PLAYER 1 WON ! click play again. ";}
-						else if( (team1 == 0 || isp1left == 1) && (team3 == 0 || isp3left == 1) && (team4 == 0 ||  isp4left == 1) ){document.getElementById("errortext").innerHTML = "Game is over !<br>Player 2 won ! <br>";
-							document.getElementById("errortext").innerHTML = "PLAYER 2 WON !";
+							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[SYSTEM] PLAYER 1 WON ! Click play again. ";}
+						else if( (team1 == 0 || isp1left == 1) && (team3 == 0 || isp3left == 1) && (team4 == 0 ||  isp4left == 1) ){
+						document.getElementById("errortext").innerHTML = "Game is over !<br>Player 2 won ! <br>";
+							//clearTimeout(myVar);
 							document.getElementById("attackbutton").style.visibility = 'hidden';
 							document.getElementById("playhand").style.visibility = "visible";
-							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[system]PLAYER 2 WON ! click play again. ";}
-						else if( (team1 == 0 || isp1left == 1) && (team2 == 0 || isp2left == 1) && (team4 == 0 ||  isp4left == 1)){document.getElementById("errortext").innerHTML = "Game is over !<br>Player 3 won ! <br>";
-							document.getElementById("errortext").innerHTML = "PLAYER 1 WON !";
+							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[SYSTEM] PLAYER 2 WON ! Click play again. ";}
+						else if( (team1 == 0 || isp1left == 1) && (team2 == 0 || isp2left == 1) && (team4 == 0 ||  isp4left == 1)){
+						document.getElementById("errortext").innerHTML = "Game is over !<br>Player 3 won ! <br>";
+							//clearTimeout(myVar);
 							document.getElementById("attackbutton").style.visibility = 'hidden';
 							document.getElementById("playhand").style.visibility = "visible";
-							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[system]PLAYER 3 WON ! click play again. ";}
+							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[SYSTEM] PLAYER 3 WON ! Click play again. ";}
 						else{}
 						
 						
@@ -3511,30 +3515,34 @@
                         document.getElementById("arrow3").style.visibility = 'hidden';
                     }
 
+					
+					setTimeout(function() {
+					
+					
 						//TODO??????????????????????????????????????????
 						//??????????????????????????????????????????????
 						//BURAYA PLAY AGAIN TUSU EKLE
 						if ( (team1 == 0 || isp1left == 1) && (team2 == 0 || isp2left == 1) && (team3 == 0 || isp3left == 1) ){
 							document.getElementById("errortext").innerHTML = "Game is over !<br>Player 4 won ! <br>";
-							clearTimeout(myVar);
+							//clearTimeout(myVar);
 							document.getElementById("attackbutton").style.visibility = 'hidden';
 							document.getElementById("playhand").style.visibility = "visible";
 							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[SYSTEM] PLAYER 4 WON ! Click play again. ";}
 						else if( (team2 == 0 || isp2left == 1) && (team3 == 0 || isp3left == 1) && (team4 == 0 ||  isp4left == 1) ){
 						document.getElementById("errortext").innerHTML = "Game is over !<br>Player 1 won ! <br>";
-							clearTimeout(myVar);
+							//clearTimeout(myVar);
 							document.getElementById("attackbutton").style.visibility = 'hidden';
 							document.getElementById("playhand").style.visibility = "visible";
 							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[SYSTEM] PLAYER 1 WON ! Click play again. ";}
 						else if( (team1 == 0 || isp1left == 1) && (team3 == 0 || isp3left == 1) && (team4 == 0 ||  isp4left == 1) ){
 						document.getElementById("errortext").innerHTML = "Game is over !<br>Player 2 won ! <br>";
-							clearTimeout(myVar);
+							//clearTimeout(myVar);
 							document.getElementById("attackbutton").style.visibility = 'hidden';
 							document.getElementById("playhand").style.visibility = "visible";
 							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[SYSTEM] PLAYER 2 WON ! Click play again. ";}
 						else if( (team1 == 0 || isp1left == 1) && (team2 == 0 || isp2left == 1) && (team4 == 0 ||  isp4left == 1)){
 						document.getElementById("errortext").innerHTML = "Game is over !<br>Player 3 won ! <br>";
-							clearTimeout(myVar);
+							//clearTimeout(myVar);
 							document.getElementById("attackbutton").style.visibility = 'hidden';
 							document.getElementById("playhand").style.visibility = "visible";
 							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[SYSTEM] PLAYER 3 WON ! Click play again. ";}
@@ -3542,7 +3550,7 @@
 					
 					
 					
-					setTimeout(function() {
+					
 					
                         if (check1.checked == true && isp1left == 1) {
                             socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
@@ -3724,7 +3732,7 @@
 
             function myTimer() {
 
-                document.getElementById("timetext").innerHTML = timess + " Seconds left...";
+                document.getElementById("timetext").innerHTML = timess + " seconds left...";
                 timess--;
 
                 if (timess == -1) {
@@ -4107,7 +4115,7 @@
             <br>
         </h>
         <textarea disabled id="h15" style="overflow:hidden;  width:200px;height:80px; border:0px;text-shadow:1px 1px 1px #000000; background:transparent;color:#FFFFFF; resize:none;font-size:15px;font-family: Comic Sans MS;"></textarea>
-        <text id="errortext" class="erroetext" style="position:absolute; top:600px; left:600px; font-size: 20px;font-family: Comic Sans MS; color:red;"></text>
+        <text id="errortext" class="errortext" style="position:absolute; top:600px; left:600px; font-size: 25px;font-family: Comic Sans MS; text-shadow: 2px 2px 2px #000000;color:red;"></text>
         <h id="h16" style="text-shadow:1px 1px 2px #3B170B; font-size:20px;font-family:ARIAL;"></h>
         <text id="onlineplayertext" style="font-family: Comic Sans MS;">yazi</text>
         <br>
