@@ -846,7 +846,7 @@
 				setplayer(data.u1);
 				
                 document.getElementById("onlineplayertext").innerHTML = "";
-                $hone1.append("Online players = " + data.uo);
+                $hone1.append("<br>Online players = " + data.uo + "<br>Users visited = " + data.u1);
                 if (data.u1 % 4 == 1) {
                     document.getElementById("player1").style.visibility = 'visible';
 					 
@@ -864,11 +864,12 @@
                     document.getElementById("player3").style.visibility = 'visible';
                     document.getElementById("player4").style.visibility = 'visible';
                     document.getElementById("waitmap1").style.visibility = 'hidden';
-                    document.getElementById("roomtext").click();
+                    
                     //************************************* OYUNUN BASLADIGI YER BURASI **********************************************************
                     //****
                     setTimeout(function() {
                         if (room == data.ro) {
+							document.getElementById("roomtext").click();
 							if (ax % 4 == 1) {document.getElementById("attackbutton").style.visibility = 'visible';}
                             var stra1 = data.rand1.toString();
                             var stra2 = data.rand2.toString();
@@ -1349,7 +1350,7 @@
         <textarea disabled id="h15" style="overflow:hidden;  width:200px;height:80px; border:0px;text-shadow:1px 1px 1px #000000; background:transparent;color:#FFFFFF; resize:none;font-size:15px;font-family: Comic Sans MS;"></textarea>
         <text id="errortext" class="errortext" style="position:absolute; top:600px; left:600px; font-size: 25px;font-family: Comic Sans MS; text-shadow: 2px 2px 2px #000000;color:red;"></text>
         <h id="h16" style="text-shadow:1px 1px 2px #3B170B; font-size:20px;font-family:ARIAL;"></h>
-        <text id="onlineplayertext" style="font-family: Comic Sans MS;">yazi</text>
+        
         <br>
         <text id="timetext" style="font-family: Comic Sans MS;font-size:20px;position:absolute;top:770px;left:1120px;text-shadow:1px 1px 1px #FFFFFF;"></text>
         <div id="chat">
@@ -1409,6 +1410,7 @@ Type /c to see commands"></textarea>
 
 		<div class="line-top"></div>
 		<div class="line-top2"></div>
+		<div class="line-top3"></div>
 		
         <div id="divreg" style="display:none;background-color:#FBFBEF; position:absolute; top:200px;left:400px; width:220px; height:325px; z-index:177; border: 2px solid #FFFFFF;box-shadow: 5px 5px 3px #888888;">
             <img id="closedivreg" src="countries/choosenimg.png" style="position:absolute; right:0px;top:0px;width:40px;height:40px;"></img>
@@ -1507,6 +1509,7 @@ Type /c to see commands"></textarea>
                     <br> *attack method and winning condition
                     <br>*Pie chart or column chart</text>
                 <button id="hideconsole">konsolu götür</button>
+			<text id="onlineplayertext" style="font-family: Comic Sans MS;">yazi</text>
         </div>
 
 
