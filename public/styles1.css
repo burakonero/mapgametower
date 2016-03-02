@@ -7750,6 +7750,12 @@
             top: 630px;
             z-index: 141;
         }
+		.playbotsbutton {
+            position: absolute;
+            left: 48px;
+            top: 552px;
+            z-index: 141;
+        }
         .arrow1 {
             position: absolute;
             left: 306px;
@@ -7844,8 +7850,8 @@
         }
         #h6 {
             position: absolute;
-            left: 380px;
-            top: 650px;
+            left: 480px;
+            top: 680px;
             font-family: Comic Sans MS;
         }
         #divreg {
