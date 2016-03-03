@@ -391,21 +391,21 @@ var mainState = {
 		document.getElementById("area1").addEventListener('mouseover', function() {
 		document.getElementById("h3").innerHTML = "Spain";
 		});
-		document.getElementById("h3").addEventListener('mouseout', function() {
+		document.getElementById("area1").addEventListener('mouseout', function() {
 		document.getElementById("h3").innerHTML = "";
 		});
 		
-		img[2].addEventListener('mouseover', function() {
+		document.getElementById("area2").addEventListener('mouseover', function() {
 		document.getElementById("h3").innerHTML = "Portugal";
 		});
-		img[2].addEventListener('mouseout', function() {
+		document.getElementById("area2").addEventListener('mouseout', function() {
 		document.getElementById("h3").innerHTML = "";
 		});
 		
-		img[3].addEventListener('mouseover', function() {
+		document.getElementById("area3").addEventListener('mouseover', function() {
 		document.getElementById("h3").innerHTML = "France";
 		});
-		img[3].addEventListener('mouseout', function() {
+		document.getElementById("area3").addEventListener('mouseout', function() {
 		document.getElementById("h3").innerHTML = "";
 		});
 		

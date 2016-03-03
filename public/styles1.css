@@ -16,10 +16,11 @@
             left: 1300px;
             top: 680px;
         }
-        h4.h3 {
-            position: absolute;
-            left: 0px;
-            top: 500px;
+		.h3 {
+            position: relative;
+            left: 20px;
+            top: 400px;
+			color: #FFFFFF;
         }
         #h11 {
             position: absolute;
