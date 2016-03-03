@@ -7757,6 +7757,12 @@
             top: 552px;
             z-index: 141;
         }
+		.chooserandomly {
+            position: absolute;
+            left: 80px;
+            top: 770px;
+            z-index: 142;
+        }
         .arrow1 {
             position: absolute;
             left: 306px;

@@ -324,12 +324,20 @@ var mainState = {
 		// button random 
 		buton3 = document.getElementById('attackbutton');
 		buton3.addEventListener('click',function(){
-			var rand = Math.floor((Math.random() * 2) + 1);
+			var rand
+			if(underattack == 0){
+			rand = Math.floor((Math.random() * 10) + 1);
+				if(rand < 8){rand = 1;}else{rand = 2;}
+			}
+			else{
+			rand = Math.floor((Math.random() * 2) + 1);}
+			
 			if(rand == 1){
 				buton11();}
 				else if(rand == 2){
 					buton22();}
 					else{document.getElementById("h11").innerHTML = "RANDOM BUTTON ERROR <br>";}
+			
 			});
 		// buton random is done
 		
@@ -517,6 +525,7 @@ var mainState = {
 		});
 		
 		
+			
 		document.getElementById("area1").addEventListener('mouseover', function() {
 		document.getElementById("h3").innerHTML = "Spain";
 		});
@@ -794,6 +803,7 @@ var mainState = {
                     document.getElementById("arrow4").style.visibility = 'hidden';
 					
 					document.getElementById("attackbutton").style.visibility = 'hidden';
+					document.getElementById("chooserandomly").style.visibility = 'hidden';
 					
 					setTimeout(function() {
 					document.getElementById('che2').checked = true;
@@ -1140,7 +1150,14 @@ var mainState = {
                     document.getElementById("arrow3").style.visibility = 'hidden';
                     document.getElementById("arrow4").style.visibility = 'hidden';
 						
-					document.getElementById("attackbutton").style.visibility = 'visible';
+					if(p1lost == true){
+						setTimeout(function() {	
+                            document.getElementById('attackbutton').click();
+							}, 1000);
+					}	else{
+						document.getElementById("attackbutton").style.visibility = 'visible';
+						document.getElementById("chooserandomly").style.visibility = 'visible';
+					}
 					
 					document.getElementById('che3').checked = false;
 					document.getElementById('che2').checked = false;
@@ -1161,10 +1178,10 @@ var mainState = {
 					else if(imgteams[i] == 4){team4++;}
 					else{}
 					}
-				if (team1 == 0 && team2 == 0 && team3 == 0){document.getElementById("errortext").innerHTML = "Player 4 won ! <br>";}
-				else if(team2 == 0 && team3 == 0 && team4 == 0){document.getElementById("errortext").innerHTML = "Player 1 won ! <br>";}
-				else if(team1 == 0 && team3 == 0 && team4 == 0){document.getElementById("errortext").innerHTML = "Player 2 won ! <br>";}
-				else if(team1 == 0 && team2 == 0 && team4 == 0){document.getElementById("errortext").innerHTML = "Player 3 won ! <br>";}
+				if (team1 == 0 && team2 == 0 && team3 == 0){document.getElementById('attackbutton').disabled = "disabled";errortext.className = "errortext";document.getElementById("errortext").innerHTML = "Player 4 won ! <br>";}
+				else if(team2 == 0 && team3 == 0 && team4 == 0){document.getElementById('attackbutton').disabled = "disabled";errortext.className = "errortext";document.getElementById("errortext").innerHTML = "Player 1 won ! <br>";}
+				else if(team1 == 0 && team3 == 0 && team4 == 0){document.getElementById('attackbutton').disabled = "disabled";errortext.className = "errortext";document.getElementById("errortext").innerHTML = "Player 2 won ! <br>";}
+				else if(team1 == 0 && team2 == 0 && team4 == 0){document.getElementById('attackbutton').disabled = "disabled";errortext.className = "errortext";document.getElementById("errortext").innerHTML = "Player 3 won ! <br>";}
 				else{}
 					
 					underattack = 0;
@@ -1282,6 +1299,7 @@ var mainState = {
                     document.getElementById("arrow4").style.visibility = 'hidden';
 					
 					document.getElementById("attackbutton").style.visibility = 'hidden';
+					document.getElementById("chooserandomly").style.visibility = 'hidden';
 					
 					setTimeout(function() {
 					document.getElementById('che2').checked = true;
@@ -1628,7 +1646,14 @@ var mainState = {
                     document.getElementById("arrow3").style.visibility = 'hidden';
                     document.getElementById("arrow4").style.visibility = 'hidden';
 						
-					document.getElementById("attackbutton").style.visibility = 'visible';
+					if(p1lost == true){
+						setTimeout(function() {	
+                            document.getElementById('attackbutton').click();
+							}, 1000);
+					}	else{
+						document.getElementById("attackbutton").style.visibility = 'visible';
+						document.getElementById("chooserandomly").style.visibility = 'visible';
+					}
 					
 					document.getElementById('che3').checked = false;
 					document.getElementById('che2').checked = false;
@@ -1649,10 +1674,10 @@ var mainState = {
 					else if(imgteams[i] == 4){team4++;}
 					else{}
 					}
-				if (team1 == 0 && team2 == 0 && team3 == 0){document.getElementById("errortext").innerHTML = "Player 4 won ! <br>";}
-				else if(team2 == 0 && team3 == 0 && team4 == 0){document.getElementById("errortext").innerHTML = "Player 1 won ! <br>";}
-				else if(team1 == 0 && team3 == 0 && team4 == 0){document.getElementById("errortext").innerHTML = "Player 2 won ! <br>";}
-				else if(team1 == 0 && team2 == 0 && team4 == 0){document.getElementById("errortext").innerHTML = "Player 3 won ! <br>";}
+				if (team1 == 0 && team2 == 0 && team3 == 0){document.getElementById('attackbutton').disabled = "disabled";errortext.className = "errortext";document.getElementById("errortext").innerHTML = "Player 4 won ! <br>";}
+				else if(team2 == 0 && team3 == 0 && team4 == 0){document.getElementById('attackbutton').disabled = "disabled";errortext.className = "errortext";document.getElementById("errortext").innerHTML = "Player 1 won ! <br>";}
+				else if(team1 == 0 && team3 == 0 && team4 == 0){document.getElementById('attackbutton').disabled = "disabled";errortext.className = "errortext";document.getElementById("errortext").innerHTML = "Player 2 won ! <br>";}
+				else if(team1 == 0 && team2 == 0 && team4 == 0){document.getElementById('attackbutton').disabled = "disabled";errortext.className = "errortext";document.getElementById("errortext").innerHTML = "Player 3 won ! <br>";}
 				else{}
 					
 					underattack = 0;
@@ -1853,6 +1878,352 @@ var mainState = {
 		}else{document.getElementById("errortext").innerHTML = "You don't have border with this country !";
 				errortext.className = "errortextop";setTimeout(function(){document.getElementById("errortext").innerHTML = "";errortext.className = "errortext";}, 6000); }
 		
+	}
+	
+	function chooserandomlyfu(){
+		//---
+	//Functions above act as a "Player switcher" and as aBOT
+					if(document.getElementById('che2').checked == true){
+					
+						for(var i3 = 0;i3<127;i3++){
+		
+								if(haspureborder(i3) == true && imgteams[i3] != 2){
+								imgX(i3);i3 =128;
+							}
+						}
+					 
+						setTimeout(function() {
+						if(underattack == 0){
+								
+								
+						}
+						else if(underattack == 1){
+							randbot1 = Math.floor((Math.random() * Math.min(team2,team1)) + 1);
+							raho = randbot1;
+							for(var i3 = 0;i3<127;i3++){
+		
+									if(hasborder(i3) == true && imgteams[i3] == 1 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
+										if(raho > 1){imgX(i3);raho--;}
+									}
+								}
+							
+							raho = randbot1;
+							for(var i3 = 0;i3<127;i3++){
+		
+									if(imgteams[i3] == 2 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
+										if(raho > 0){imgX(i3);raho--;}
+									}
+									
+								}
+							
+								
+						}
+						else if(underattack == 3){
+							randbot3 = Math.floor((Math.random() * Math.min(team2,team3)) + 1);
+							raho = randbot3;
+							for(var i3 = 0;i3<127;i3++){
+		
+									if(hasborder(i3) == true && imgteams[i3] == 3 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
+										if(raho > 1){imgX(i3);raho--;}
+									}
+								}
+							raho = randbot3;
+							for(var i3 = 0;i3<127;i3++){
+		
+									if(imgteams[i3] == 2 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
+										if(raho > 0){imgX(i3);raho--;}
+									}
+									
+									}
+								
+							
+								
+						}
+						else if(underattack == 4){
+							randbot4 = Math.floor((Math.random() * Math.min(team2,team4)) + 1);
+							 raho = randbot4;
+							for(var i3 = 0;i3<127;i3++){
+		
+									if(hasborder(i3) == true && imgteams[i3] == 4 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
+										if(raho > 1){imgX(i3);raho--;}
+									}
+								}
+							
+							raho = randbot4;
+							for(var i3 = 0;i3<127;i3++){
+		
+									if(imgteams[i3] == 2 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
+										if(raho > 0){imgX(i3);raho--;}
+									}
+									
+								}
+							
+								
+								
+						}
+						}, 500);
+						
+					}
+					else if(document.getElementById('che3').checked == true){
+					
+					
+					
+					
+						for(var i3 = 0;i3<127;i3++){
+			
+									if(haspureborder(i3) == true && imgteams[i3] != 3){
+									imgX(i3);
+									i3 =128;
+								}
+							}
+					
+					
+						setTimeout(function() {
+						
+						if(underattack == 0){
+							
+								
+						}
+						else if(underattack == 1){
+							randbot1 = Math.floor((Math.random() * Math.min(team3,team1)) + 1);
+							 raho = randbot1;
+							for(var i3 = 0;i3<127;i3++){
+		
+									if(hasborder(i3) == true && imgteams[i3] == 1 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
+										if(raho > 1){imgX(i3);raho--;}
+									}
+								}
+							
+							raho = randbot1;
+							for(var i3 = 0;i3<127;i3++){
+		
+									if(imgteams[i3] == 3 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
+										if(raho > 0){imgX(i3);raho--;}
+									}
+									
+								}
+							
+								
+								
+						}
+						else if(underattack == 2){
+							randbot2 = Math.floor((Math.random() * Math.min(team3,team2)) + 1);
+							 raho = randbot2;
+							for(var i3 = 0;i3<127;i3++){
+		
+									if(hasborder(i3) == true && imgteams[i3] == 2 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
+										if(raho > 1){imgX(i3);raho--;}
+									}
+								}
+							
+							raho = randbot2;
+							for(var i3 = 0;i3<127;i3++){
+		
+									if(imgteams[i3] == 3 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
+										if(raho > 0){imgX(i3);raho--;}
+									}
+									
+								}
+							
+								
+						}
+						else if(underattack == 4){
+							randbot4 = Math.floor((Math.random() * Math.min(team3,team4)) + 1);
+							 raho = randbot4;
+							for(var i3 = 0;i3<127;i3++){
+		
+									if(hasborder(i3) == true && imgteams[i3] == 4 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
+										if(raho > 1){imgX(i3);raho--;}
+									}
+								}
+								
+							raho = randbot4;
+							for(var i3 = 0;i3<127;i3++){
+		
+									if(imgteams[i3] == 3 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
+										if(raho > 0){imgX(i3);raho--;}
+									}
+									
+								}
+								
+								
+							
+						}
+						
+						}, 500);
+					}
+					else if(document.getElementById('che4').checked == true){
+						
+						for(var i3 = 0;i3<127;i3++){
+			
+									if(haspureborder(i3) == true && imgteams[i3] != 4){
+									imgX(i3);i3 =128;
+								}
+							}
+					
+					
+					setTimeout(function() {
+					
+						if(underattack == 0){
+							
+								
+						}
+						else if(underattack == 1){
+							randbot1 = Math.floor((Math.random() * Math.min(team4,team1)) + 1);
+							 raho = randbot1;
+							for(var i3 = 0;i3<127;i3++){
+		
+									if(hasborder(i3) == true && imgteams[i3] == 1 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
+										if(raho > 1){imgX(i3);raho--;}
+									}
+								}
+							
+							raho = randbot1;
+							for(var i3 = 0;i3<127;i3++){
+		
+									if(imgteams[i3] == 4 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
+										if(raho > 0){imgX(i3);raho--;}
+									}
+									
+								}
+							
+								
+							
+						}
+						else if(underattack == 2){
+							randbot2 = Math.floor((Math.random() * Math.min(team4,team2)) + 1);
+							 raho = randbot2;
+							for(var i3 = 0;i3<127;i3++){
+		
+									if(hasborder(i3) == true && imgteams[i3] == 2 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
+										if(raho > 1){imgX(i3);raho--;}
+									}
+								}
+							
+							raho = randbot2;
+							for(var i3 = 0;i3<127;i3++){
+		
+									if(imgteams[i3] == 4 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
+										if(raho > 0){imgX(i3);raho--;}
+									}
+									
+								}
+							
+								
+							
+						}
+						else if(underattack == 3){
+							randbot4 = Math.floor((Math.random() * Math.min(team3,team4) ) + 1);
+							 raho = randbot4;
+							for(var i3 = 0;i3<127;i3++){
+		
+									if(hasborder(i3) == true && imgteams[i3] == 3 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
+										if(raho > 1){imgX(i3);raho--;}
+									}
+									
+								}
+							
+							raho = randbot4;
+							for(var i3 = 0;i3<127;i3++){
+		
+									if(imgteams[i3] == 4 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
+										if(raho > 0){imgX(i3);raho--;}
+									}
+									
+								}
+							
+							
+						}
+						}, 500);
+						
+					}
+					else if(document.getElementById('che').checked == true){
+						for(var i3 = 0;i3<127;i3++){
+			
+									if(haspureborder(i3) == true && imgteams[i3] != 1){
+									imgX(i3); i3 =128;
+								}
+							}
+					
+					
+					setTimeout(function() {
+						if(underattack == 0){
+							
+								
+						}
+						else if(underattack == 4){
+							randbot4 = Math.floor((Math.random() * Math.min(team4,team1)) + 1);
+							 raho = randbot4;
+							for(var i3 = 0;i3<127;i3++){
+		
+									if(hasborder(i3) == true && imgteams[i3] == 4 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
+										if(raho > 1){imgX(i3);raho--;}
+									}
+								}
+							
+							raho = randbot4;
+							for(var i3 = 0;i3<127;i3++){
+		
+									if(imgteams[i3] == 1 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
+										if(raho > 0){imgX(i3);raho--;}
+									}
+									
+								}
+							
+								
+							
+						}
+						else if(underattack == 2){
+							randbot2 = Math.floor((Math.random() * Math.min(team1,team2)) + 1);
+							 raho = randbot2;
+							for(var i3 = 0;i3<127;i3++){
+		
+									if(hasborder(i3) == true && imgteams[i3] == 2 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
+										if(raho > 1){imgX(i3);raho--;}
+									}
+								}
+							
+							raho = randbot2;
+							for(var i3 = 0;i3<127;i3++){
+		
+									if(imgteams[i3] == 1 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
+										if(raho > 0){imgX(i3);raho--;}
+									}
+									
+								}
+							
+								
+							
+						}
+						else if(underattack == 3){
+							randbot3 = Math.floor((Math.random() * Math.min(team3,team1) ) + 1);
+							 raho = randbot3;
+							for(var i3 = 0;i3<127;i3++){
+		
+									if(hasborder(i3) == true && imgteams[i3] == 3 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
+										if(raho > 1){imgX(i3);raho--;}
+									}
+									
+								}
+							
+							raho = randbot3;
+							for(var i3 = 0;i3<127;i3++){
+		
+									if(imgteams[i3] == 1 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
+										if(raho > 0){imgX(i3);raho--;}
+									}
+									
+								}
+							
+							
+						}
+					
+						}, 500);
+					
+					}
+					else{}
+	//---
+					
 	}
 	function hasborder(data1) {
 		borders = [];

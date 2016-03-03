@@ -40,6 +40,11 @@
 			document.getElementById("messagesr").style.backgroundColor = "#F9FAC5";
 			document.getElementById("roomtext").style.backgroundColor = "#F9FAC5";
 			
+			document.getElementById("chooserandomly").addEventListener('click', function() {
+                
+				chooserandomlyfu();
+            });
+			
 			$("#howtoplay").mouseover(function() {
                 document.getElementById("te1").style.visibility = "visible";
             });
@@ -394,8 +399,9 @@
         </map>
 
 		<img class="playbotsbutton" id="playbotsbutton" href="withbots.html" target="_blank" src="countries/cooltext168746259234793.png" onmouseover="this.src='countries/cooltext168746259234793MouseOver.png';" onmouseout="this.src='countries/cooltext168746259234793.png';" />;
-		
-        <img id="chartlines" style="position:absolute;top:15px; left: 1435px;" src="countries/chartlines1.png"></img>
+		<img class="chooserandomly" id="chooserandomly" src="countries/cooltext169260562999627.png" onmouseover="this.src='countries/cooltext169260562999627MouseOver.png';" onmouseout="this.src='countries/cooltext169260562999627.png';" />;
+        
+        <img id="chartlines" style="position:absolute;top:12px; left: 1435px;" src="countries/chartlines1.png"></img>
 
         <div class="console">
 
@@ -443,7 +449,8 @@ Type /c to see commands"></textarea>
         </div>
         <div id="playagain" style="position:absolute; top:290px; left:1370px; width:40px;height:270px;background-color:#D0F5A9;z-index:191;opacity:0.5;">
 		<div id="playagaintext" style="display:none;">
-		<button onclick="location.href='http://themapgame.com';" style="position:relative; background-color:#74DF00; top:20px; left:20px;width:420px;height:230px;"><text style="text-shadow:1px 1px 1px #000000;font-size:70px;font-family:Comic Sans MS;color:white;">PLAY AGAIN</text></button></div></div>
+		<button onclick="location.href='http://themapgame.com';" style="position:relative; background-color:#74DF00; top:20px; left:20px;width:420px;height:110px;"><text style="text-shadow:1px 1px 1px #000000;font-size:35px;font-family:Comic Sans MS;color:white;">PLAY AGAIN MULTIPLAYER</text></button>
+		<button onclick="location.href='http://themapgame.com/withbots.html';" style="position:relative; background-color:#D5EA3A; top:25px; left:20px;width:420px;height:110px;"><text style="text-shadow:1px 1px 1px #000000;font-size:35px;font-family:Comic Sans MS;color:white;">PLAY AGAIN WITH BOTS</text></button></div></div>
         <div id="credits" style="position:absolute; top:565px; left:1370px; width:40px;height:300px;background-color:#CEF6F5;z-index:192;opacity:0.5;"></div>
 
         <text id="te1" style="position:absolute; top:15px; left:1380px;  font-size:20px;color:#FFFFFF; visibility:hidden;">H
