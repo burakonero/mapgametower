@@ -170,7 +170,7 @@ var mainState = {
     create: function() {
 	
 	
-	
+	/*
 		document.getElementById("img1").src = "countries/img1.png";
 		document.getElementById("img2").src = "countries/img2.png";
 		document.getElementById("img3").src = "countries/img3.png";
@@ -185,7 +185,7 @@ var mainState = {
 		document.getElementById("img12").src = "countries/img12.png";
 		document.getElementById("img13").src = "countries/img13.png";
 		document.getElementById("img14").src = "countries/img14.png";
-		document.getElementById("img15").src = "countries/img15.png";
+		document.getElementById("img15").src = "countries/img15.png";*/
 		document.getElementById("img16").src = "countries/img16.png";
 		document.getElementById("img17").src = "countries/img17.png";
 		document.getElementById("img18").src = "countries/img18.png";
