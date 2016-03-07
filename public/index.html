@@ -185,24 +185,28 @@
 							document.getElementById("errortext").innerHTML = "Game is over !<br>Player 4 won ! <br>";
 							//clearTimeout(myVar);
 							document.getElementById("attackbutton").style.visibility = 'hidden';
+							document.getElementById("chooserandomly").style.visibility = 'hidden';
 							document.getElementById("playhand").style.visibility = "visible";
 							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[SYSTEM] PLAYER 4 WON ! Click play again. ";}
 						else if( (team2 == 0 || isp2left == 1) && (team3 == 0 || isp3left == 1) && (team4 == 0 ||  isp4left == 1) ){
 						document.getElementById("errortext").innerHTML = "Game is over !<br>Player 1 won ! <br>";
 							//clearTimeout(myVar);
 							document.getElementById("attackbutton").style.visibility = 'hidden';
+							document.getElementById("chooserandomly").style.visibility = 'hidden';
 							document.getElementById("playhand").style.visibility = "visible";
 							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[SYSTEM] PLAYER 1 WON ! Click play again. ";}
 						else if( (team1 == 0 || isp1left == 1) && (team3 == 0 || isp3left == 1) && (team4 == 0 ||  isp4left == 1) ){
 						document.getElementById("errortext").innerHTML = "Game is over !<br>Player 2 won ! <br>";
 							//clearTimeout(myVar);
 							document.getElementById("attackbutton").style.visibility = 'hidden';
+							document.getElementById("chooserandomly").style.visibility = 'hidden';
 							document.getElementById("playhand").style.visibility = "visible";
 							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[SYSTEM] PLAYER 2 WON ! Click play again. ";}
 						else if( (team1 == 0 || isp1left == 1) && (team2 == 0 || isp2left == 1) && (team4 == 0 ||  isp4left == 1)){
 						document.getElementById("errortext").innerHTML = "Game is over !<br>Player 3 won ! <br>";
 							//clearTimeout(myVar);
 							document.getElementById("attackbutton").style.visibility = 'hidden';
+							document.getElementById("chooserandomly").style.visibility = 'hidden';
 							document.getElementById("playhand").style.visibility = "visible";
 							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[SYSTEM] PLAYER 3 WON ! Click play again. ";}
 						else{}
@@ -1749,7 +1753,7 @@
 		    
         <textarea disabled id="h15" style="overflow:hidden;  width:200px;height:80px; border:0px;text-shadow:1px 1px 1px #000000; background:transparent;color:#FFFFFF; resize:none;font-size:15px;font-family: Comic Sans MS;"></textarea>
         <text id="errortext" class="errortext" style="position:absolute; top:600px; left:600px; font-size: 25px;font-family: Comic Sans MS; text-shadow: 2px 2px 2px #000000;color:red;"></text>
-        <h id="h16" style="text-shadow:1px 1px 2px #FFFFFF; font-size:20px;font-family:ARIAL;"></h>
+        <h id="h16" style="text-shadow:0px 1px 3px #000000; font-size:20px;font-family:ARIAL;"></h>
         
         <br>
 		<text id="dontwannawait" style="font-family: Comic Sans MS;color:#FFFFFF;font-size:20px;position:absolute;top:490px;left:85px;text-shadow:1px 1px 1px #000000;">Don't wanna wait? <br>&nbsp; Play with bots !</text>

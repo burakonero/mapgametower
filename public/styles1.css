@@ -7893,7 +7893,9 @@
             position: absolute;
             left: 480px;
             top: 660px;
+			color: white;
             font-family: Comic Sans MS;
+			text-shadow: 0px -2px 3px black;
         }
         #divreg {
             background-color: ##FBFBEF;
