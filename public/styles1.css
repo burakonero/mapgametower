@@ -22,6 +22,13 @@
             top: 400px;
 			color: #FFFFFF;
         }
+		.country {
+           -webkit-filter: drop-shadow(0 1px 1px rgba(0,0,0,.5));
+			-moz-filter: drop-shadow(0 1px 1px rgba(0,0,0,.5));
+			-ms-filter: drop-shadow(0 1px 1px rgba(0,0,0,.5));
+			-o-filter: drop-shadow(0 1px 1px rgba(0,0,0,.5));
+			filter: drop-shadow(0 1px 1px rgba(0,0,0,.5));
+		}
         #h11 {
             position: absolute;
             left: 20px;
@@ -7799,6 +7806,26 @@
             border-radius: 15px;
             box-shadow: 2px 2px 2px #000000;
         }
+		#leftico1 {
+            position: absolute;
+            left: 306px;
+            top: 732px;
+        }
+        #leftico2 {
+            position: absolute;
+            left: 506px;
+            top: 732px;
+        }
+        #leftico3 {
+            position: absolute;
+            left: 706px;
+            top: 732px;
+        }
+        #leftico4 {
+            position: absolute;
+            left: 906px;
+            top: 732px;
+        }
         .worldmap1 {
             width: 1900px;
             height: 900px;
@@ -7809,6 +7836,13 @@
             left: 29px;
             top: 49px;
             z-index: 140;
+        }
+		
+		#gametrial {
+            outline: 5px solid red;
+			outline-offset: -4px;
+			z-index:197;
+			box-shadow:13px 13px  13px black;
         }
         #chat {
             position: absolute;
@@ -7858,7 +7892,7 @@
         #h6 {
             position: absolute;
             left: 480px;
-            top: 680px;
+            top: 660px;
             font-family: Comic Sans MS;
         }
         #divreg {
