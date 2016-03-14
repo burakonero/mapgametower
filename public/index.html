@@ -38,6 +38,7 @@
         var isp4left = 0;
         var fourthcame = false;
 		var tshasmade = false;
+		var attacker = 1;
 		
 
         jQuery(function($) {
@@ -312,9 +313,7 @@
 
             var attackbutton = document.getElementById("attackbutton");
             attackbutton.addEventListener('click', function() {
-			
-				
-                if (team1 == 0) {
+				if (team1 == 0) {
                     isp1left = 1;
                 } else {}
                 if (team2 == 0) {
@@ -326,8 +325,10 @@
                 if (team4 == 0) {
                     isp4left = 1;
                 } else {}
+				
                 if ((usercode % 4 == 1 && check1.checked == true) || (usercode % 4 == 2 && check2.checked == true) || (usercode % 4 == 3 && check3.checked == true) || (usercode % 4 == 0 && check4.checked == true)) {
-                    socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
+                   if(check1.checked == true){attacker = 1;}else if(check2.checked == true){attacker = 2;}else if(check3.checked == true){attacker = 3;}else if(check4.checked == true){attacker = 4;}else{}
+				   socket.emit('attackbuttonsocket', {r1: room, ua1: underattack, t1: team1, t2: team2, t3: team3, t4: team4, atr: attacker});
 
                     /*
 				setTimeout(function(){
@@ -346,7 +347,8 @@
                     document.getElementById("errortext").innerHTML = "It is NOT your turn !";
                     errortext.className = "errortextop";
                 }
-
+				document.getElementById("attackdiv").style.display = "none";
+				
 
             });
 
@@ -547,12 +549,44 @@
                 if (data.realroom == room) {
                     timess = 100;
 					
+					if(check1.checked == true){attacker = 1;}else if(check2.checked == true){attacker = 2;}else if(check3.checked == true){attacker = 3;}else if(check4.checked == true){attacker = 4;}else{}
+				  
+					var holdteams = [];
+					holdteams[1] = team1;
+					holdteams[2] = team2;
+					holdteams[3] = team3;
+					holdteams[4] = team4;
+					
+					var holdteams1 = [];
+					holdteams1[1] = "RED";
+					holdteams1[2] = "BLUE";
+					holdteams1[3] = "GREEN";
+					holdteams1[4] = "YELLOW";
+					
+					document.getElementById("attackdiv").style.backgroundColor =  "grey";
+					
+					document.getElementById("attackdivtext").innerHTML = "ATTACKER: "+holdteams1[attacker]+"<br>AGAINS TO: "+holdteams1[underattack]+"<br>Number of Attacker's Countries: "+holdteams[attacker]+"<br>Number of Target's Countries:"+holdteams[underattack]+"<br>CHANGE TO WIN FOR "+holdteams1[attacker]+" :"+( holdteams[attacker]*100/(holdteams[attacker]+holdteams[underattack]) ).toString().substring(0,4)+"%<br>CHANGE TO WIN FOR "+holdteams1[underattack]+" :"+( holdteams[underattack]*100/(holdteams[attacker]+holdteams[underattack]) ).toString().substring(0,4);
+					if(underattack == 0){
+					document.getElementById("attackdivtext").innerHTML = "ATTACKER: "+holdteams1[attacker]+"<br>AGAINS TO: EMPTY COUNTRY<br>Number of Countries: "+holdteams[attacker]+"<br>CHANGE TO WIN IS 70% ";
+					}else{}
+					document.getElementById("attackdiv").style.display = "block";
+					
+				setTimeout(function() {
+					setTimeout(function() {
+					document.getElementById("attackdiv").style.display = "none";
+					}, 2000);
+					
                     if (data.winorloose == 1) {
                         buton11();
                         document.getElementById("playerwho").innerHTML = data;
+						document.getElementById("attackdiv").style.backgroundColor =  "#3ADF00";
+						document.getElementById("attackdivtext").innerHTML = document.getElementById("attackdivtext").innerHTML + "<br> WON  !!!";
+					
                     } else if (data.winorloose == 2) {
                         buton22();
+						document.getElementById("attackdiv").style.backgroundColor = "#FE2E2E";
                         document.getElementById("playerwho").innerHTML = data;
+						document.getElementById("attackdivtext").innerHTML = document.getElementById("attackdivtext").innerHTML + "<br> LOST !!!";
                     } else {
                         document.getElementById("playerwho").innerHTML = data.winorloose;
                     }
@@ -728,7 +762,7 @@
 					
 					}, 1000);
 				
-
+					}, 2500);
                 }
             });
 						
@@ -1280,8 +1314,9 @@
 
 
                             if (isp1left == true) {
-                                socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
-                            }
+                                if(check1.checked == true){attacker = 1;}else if(check2.checked == true){attacker = 2;}else if(check3.checked == true){attacker = 3;}else if(check4.checked == true){attacker = 4;}else{}
+								socket.emit('attackbuttonsocket', {r1: room, ua1: underattack, t1: team1, t2: team2, t3: team3, t4: team4, atr: attacker});
+								}
                             fourthcame = true;
 
 					/*
@@ -1362,7 +1397,9 @@
                 if (timess == -1) {
 						socket.emit('disselectAll1',{});
 						 setTimeout(function() {
-						socket.emit('attackbuttonsocket', {r1: room, ua1: underattack});
+							if(check1.checked == true){attacker = 1;}else if(check2.checked == true){attacker = 2;}else if(check3.checked == true){attacker = 3;}else if(check4.checked == true){attacker = 4;}else{}
+							socket.emit('attackbuttonsocket', {r1: room, ua1: underattack, t1: team1, t2: team2, t3: team3, t4: team4, atr: attacker});
+
 						}, 100);
                 }
 
@@ -1773,7 +1810,8 @@ Type /c to see commands"></textarea>
             <div id="howtotext" style="position:relative; top:10px; left:10px;display:none;font-size: 15px;font-family: Comic Sans MS;text-shadow:0.5px 0.5px 1px #000000;"><text>*You may attack only one empty country at once.
 			<br>*Your change to win while attacking an empty country is 70%.
 			<br>*You may attack multiple countries if the target is an opppenent.
-			<br>*Your change to win is 50% while attacking an opponent.
+			<br>*Your change to win depends on number of your countries while attacking an opponent.
+			<br>*Your change to win is yourcountrynumber*100/(yourcountrynumber+targetcountrynumber)%.
 			<br>*You cannot attack 2 different oppenent in the same time.
 			<br>*You can pass through the countries which are connected with 
 			<br>dashed lines.
@@ -1884,6 +1922,10 @@ Type /c to see commands"></textarea>
 		 
         <div id="sea" style="background-color:#D6F6FF; position:absolute; top:10px;left:10px; width:1350px; height:850px; opacity:0.4; z-index:-1; border: 2px solid #FFFFFF;box-shadow: 1px 1px 1px #888888;"></div>
 
+		<div id="attackdiv" style="position:absolute;left:250px;top:150px;background-color:grey;width:800px;height:300px;opacity:0.9;z-index:199;display:none">
+			<text id="attackdivtext" style="color: white; font-size: 30px; text-shadow: 2px 2px 2px black;"><text>
+		</div>
+		
         <div id="divdene" class="divdene" style="position:absolute;left:500px;top:200px;background-color:grey; z-index: 178; visibility:hidden;">
             <font style="color:red;" id="playertool"></font>
             <br> Player one

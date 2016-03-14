@@ -13,7 +13,6 @@ var usernum1 = [];
 
 app.use(express.static(__dirname + '/public'));
 
-
 server.listen((process.env.OPENSHIFT_NODEJS_PORT || 5000),ip);
 
 //

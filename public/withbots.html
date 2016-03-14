@@ -38,6 +38,7 @@
 			document.getElementById("globaltext").style.visibility = "hidden";
 			document.getElementById("roomtext").style.width = "405px";
 			document.getElementById("messagesr").style.backgroundColor = "#F9FAC5";
+			document.getElementById("messagesr").style.top = "50px";
 			document.getElementById("roomtext").style.backgroundColor = "#F9FAC5";
 			
 			document.getElementById("allstuff").style.zoom = window.screen.width / 1920;
@@ -438,7 +439,11 @@ Type /c to see commands"></textarea>
             <input type="text" name="checkListItem" id="input"></input>
             <button type="submit" id="sendbutton">SEND</button>
         </div>
-
+		
+		<div id="attackdiv" style="position:absolute;left:250px;top:150px;background-color:grey;width:800px;height:300px;opacity:0.9;z-index:199;display:none">
+			<text id="attackdivtext" style="color: white; font-size: 40px;"><text>
+		</div>
+		
         <div id="howtoplay" style="position:absolute; top:10px; left:1370px; width:40px;height:275px;background-color:#F5A9A9;z-index:190;opacity:0.5;">
             <div id="howtotext" style="position:relative; top:10px; left:10px;display:none;font-size: 15px;font-family: Comic Sans MS;text-shadow:0.5px 0.5px 1px #000000;"><text>*You may attack only one empty country at once.
 			<br>*Your change to win while attacking an empty country is 70%.

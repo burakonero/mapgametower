@@ -324,6 +324,7 @@ var mainState = {
 		// button random 
 		buton3 = document.getElementById('attackbutton');
 		buton3.addEventListener('click',function(){
+			
 			var rand
 			if(underattack == 0){
 			rand = Math.floor((Math.random() * 10) + 1);
@@ -337,7 +338,78 @@ var mainState = {
 				else if(rand == 2){
 					buton22();}
 					else{document.getElementById("h11").innerHTML = "RANDOM BUTTON ERROR <br>";}
+			/*
+			var attacker = 1;
+			var xx;
+			if(check1.checked == true){attacker = 1;}else if(check2.checked == true){attacker = 2;}else if(check3.checked == true){attacker = 3;}else if(check4.checked == true){attacker = 4;}else{}
 			
+						
+			if(underattack == 0){
+			var randxs = Math.floor((Math.random() * 10) + 1);
+			if(randxs <= 7){xx=1;}else{xx=2;}
+			} else if(underattack == 1){
+				if(attacker == 2){
+					var randxs1 = Math.floor((Math.random() * (team1+team2) ) + 1);
+					if(randxs1 <= team2){xx=1;}else{xx=2;}
+				}
+				else if(attacker == 3){
+					var randxs2 = Math.floor((Math.random() * (team1+team3) ) + 1);
+					if(randxs2 <= team3){xx=1;}else{xx=2;}
+				}
+				else if(attacker == 4){
+					var randxs3 = Math.floor((Math.random() * (team1+team4) ) + 1);
+					if(randxs3 <= team4){xx=1;}else{xx=2;}
+				}
+				else{}
+			} else if(underattack == 2){
+				if(attacker == 1){
+					var randxs4 = Math.floor((Math.random() * (team1+team2) ) + 1);
+					if(randxs4 <= team1){xx=1;}else{xx=2;}
+				}
+				else if(attacker == 3){
+					var randxs5 = Math.floor((Math.random() * (team3+team2) ) + 1);
+					if(randxs5 <= team3){xx=1;}else{xx=2;}
+				}
+				else if(attacker == 4){
+					var randxs6 = Math.floor((Math.random() * (team4+team2) ) + 1);
+					if(randxs6 <= team4){xx=1;}else{xx=2;}}
+				else{}
+			} else if(underattack == 3){
+				if(attacker == 1){
+					var randxs7 = Math.floor((Math.random() * (team1+team3) ) + 1);
+					if(randxs7 <= team1){xx=1;}else{xx=2;}
+				}
+				else if(attacker == 2){
+					var randxs8 = Math.floor((Math.random() * (team2+team3) ) + 1);
+					if(randxs8 <= team2){xx=1;}else{xx=2;}
+				}
+				else if(attacker == 4){
+					var randxs9 = Math.floor((Math.random() * (team4+team3) ) + 1);
+					if(randxs9 <= team4){xx=1;}else{xx=2;}
+				}
+				else{}
+			} else if(underattack == 4){
+				if(attacker == 1){
+					var randxs10 = Math.floor((Math.random() * (team4+team1) ) + 1);
+					if(randxs10 <= team1){xx=1;}else{xx=2;}
+				}
+				else if(attacker == 2){
+					var randxs11 = Math.floor((Math.random() * (team4+team2) ) + 1);
+					if(randxs11 <= team2){xx=1;}else{xx=2;}
+				}
+				else if(attacker == 3){
+					var randxs12 = Math.floor((Math.random() * (team3+team4) ) + 1);
+					if(randxs12 <= team3){xx=1;}else{xx=2;}
+				}
+				else{}
+			}
+			if(xx == 1){
+				buton11();
+					}
+				else if(xx == 2){
+					buton22();}
+					else{document.getElementById("h11").innerHTML = "RANDOM BUTTON ERROR <br>";}
+		   */
 			});
 		// buton random is done
 		
@@ -1691,13 +1763,7 @@ var mainState = {
 				
 	}
 	function buton33(){
-		
-			var rand = Math.floor((Math.random() * 2) + 1);
-			if(rand == 1){
-				buton11();}
-				else if(rand == 2){
-					buton22();}
-					else{document.getElementById("h11").innerHTML = "RANDOM BUTTON ERROR <br>";}
+			
 					
 	}
 	function imgX(data,permision){
