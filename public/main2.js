@@ -23,10 +23,17 @@ var choosentogive = [127];
 var choosentogive1 = [127];
 var img = [127];
 var imgteams = [127];
+var hastower = [127];
+var point0 = [127];
+var point1 = [127];
+var point2 = [127];
+var point3 = [127];
+var point4 = [127];
 var dene;
 var p1lost ,p2lost, p3lost, p4lost = false;
 var raho ;
 var randbot1,randbot2,randbot3,randbot4;
+var towerchoosen = false;
 
 //These represents which countries has border with which countries.
 var borders = []; 
@@ -311,113 +318,32 @@ var mainState = {
 		
 		printcounter();
 		
-		buton1 = document.getElementById('buton1');
-		buton1.addEventListener('click',function(){
-				//buton1();
-		});
-		buton2 = document.getElementById('buton2');
-		buton2.addEventListener('click',function(){
+		var canvas = document.createElement("canvas");
+					canvas.style.position = "absolute";
+					canvas.width = 1300;
+					canvas.height = 700;
+					canvas.style.zIndex = 190;
+					canvas.style.top= "0px";
+					canvas.style.left= "0px";
+					
+					document.body.appendChild(canvas);
+					//canvas.id = "line"+i;
 		
-		});
-		//-------------- buton 2 is done
 		
 		// button random 
-		buton3 = document.getElementById('attackbutton');
-		buton3.addEventListener('click',function(){
-			
-			var rand
-			if(underattack == 0){
-			rand = Math.floor((Math.random() * 10) + 1);
-				if(rand < 8){rand = 1;}else{rand = 2;}
-			}
-			else{
-			rand = Math.floor((Math.random() * 2) + 1);}
-			
-			if(rand == 1){
-				buton11();}
-				else if(rand == 2){
-					buton22();}
-					else{document.getElementById("h11").innerHTML = "RANDOM BUTTON ERROR <br>";}
-			/*
-			var attacker = 1;
-			var xx;
-			if(check1.checked == true){attacker = 1;}else if(check2.checked == true){attacker = 2;}else if(check3.checked == true){attacker = 3;}else if(check4.checked == true){attacker = 4;}else{}
-			
-						
-			if(underattack == 0){
-			var randxs = Math.floor((Math.random() * 10) + 1);
-			if(randxs <= 7){xx=1;}else{xx=2;}
-			} else if(underattack == 1){
-				if(attacker == 2){
-					var randxs1 = Math.floor((Math.random() * (team1+team2) ) + 1);
-					if(randxs1 <= team2){xx=1;}else{xx=2;}
-				}
-				else if(attacker == 3){
-					var randxs2 = Math.floor((Math.random() * (team1+team3) ) + 1);
-					if(randxs2 <= team3){xx=1;}else{xx=2;}
-				}
-				else if(attacker == 4){
-					var randxs3 = Math.floor((Math.random() * (team1+team4) ) + 1);
-					if(randxs3 <= team4){xx=1;}else{xx=2;}
-				}
-				else{}
-			} else if(underattack == 2){
-				if(attacker == 1){
-					var randxs4 = Math.floor((Math.random() * (team1+team2) ) + 1);
-					if(randxs4 <= team1){xx=1;}else{xx=2;}
-				}
-				else if(attacker == 3){
-					var randxs5 = Math.floor((Math.random() * (team3+team2) ) + 1);
-					if(randxs5 <= team3){xx=1;}else{xx=2;}
-				}
-				else if(attacker == 4){
-					var randxs6 = Math.floor((Math.random() * (team4+team2) ) + 1);
-					if(randxs6 <= team4){xx=1;}else{xx=2;}}
-				else{}
-			} else if(underattack == 3){
-				if(attacker == 1){
-					var randxs7 = Math.floor((Math.random() * (team1+team3) ) + 1);
-					if(randxs7 <= team1){xx=1;}else{xx=2;}
-				}
-				else if(attacker == 2){
-					var randxs8 = Math.floor((Math.random() * (team2+team3) ) + 1);
-					if(randxs8 <= team2){xx=1;}else{xx=2;}
-				}
-				else if(attacker == 4){
-					var randxs9 = Math.floor((Math.random() * (team4+team3) ) + 1);
-					if(randxs9 <= team4){xx=1;}else{xx=2;}
-				}
-				else{}
-			} else if(underattack == 4){
-				if(attacker == 1){
-					var randxs10 = Math.floor((Math.random() * (team4+team1) ) + 1);
-					if(randxs10 <= team1){xx=1;}else{xx=2;}
-				}
-				else if(attacker == 2){
-					var randxs11 = Math.floor((Math.random() * (team4+team2) ) + 1);
-					if(randxs11 <= team2){xx=1;}else{xx=2;}
-				}
-				else if(attacker == 3){
-					var randxs12 = Math.floor((Math.random() * (team3+team4) ) + 1);
-					if(randxs12 <= team3){xx=1;}else{xx=2;}
-				}
-				else{}
-			}
-			if(xx == 1){
-				buton11();
-					}
-				else if(xx == 2){
-					buton22();}
-					else{document.getElementById("h11").innerHTML = "RANDOM BUTTON ERROR <br>";}
-		   */
-			});
-		// buton random is done
+		
 		
 				var x1 = 0;
 				var a1 = 0;
 				for(var i = 0; i < 127;i++){
+						var str = i.toString();
 						imgteams[i] = 0;
-						img[i] = document.getElementById("img"+i);
+						img[i] = document.getElementById("img".concat(str));
+						point0[i] = 30;
+						point1[i] = 0;
+						point2[i] = 0;
+						point3[i] = 0;
+						point4[i] = 0;
 					}
 
  
@@ -504,6 +430,22 @@ var mainState = {
 						imgteams[14] = 1;
 						imgteams[15] = 1;
 						
+						point1[1] = 30;
+						point1[2] = 30;
+						point1[3] = 30;
+						point1[4] = 30;
+						point1[5] = 30;
+						point1[6] = 30;
+						point1[7] = 30;
+						point1[8] = 30;
+						point1[9] = 30;
+						point1[10] = 30;
+						point1[11] = 30;
+						point1[12] = 30;
+						point1[13] = 30;
+						point1[14] = 30;
+						point1[15] = 30;
+						
 						imgteams[119] = 2;
 						imgteams[120] = 2;
 						imgteams[121] = 2;
@@ -519,6 +461,22 @@ var mainState = {
 						imgteams[125] = 2;
 						imgteams[126] = 2;
 						imgteams[116] = 2;
+						
+						point2[119] = 30;
+						point2[120] = 30;
+						point2[121] = 30;
+						point2[75] = 30;
+						point2[76] = 30;
+						point2[77] = 30;
+						point2[73] = 30;
+						point2[79] = 30;
+						point2[74] = 30;
+						point2[122] = 30;
+						point2[123] = 30;
+						point2[124] = 30;
+						point2[125] = 30;
+						point2[126] = 30;
+						point2[116] = 30;
 						
 						imgteams[38] = 3;
 						imgteams[39] = 3;
@@ -536,6 +494,22 @@ var mainState = {
 						imgteams[62] = 3;
 						imgteams[63] = 3;
 						
+						point3[38] = 30;
+						point3[39] = 30;
+						point3[40] = 30;
+						point3[41] = 30;
+						point3[42] = 30;
+						point3[43] = 30;
+						point3[44] = 30;
+						point3[45] = 30;
+						point3[46] = 30;
+						point3[47] = 30;
+						point3[48] = 30;
+						point3[49] = 30;
+						point3[50] = 30;
+						point3[62] = 30;
+						point3[63] = 30;
+						
 						imgteams[99] = 4;
 						imgteams[100] = 4;
 						imgteams[101] = 4;
@@ -552,12 +526,41 @@ var mainState = {
 						imgteams[109] = 4;
 						imgteams[110] = 4;
 						
+						point4[99] = 30;
+						point4[100] = 30;
+						point4[101] = 30;
+						point4[102] = 30;
+						point4[103] = 30;
+						point4[104] = 30;
+						point4[98] = 30;
+						point4[97] = 30;
+						point4[96] = 30;
+						point4[105] = 30;
+						point4[106] = 30;
+						point4[107] = 30;
+						point4[108] = 30;
+						point4[109] = 30;
+						point4[110] = 30;
+						
 						calculateteam();
 						printcounter();
 						
 		
 		
-				
+		
+		
+		document.getElementById("galatainven").addEventListener('click', function() {
+					towerchoosen = true;
+					});
+		document.getElementById("galatainven").addEventListener('mouseover', function() {
+					
+				});
+		document.getElementById("galatainven").addEventListener('mouseout', function() {
+				});
+		
+		
+		var imgtt  = document.getElementById("galata");
+
 		for(var i = 1;i < 127;i++){
 				(function () {
 					var str5 = i.toString();
@@ -567,34 +570,226 @@ var mainState = {
 						imgX(int1,0);
 					} else {}
 					});
+					
+					var rect1 = document.getElementById("img".concat(str5)).getBoundingClientRect();
+
+		
+					var iDiv = document.createElement('div');
+					iDiv.style.position = "absolute";
+					iDiv.style.border  = "1px solid black";
+					iDiv.style.zIndex = 190;
+					iDiv.style.opacity = "0.9";
+					iDiv.style.visibility = "hidden";
+					iDiv.style.width = "60px";
+					iDiv.style.height = "5px";
+					iDiv.style.left = rect1.left+5+"px";
+					iDiv.style.top = rect1.top-5+"px";
+					iDiv.style.backgroundColor = "white";
+					document.body.appendChild(iDiv);
+					iDiv.id = "pointbar"+i;
+					
+					var iDivred = document.createElement('div');
+					iDivred.style.position = "absolute";
+					iDivred.style.opacity = "0.9";
+					iDivred.style.width = "0px";
+					iDivred.style.height = "5px";
+					iDivred.style.backgroundColor = "red";
+					iDiv.appendChild(iDivred);
+					iDivred.id = "redbar"+i;
+					
+					var iDivblue = document.createElement('div');
+					iDivblue.style.position = "absolute";
+					iDivblue.style.opacity = "0.9";
+					iDivblue.style.width = "0px";
+					iDivblue.style.height = "5px";
+					iDivblue.style.backgroundColor = "blue";
+					iDiv.appendChild(iDivblue);
+					iDivblue.id = "bluebar"+i;
+					
+					var iDivgreen = document.createElement('div');
+					iDivgreen.style.position = "absolute";
+					iDivgreen.style.opacity = "0.9";
+					iDivgreen.style.width = "0px";
+					iDivgreen.style.height = "5px";
+					iDivgreen.style.backgroundColor = "green";
+					iDiv.appendChild(iDivgreen);
+					iDivgreen.id = "greenbar"+i;
+					
+					var iDivyellow = document.createElement('div');
+					iDivyellow.style.position = "absolute";
+					iDivyellow.style.opacity = "0.9";
+					iDivyellow.style.width = "0px";
+					iDivyellow.style.height = "5px";
+					iDivyellow.style.backgroundColor = "yellow";
+					iDiv.appendChild(iDivyellow);
+					iDivyellow.id = "yellowbar"+i;
+					
+					
+					
+					
+					
+				
 				}());
 			}
+		//document.getElementById("galatainven").className = "disabled1".toString();
 		
 		
-		
-		//-------------
-		check1 = document.getElementById('che');
-		check1.addEventListener('click',function(){
-				document.getElementById('che2').checked = false;
-				playeroneortwo = 1;
-				counter1=0;
-				counter2=0;
-				counter3=0;
-				counter4=0;
-				document.getElementById("h11").innerHTML = "Player 1 is playing...<br>";
 				
-		});
-		check2 = document.getElementById('che2');
-		check2.addEventListener('click',function(){
-				document.getElementById('che').checked = false;
-				playeroneortwo = 2;
-				counter1=0;
-				counter2=0;
-				counter3=0;
-				counter4=0;
-				document.getElementById("h11").innerHTML = "Player 2 is playing...<br>";
-				
-		});
+		//------------
+		setInterval(function() {
+			var rect2,rect3;var ctx;
+			for (var i = 1; i < 127; i++) {
+
+				if (hastower[i] == 1) {
+
+					for (var i2 = 0; i2 < eval("border".concat(i)).length; i2++) {
+						//if(imgteams[ eval( "border".concat(i) )[i2] ] == 0){
+
+						if (point1[eval("border".concat(i))[i2]] > 0 && imgteams[i] != 1 && eval("border".concat(i))[i2] != i) {
+							point1[eval("border".concat(i))[i2]] --;
+							if (imgteams[eval("border".concat(i))[i2]] != imgteams[i]) {
+								
+								//eval("point".concat(i))[eval("border".concat(i))[i2]]++;
+								document.getElementById("pointbar".concat(eval("border".concat(i))[i2].toString())).style.visibility = "visible";
+								rect2 = document.getElementById("img"+i).getBoundingClientRect();	
+								rect3 = document.getElementById("img".concat(eval("border".concat(i))[i2].toString())).getBoundingClientRect();								
+								ctx = canvas.getContext("2d");
+									ctx.lineWidth = 2;
+									ctx.strokeStyle = "red";
+									ctx.beginPath();
+									ctx.moveTo(rect2.left+rect2.width/2,rect2.top+rect2.height/2);
+									ctx.lineTo(rect3.left+rect3.width/2,rect3.top+rect3.height/2);
+									ctx.stroke();
+							}
+							
+						} else if (point2[eval("border".concat(i))[i2]] > 0 && imgteams[i] != 2 && eval("border".concat(i))[i2] != i) {
+							point2[eval("border".concat(i))[i2]] --;if (imgteams[eval("border".concat(i))[i2]] != imgteams[i]) {
+								
+								//eval("point".concat(i))[eval("border".concat(i))[i2]]++;
+								document.getElementById("pointbar".concat(eval("border".concat(i))[i2].toString())).style.visibility = "visible";
+								rect2 = document.getElementById("img"+i).getBoundingClientRect();	
+								rect3 = document.getElementById("img".concat(eval("border".concat(i))[i2].toString())).getBoundingClientRect();								
+								ctx = canvas.getContext("2d");
+									ctx.lineWidth = 2;
+									ctx.strokeStyle = "red";
+									ctx.beginPath();
+									ctx.moveTo(rect2.left+rect2.width/2,rect2.top+rect2.height/2);
+									ctx.lineTo(rect3.left+rect3.width/2,rect3.top+rect3.height/2);
+									ctx.stroke();
+							}
+						} else if (point3[eval("border".concat(i))[i2]] > 0 && imgteams[i] != 3 && eval("border".concat(i))[i2] != i) {
+							point3[eval("border".concat(i))[i2]] --;if (imgteams[eval("border".concat(i))[i2]] != imgteams[i]) {
+								
+								//eval("point".concat(i))[eval("border".concat(i))[i2]]++;
+								document.getElementById("pointbar".concat(eval("border".concat(i))[i2].toString())).style.visibility = "visible";
+								rect2 = document.getElementById("img"+i).getBoundingClientRect();	
+								rect3 = document.getElementById("img".concat(eval("border".concat(i))[i2].toString())).getBoundingClientRect();								
+								ctx = canvas.getContext("2d");
+									ctx.lineWidth = 2;
+									ctx.strokeStyle = "red";
+									ctx.beginPath();
+									ctx.moveTo(rect2.left+rect2.width/2,rect2.top+rect2.height/2);
+									ctx.lineTo(rect3.left+rect3.width/2,rect3.top+rect3.height/2);
+									ctx.stroke();
+							}
+						} else if (point4[eval("border".concat(i))[i2]] > 0 && imgteams[i] != 4 && eval("border".concat(i))[i2] != i) {
+							point4[eval("border".concat(i))[i2]] --;if (imgteams[eval("border".concat(i))[i2]] != imgteams[i]) {
+								
+								//eval("point".concat(i))[eval("border".concat(i))[i2]]++;
+								document.getElementById("pointbar".concat(eval("border".concat(i))[i2].toString())).style.visibility = "visible";
+								rect2 = document.getElementById("img"+i).getBoundingClientRect();	
+								rect3 = document.getElementById("img".concat(eval("border".concat(i))[i2].toString())).getBoundingClientRect();								
+								ctx = canvas.getContext("2d");
+									ctx.lineWidth = 2;
+									ctx.strokeStyle = "red";
+									ctx.beginPath();
+									ctx.moveTo(rect2.left+rect2.width/2,rect2.top+rect2.height/2);
+									ctx.lineTo(rect3.left+rect3.width/2,rect3.top+rect3.height/2);
+									ctx.stroke();
+							}
+						} else if (point0[eval("border".concat(i))[i2]] > 0 & imgteams[i] != 0 & eval("border".concat(i))[i2] != i) {
+							point0[eval("border".concat(i))[i2]] --;if (imgteams[eval("border".concat(i))[i2]] != imgteams[i]) {
+								
+								//eval("point".concat(i))[eval("border".concat(i))[i2]]++;
+								rect2 = document.getElementById("img"+i).getBoundingClientRect();	
+								rect3 = document.getElementById("img".concat(eval("border".concat(i))[i2].toString())).getBoundingClientRect();								
+								ctx = canvas.getContext("2d");
+									ctx.lineWidth = 2;
+									ctx.strokeStyle = "red";
+									ctx.beginPath();
+									ctx.moveTo(rect2.left+rect2.width/2,rect2.top+rect2.height/2);
+									ctx.lineTo(rect3.left+rect3.width/2,rect3.top+rect3.height/2);
+									ctx.stroke();
+							}
+						} else {
+							
+							document.getElementById("pointbar".concat(eval("border".concat(i))[i2].toString())).style.visibility = "hidden";
+						}
+
+						if (imgteams[i] == 1 & eval("border".concat(i))[i2] != i) {
+							if (point1[eval("border".concat(i))[i2]] < 30) {
+								point1[eval("border".concat(i))[i2]]++;
+								document.getElementById("pointbar".concat(eval("border".concat(i))[i2].toString())).style.visibility = "visible";
+							}
+						} else if (imgteams[i] == 2 & eval("border".concat(i))[i2] != i) {
+							if (point2[eval("border".concat(i))[i2]] < 30) {
+								point2[eval("border".concat(i))[i2]]++;
+								document.getElementById("pointbar".concat(eval("border".concat(i))[i2].toString())).style.visibility = "visible";
+							}
+						} else if (imgteams[i] == 3 & eval("border".concat(i))[i2] != i) {
+							if (point3[eval("border".concat(i))[i2]] < 30) {
+								point3[eval("border".concat(i))[i2]]++;
+								document.getElementById("pointbar".concat(eval("border".concat(i))[i2].toString())).style.visibility = "visible";
+							}
+						} else if (imgteams[i] == 4 & eval("border".concat(i))[i2] != i) {
+							if (point4[eval("border".concat(i))[i2]] < 30) {
+								point4[eval("border".concat(i))[i2]]++;
+								document.getElementById("pointbar".concat(eval("border".concat(i))[i2].toString())).style.visibility = "visible";
+							}
+						} else {
+							document.getElementById("pointbar".concat(eval("border".concat(i))[i2].toString())).style.visibility = "hidden";
+						}
+
+						if (point1[eval("border".concat(i))[i2]] == 30 || point2[eval("border".concat(i))[i2]] == 30 || point3[eval("border".concat(i))[i2]] == 30 || point4[eval("border".concat(i))[i2]] == 30) {
+							imgteams[eval("border".concat(i))[i2]] = imgteams[i];
+							if (imgteams[i] == 1) {
+								document.getElementById("img".concat(eval("border".concat(i))[i2])).src = "countries/img" + eval("border".concat(i))[i2] + "red.png";
+								document.getElementById("pointbar".concat(eval("border".concat(i))[i2].toString())).style.visibility = "hidden";
+								
+							} else if (imgteams[i] == 2) {
+								document.getElementById("img".concat(eval("border".concat(i))[i2])).src = "countries/img" + eval("border".concat(i))[i2] + "blue.png";
+								document.getElementById("pointbar".concat(eval("border".concat(i))[i2].toString())).style.visibility = "hidden";
+							} else if (imgteams[i] == 3) {
+								document.getElementById("img".concat(eval("border".concat(i))[i2])).src = "countries/img" + eval("border".concat(i))[i2] + "green.png";
+								document.getElementById("pointbar".concat(eval("border".concat(i))[i2].toString())).style.visibility = "hidden";
+							} else if (imgteams[i] == 4) {
+								document.getElementById("img".concat(eval("border".concat(i))[i2])).src = "countries/img" + eval("border".concat(i))[i2] + "yellow.png";
+								document.getElementById("pointbar".concat(eval("border".concat(i))[i2].toString())).style.visibility = "hidden";
+							} else {}
+
+						}
+						//}
+						
+					}
+					//ctx.clearRect(0, 0,1300, 700);
+				}
+				var stra = i.toString();
+				document.getElementById("redbar".concat(i)).style.width = point1[i] * 2 + "px";
+				document.getElementById("bluebar".concat(i)).style.width = point2[i] * 2 + "px";
+				document.getElementById("bluebar".concat(i)).style.left = point1[i] * 2 + "px";
+				document.getElementById("greenbar".concat(i)).style.width = point3[i] * 2 + "px";
+				document.getElementById("greenbar".concat(i)).style.left = point1[i] * 2 + point2[i] * 2 + "px";
+				document.getElementById("yellowbar".concat(i)).style.width = point4[i] * 2 + "px";
+				document.getElementById("yellowbar".concat(i)).style.left = point1[i]*2 + point2[i]*2 + point3[i]*2 + "px";
+			}
+
+			calculateteam();
+			printcounter();
+			
+			setTimeout(function() {
+			canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+			}, 990);
+		}, 1000);
 		
 		
 			
@@ -715,7 +910,7 @@ var mainState = {
 		
 				document.getElementById('h6').innerHTML = "";
 				if(underattack == 0){
-					document.getElementById('h6').innerHTML = document.getElementById('h6').innerHTML + "<br>You may attack only one empty country at once<br>You may attack only one opponent in the same time."
+					document.getElementById('h6').innerHTML = document.getElementById('h6').innerHTML + "<br>Place your inferno tower into your countries to start war."
 				}
 				else if(underattack == 2){document.getElementById('h6').innerHTML = document.getElementById('h6').innerHTML + "<br>You are attacking blue you have choosen "+counter2+" blue countries<br>To be able to attack, You should choose "+(counter2-counter1-counter3-counter4)+" more of your countries.";}
 				else if(underattack == 3){document.getElementById('h6').innerHTML = document.getElementById('h6').innerHTML + "<br>You are attacking green you have choosen "+counter3+" green countries<br>To be able to attack, You should choose "+(counter3-counter1-counter2-counter4)+" more of your countries.";}
@@ -764,1533 +959,57 @@ var mainState = {
 		}
 		
 	function buton22(){
-		//-- if baslar
-				var compare1=99;var compare2=91;
-				
-				if(underattack == 1){compare1 = counter1;}
-				else if(underattack == 2){compare1 = counter2;} 
-				else if(underattack == 3){compare1 = counter3;}
-				else if(underattack == 4){compare1 = counter4;}else{}
-				
-				if(document.getElementById('che').checked == true){compare2 = counter1;}
-				else if(document.getElementById('che2').checked == true){compare2 = counter2;}
-				else if(document.getElementById('che3').checked == true){compare2 = counter3;}
-				else if(document.getElementById('che4').checked == true){compare2 = counter4;}
-				else{document.getElementById("errortext").innerHTML = "che sorunu 667";}
-				
-				if(underattack == 0){compare1 = 0; compare2 = 0;}
-				
-				if(compare1 == compare2){
-				clicked = false;
-				clicked1 = false;
-				counter1 = 0;
-				counter2 = 0;
-				counter3 = 0;
-				counter4 = 0;printcounter();
-				var x = 0;
-				var a = 0;
-				while( x != 127){
-					x++;a++;
-					
-					if (choosentogive[x] == 1){
-						choosentogive[x] = 0;
-						
-						if(underattack==1){
-								if(imgteams[x] == 1 || imgteams[x] == 2 || imgteams[x] == 3 || imgteams[x] == 4){
-									var stra = x.toString();
-									document.getElementById("img".concat(stra)).src = "countries/img".concat(stra).concat("red.png");
-									imgteams[x] = 1;}else{
-									var stra = x.toString();
-									document.getElementById("img".concat(stra)).src = "countries/img".concat(stra).concat(".png");
-								}
-								
-								
-							}
-						else if(underattack==2){
-								if(imgteams[x] == 1 || imgteams[x] == 2 || imgteams[x] == 3 || imgteams[x] == 4){
-									var stra = x.toString();
-									document.getElementById("img".concat(stra)).src = "countries/img".concat(stra).concat("blue.png");
-									imgteams[x] = 2;}else{
-									var stra = x.toString();
-									document.getElementById("img".concat(stra)).src = "countries/img".concat(stra).concat(".png");
-								}
-								}
-						else if(underattack==3){
-							if(imgteams[x] == 1 || imgteams[x] == 2 || imgteams[x] == 3 || imgteams[x] == 4){
-									var stra = x.toString();
-									document.getElementById("img".concat(stra)).src =  "countries/img".concat(stra).concat("green.png");
-									imgteams[x] = 3;}else{
-									var stra = x.toString();
-									document.getElementById("img".concat(stra)).src = "countries/img".concat(stra).concat(".png");
-								}
-						}
-						else{
-								
-								if(imgteams[x] == 1 || imgteams[x] == 2 || imgteams[x] == 3 || imgteams[x] == 4){
-									var stra = x.toString();
-									document.getElementById("img".concat(stra)).src =  "countries/img".concat(stra).concat("yellow.png");
-									imgteams[x] = 4;}else{
-									var stra = x.toString();
-									document.getElementById("img".concat(stra)).src = "countries/img".concat(stra).concat(".png");
-								}
-								}
-						}
-						//-----------
-						if (choosentogive1[x] == 1){
-						choosentogive1[x] = 0;
-						if(underattack == 1){
-								var stra = x.toString();
-								document.getElementById("img".concat(stra)).src = "countries/img".concat(stra).concat("red.png");
-								imgteams[x] = 1;
-								
-						}else if(underattack == 2){
-								var stra = x.toString();
-								document.getElementById("img".concat(stra)).src = "countries/img".concat(stra).concat("blue.png");
-								imgteams[x] = 2;
-								}
-						else if(underattack == 3){
-								var stra = x.toString();
-								document.getElementById("img".concat(stra)).src = "countries/img".concat(stra).concat("green.png");
-								imgteams[x] = 3;
-								}
-						else{
-							var stra = x.toString();
-								document.getElementById("img".concat(stra)).src = "countries/img".concat(stra).concat("yellow.png");
-								imgteams[x] = 4;
-						}
-						}
-						//-----------
-
-					}
-					
-					//Functions above act as a "Player switcher" and as aBOT
-					if(document.getElementById('che').checked == true){
-					document.getElementById("h15").innerHTML = document.getElementById("h15").innerHTML + "&#13;&#10;Waiting for Bot2's move";
-					setTimeout(function() {
-                            document.getElementById("h15").scrollTop = document.getElementById("h15").scrollHeight;
-                    }, 10);
-					document.getElementById("arrow2").style.visibility = 'visible';
-                    document.getElementById("arrow1").style.visibility = 'hidden';
-                    document.getElementById("arrow3").style.visibility = 'hidden';
-                    document.getElementById("arrow4").style.visibility = 'hidden';
-					
-					document.getElementById("attackbutton").style.visibility = 'hidden';
-					document.getElementById("chooserandomly").style.visibility = 'hidden';
-					
-					setTimeout(function() {
-					document.getElementById('che2').checked = true;
-					document.getElementById('che').checked = false;
-					document.getElementById('che3').checked = false;
-					document.getElementById('che4').checked = false;
-					
-						for(var i3 = 0;i3<127;i3++){
 		
-								if(haspureborder(i3) == true && imgteams[i3] != 2){
-								imgX(i3);i3 =128;
-							}
-						}
-					 
-						
-						if(underattack == 0){
-							
-                            setTimeout(function() {	
-                            document.getElementById('attackbutton').click();
-							}, 1000);
-								
-								
-						}
-						else if(underattack == 1){
-							randbot1 = Math.floor((Math.random() * Math.min(team2,team1)) + 1);
-							raho = randbot1;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 1 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){imgX(i3);raho--;}
-									}
-								}
-							
-							raho = randbot1;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 2 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){imgX(i3);raho--;}
-									}
-									
-								}
-								
-							
-                            setTimeout(function() {	
-                            document.getElementById('attackbutton').click();
-							}, 1000);
-								
-						}
-						else if(underattack == 3){
-							randbot3 = Math.floor((Math.random() * Math.min(team2,team3)) + 1);
-							raho = randbot3;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 3 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){imgX(i3);raho--;}
-									}
-								}
-							raho = randbot3;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 2 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){imgX(i3);raho--;}
-									}
-									
-									}
-								
-							
-							
-                            setTimeout(function() {	
-                            document.getElementById('attackbutton').click();
-							}, 1000);
-								
-						}
-						else if(underattack == 4){
-							randbot4 = Math.floor((Math.random() * Math.min(team2,team4)) + 1);
-							 raho = randbot4;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 4 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){imgX(i3);raho--;}
-									}
-								}
-							
-							raho = randbot4;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 2 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){imgX(i3);raho--;}
-									}
-									
-								}
-							
-								
-							
-							
-                            setTimeout(function() {	
-                            document.getElementById('attackbutton').click();
-							}, 1000);
-								
-						}
-						}, 1000);
-						
-					}
-					else if(document.getElementById('che2').checked == true){
-					document.getElementById("h15").innerHTML = document.getElementById("h15").innerHTML + "&#13;&#10;Waiting for Bot3's move";
-					setTimeout(function() {
-                            document.getElementById("h15").scrollTop = document.getElementById("h15").scrollHeight;
-                    }, 10);
-					document.getElementById("arrow2").style.visibility = 'hidden';
-                    document.getElementById("arrow1").style.visibility = 'hidden';
-                    document.getElementById("arrow3").style.visibility = 'visible';
-                    document.getElementById("arrow4").style.visibility = 'hidden';
-					
-					setTimeout(function() {	
-					document.getElementById('che3').checked = true;
-					document.getElementById('che2').checked = false;
-					document.getElementById('che').checked = false;
-					document.getElementById('che4').checked = false;
-					
-						for(var i3 = 0;i3<127;i3++){
-			
-									if(haspureborder(i3) == true && imgteams[i3] != 3){
-									imgX(i3);
-									i3 =128;
-								}
-							}
-					
-					
-						if(underattack == 0){
-							
-                            setTimeout(function() {	
-                            document.getElementById('attackbutton').click();
-							}, 1000);
-								
-						}
-						else if(underattack == 1){
-							randbot1 = Math.floor((Math.random() * Math.min(team3,team1)) + 1);
-							 raho = randbot1;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 1 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){imgX(i3);raho--;}
-									}
-								}
-							
-							raho = randbot1;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 3 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){imgX(i3);raho--;}
-									}
-									
-								}
-							
-								
-							
-							
-                           setTimeout(function() {	
-                            document.getElementById('attackbutton').click();
-							}, 1000);
-								
-						}
-						else if(underattack == 2){
-							randbot2 = Math.floor((Math.random() * Math.min(team3,team2)) + 1);
-							 raho = randbot2;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 2 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){imgX(i3);raho--;}
-									}
-								}
-							
-							raho = randbot2;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 3 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){imgX(i3);raho--;}
-									}
-									
-								}
-							
-								
-							
-							
-                            setTimeout(function() {	
-                            document.getElementById('attackbutton').click();
-							}, 1000);
-								
-						}
-						else if(underattack == 4){
-							randbot4 = Math.floor((Math.random() * Math.min(team3,team4)) + 1);
-							 raho = randbot4;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 4 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){imgX(i3);raho--;}
-									}
-								}
-								
-							raho = randbot4;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 3 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){imgX(i3);raho--;}
-									}
-									
-								}
-								
-								
-							
-							
-                            setTimeout(function() {	
-                            document.getElementById('attackbutton').click();
-							}, 1000);
-							
-						}
-						}, 1000);
-					}
-					else if(document.getElementById('che3').checked == true){
-					
-                    document.getElementById("h15").innerHTML = document.getElementById("h15").innerHTML + "&#13;&#10;Waiting for Bot4's move";
-					setTimeout(function() {
-                            document.getElementById("h15").scrollTop = document.getElementById("h15").scrollHeight;
-                    }, 10);
-                    document.getElementById("arrow4").style.visibility = 'visible';
-                    document.getElementById("arrow2").style.visibility = 'hidden';
-                    document.getElementById("arrow1").style.visibility = 'hidden';
-                    document.getElementById("arrow3").style.visibility = 'hidden';
-						
-					setTimeout(function() {
-					document.getElementById('che').checked = false;
-					document.getElementById('che2').checked = false;
-					document.getElementById('che3').checked = false;
-					document.getElementById('che4').checked = true;
-					
-						for(var i3 = 0;i3<127;i3++){
-			
-									if(haspureborder(i3) == true && imgteams[i3] != 4){
-									imgX(i3); i3 =128;
-								}
-							}
-					
-					
-						if(underattack == 0){
-							
-                            setTimeout(function() {	
-                            document.getElementById('attackbutton').click();
-							}, 1000);
-								
-						}
-						else if(underattack == 1){
-							randbot1 = Math.floor((Math.random() * Math.min(team4,team1)) + 1);
-							 raho = randbot1;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 1 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){imgX(i3);raho--;}
-									}
-								}
-							
-							raho = randbot1;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 4 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){imgX(i3);raho--;}
-									}
-									
-								}
-							
-								
-							
-							
-                            setTimeout(function() {	
-                            document.getElementById('attackbutton').click();
-							}, 1000);
-							
-						}
-						else if(underattack == 2){
-							randbot2 = Math.floor((Math.random() * Math.min(team4,team2)) + 1);
-							 raho = randbot2;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 2 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){imgX(i3);raho--;}
-									}
-								}
-							
-							raho = randbot2;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 4 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){imgX(i3);raho--;}
-									}
-									
-								}
-							
-								
-							
-							
-                            setTimeout(function() {	
-                            document.getElementById('attackbutton').click();
-							}, 1000);
-							
-						}
-						else if(underattack == 3){
-							randbot4 = Math.floor((Math.random() * Math.min(team3,team4) ) + 1);
-							 raho = randbot4;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 3 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){imgX(i3);raho--;}
-									}
-									
-								}
-							
-							raho = randbot4;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 4 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){imgX(i3);raho--;}
-									}
-									
-								}
-							
-								
-								
-							
-							
-                            setTimeout(function() {	
-                            document.getElementById('attackbutton').click();
-							}, 1000);
-							
-						}
-						}, 1000);
-					}
-					else if(document.getElementById('che4').checked == true){
-						
-					document.getElementById("h15").innerHTML = document.getElementById("h15").innerHTML + "&#13;&#10;Waiting for Bot1's move";
-					setTimeout(function() {
-                            document.getElementById("h15").scrollTop = document.getElementById("h15").scrollHeight;
-                    }, 10);
-					document.getElementById("arrow1").style.visibility = 'visible';
-                    document.getElementById("arrow2").style.visibility = 'hidden';
-                    document.getElementById("arrow3").style.visibility = 'hidden';
-                    document.getElementById("arrow4").style.visibility = 'hidden';
-						
-					if(p1lost == true){
-						setTimeout(function() {	
-                            document.getElementById('attackbutton').click();
-							}, 1000);
-					}	else{
-						document.getElementById("attackbutton").style.visibility = 'visible';
-						document.getElementById("chooserandomly").style.visibility = 'visible';
-					}
-					
-					document.getElementById('che3').checked = false;
-					document.getElementById('che2').checked = false;
-					document.getElementById('che').checked = true;
-					document.getElementById('che4').checked = false;
-					
-					
-					}
-					else{}
-					
-					team1 = 0; team2 = 0; team3 = 0; team4 = 0;
-					//calculateteam();
-					
-					for(var i = 1;i<127;i++){
-					if(imgteams[i] == 1){team1++;}
-					else if(imgteams[i] == 2){team2++;}
-					else if(imgteams[i] == 3){team3++;}
-					else if(imgteams[i] == 4){team4++;}
-					else{}
-					}
-				if (team1 == 0 && team2 == 0 && team3 == 0){document.getElementById('attackbutton').disabled = "disabled";errortext.className = "errortext";document.getElementById("errortext").innerHTML = "Player 4 won ! <br>";}
-				else if(team2 == 0 && team3 == 0 && team4 == 0){document.getElementById('attackbutton').disabled = "disabled";errortext.className = "errortext";document.getElementById("errortext").innerHTML = "Player 1 won ! <br>";}
-				else if(team1 == 0 && team3 == 0 && team4 == 0){document.getElementById('attackbutton').disabled = "disabled";errortext.className = "errortext";document.getElementById("errortext").innerHTML = "Player 2 won ! <br>";}
-				else if(team1 == 0 && team2 == 0 && team4 == 0){document.getElementById('attackbutton').disabled = "disabled";errortext.className = "errortext";document.getElementById("errortext").innerHTML = "Player 3 won ! <br>";}
-				else{}
-					
-					underattack = 0;
-					calculateteam();					
-					printcounter();
-				//--- if biter
-				}else{errortext.className = "errortext";document.getElementById("errortext").innerHTML = "Number of choosen target countries and your countries are not equal !";
-				errortext.className = "errortextop"; }
-				
-					
 					
 	}
 	
 	function buton11(){
 		
-				var compare11=1;var compare22=2;
-				
-				if(underattack == 1){compare11 = counter1;}
-				else if(underattack == 2){compare11 = counter2;} 
-				else if(underattack == 3){compare11 = counter3;}
-				else if(underattack == 4){compare11 = counter4;}else{}
-				
-				if(document.getElementById('che').checked == true){compare22 = counter1;}
-				else if(document.getElementById('che2').checked == true){compare22 = counter2;}
-				else if(document.getElementById('che3').checked == true){compare22 = counter3;}
-				else if(document.getElementById('che4').checked == true){compare22 = counter4;}
-				else{document.getElementById("errortext").innerHTML = "che sorunu 666";}
-				
-				if(underattack == 0){compare11 = 0; compare22 = 0;}
-				
-			if(compare11 == compare22){
-				clicked = false;
-				clicked1 = false;
-				counter1 = 0;
-				counter2 = 0;
-				counter3 = 0;
-				counter4 = 0;
-				printcounter();
-				var x = 0;
-				var a = 0;
-				while( x != 127){
-					x++;a++;
-					
-					if (choosentogive[x] == 1){
-						choosentogive[x] = 0;
-							if(document.getElementById('che2').checked == true){
-								var stra = x.toString();
-								//img[x].src = "countries/img".concat(stra).concat("blue.png");
-								document.getElementById("img".concat(stra)).src = "countries/img".concat(stra).concat("blue.png");
-								imgteams[x] = 2;
-								
-							}
-							else if(document.getElementById('che3').checked == true){
-								var stra = x.toString();
-								//img[x].src = "countries/img".concat(stra).concat("green.png");
-								document.getElementById("img".concat(stra)).src = "countries/img".concat(stra).concat("green.png");
-								imgteams[x] = 3;
-								
-							}else if(document.getElementById('che').checked == true){
-								var stra = x.toString();
-								document.getElementById("img".concat(stra)).src = "countries/img".concat(stra).concat("red.png");
-								//img[x].src =  "countries/img".concat(stra).concat("red.png");
-								imgteams[x] = 1;
-								}
-							else if(document.getElementById('che4').checked == true){
-								var stra = x.toString();
-								document.getElementById("img".concat(stra)).src = "countries/img".concat(stra).concat("yellow.png");
-								//img[x].src =  "countries/img".concat(stra).concat("red.png");
-								imgteams[x] = 4;
-								}
-						}
-					else{}
-						//-----------
-					
-					if (choosentogive1[x] == 1){	
-						choosentogive1[x] = 0;
-						if(document.getElementById('che2').checked == true){
-								var stra = x.toString();
-								//img[x].src = "countries/img".concat(stra).concat("blue.png");
-								document.getElementById("img".concat(stra)).src = "countries/img".concat(stra).concat("blue.png");
-								imgteams[x] = 2;
-								
-							}
-							else if(document.getElementById('che3').checked == true){
-								var stra = x.toString();
-								//img[x].src = "countries/img".concat(stra).concat("green.png");
-								document.getElementById("img".concat(stra)).src = "countries/img".concat(stra).concat("green.png");
-								imgteams[x] = 3;
-								
-							}else if(document.getElementById('che').checked == true){
-								var stra = x.toString();
-								//img[x].src = "countries/img".concat(stra).concat("red.png");
-								document.getElementById("img".concat(stra)).src = "countries/img".concat(stra).concat("red.png");
-								imgteams[x] = 1;
-								}
-							else if(document.getElementById('che4').checked == true){
-								var stra = x.toString();
-								//img[x].src = "countries/img".concat(stra).concat("yellow.png");
-								document.getElementById("img".concat(stra)).src = "countries/img".concat(stra).concat("yellow.png");
-								imgteams[x] = 4;
-								}
-						}else{}
-						//-----------
-
-					}
-					//Functions above act as a "Player switcher" and as aBOT
-					if(document.getElementById('che').checked == true){
-					document.getElementById("h15").innerHTML = document.getElementById("h15").innerHTML + "&#13;&#10;Waiting for Bot2's move";
-					setTimeout(function() {
-                            document.getElementById("h15").scrollTop = document.getElementById("h15").scrollHeight;
-                    }, 10);
-					document.getElementById("arrow2").style.visibility = 'visible';
-                    document.getElementById("arrow1").style.visibility = 'hidden';
-                    document.getElementById("arrow3").style.visibility = 'hidden';
-                    document.getElementById("arrow4").style.visibility = 'hidden';
-					
-					document.getElementById("attackbutton").style.visibility = 'hidden';
-					document.getElementById("chooserandomly").style.visibility = 'hidden';
-					
-					setTimeout(function() {
-					document.getElementById('che2').checked = true;
-					document.getElementById('che').checked = false;
-					document.getElementById('che3').checked = false;
-					document.getElementById('che4').checked = false;
-					
-						for(var i3 = 0;i3<127;i3++){
+							
 		
-								if(haspureborder(i3) == true && imgteams[i3] != 2){
-								imgX(i3);i3 =128;
-							}
-						}
-					 
-						
-						if(underattack == 0){
-							
-                            setTimeout(function() {	
-                            document.getElementById('attackbutton').click();
-							}, 1000);
-								
-								
-						}
-						else if(underattack == 1){
-							randbot1 = Math.floor((Math.random() * Math.min(team2,team1)) + 1);
-							raho = randbot1;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 1 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){imgX(i3);raho--;}
-									}
-								}
-							
-							raho = randbot1;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 2 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){imgX(i3);raho--;}
-									}
-									
-								}
-								
-							
-                            setTimeout(function() {	
-                            document.getElementById('attackbutton').click();
-							}, 1000);
-								
-						}
-						else if(underattack == 3){
-							randbot3 = Math.floor((Math.random() * Math.min(team2,team3)) + 1);
-							raho = randbot3;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 3 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){imgX(i3);raho--;}
-									}
-								}
-							raho = randbot3;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 2 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){imgX(i3);raho--;}
-									}
-									
-									}
-								
-							
-							
-                            setTimeout(function() {	
-                            document.getElementById('attackbutton').click();
-							}, 1000);
-								
-						}
-						else if(underattack == 4){
-							randbot4 = Math.floor((Math.random() * Math.min(team2,team4)) + 1);
-							 raho = randbot4;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 4 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){imgX(i3);raho--;}
-									}
-								}
-							
-							raho = randbot4;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 2 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){imgX(i3);raho--;}
-									}
-									
-								}
-							
-								
-							
-							
-                            setTimeout(function() {	
-                            document.getElementById('attackbutton').click();
-							}, 1000);
-								
-						}
-						}, 1000);
-						
-					}
-					else if(document.getElementById('che2').checked == true){
-					document.getElementById("h15").innerHTML = document.getElementById("h15").innerHTML + "&#13;&#10;Waiting for Bot3's move";
-					setTimeout(function() {
-                            document.getElementById("h15").scrollTop = document.getElementById("h15").scrollHeight;
-                    }, 10);
-					document.getElementById("arrow2").style.visibility = 'hidden';
-                    document.getElementById("arrow1").style.visibility = 'hidden';
-                    document.getElementById("arrow3").style.visibility = 'visible';
-                    document.getElementById("arrow4").style.visibility = 'hidden';
-					
-					setTimeout(function() {	
-					document.getElementById('che3').checked = true;
-					document.getElementById('che2').checked = false;
-					document.getElementById('che').checked = false;
-					document.getElementById('che4').checked = false;
-					
-						for(var i3 = 0;i3<127;i3++){
-			
-									if(haspureborder(i3) == true && imgteams[i3] != 3){
-									imgX(i3);
-									i3 =128;
-								}
-							}
-					
-					
-						if(underattack == 0){
-							
-                            setTimeout(function() {	
-                            document.getElementById('attackbutton').click();
-							}, 1000);
-								
-						}
-						else if(underattack == 1){
-							randbot1 = Math.floor((Math.random() * Math.min(team3,team1)) + 1);
-							 raho = randbot1;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 1 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){imgX(i3);raho--;}
-									}
-								}
-							
-							raho = randbot1;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 3 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){imgX(i3);raho--;}
-									}
-									
-								}
-							
-								
-							
-							
-                           setTimeout(function() {	
-                            document.getElementById('attackbutton').click();
-							}, 1000);
-								
-						}
-						else if(underattack == 2){
-							randbot2 = Math.floor((Math.random() * Math.min(team3,team2)) + 1);
-							 raho = randbot2;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 2 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){imgX(i3);raho--;}
-									}
-								}
-							
-							raho = randbot2;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 3 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){imgX(i3);raho--;}
-									}
-									
-								}
-							
-								
-							
-							
-                            setTimeout(function() {	
-                            document.getElementById('attackbutton').click();
-							}, 1000);
-								
-						}
-						else if(underattack == 4){
-							randbot4 = Math.floor((Math.random() * Math.min(team3,team4)) + 1);
-							 raho = randbot4;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 4 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){imgX(i3);raho--;}
-									}
-								}
-								
-							raho = randbot4;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 3 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){imgX(i3);raho--;}
-									}
-									
-								}
-								
-								
-							
-							
-                            setTimeout(function() {	
-                            document.getElementById('attackbutton').click();
-							}, 1000);
-							
-						}
-						}, 1000);
-					}
-					else if(document.getElementById('che3').checked == true){
-					
-                    document.getElementById("h15").innerHTML = document.getElementById("h15").innerHTML + "&#13;&#10;Waiting for Bot4's move";
-					setTimeout(function() {
-                            document.getElementById("h15").scrollTop = document.getElementById("h15").scrollHeight;
-                    }, 10);
-                    document.getElementById("arrow4").style.visibility = 'visible';
-                    document.getElementById("arrow2").style.visibility = 'hidden';
-                    document.getElementById("arrow1").style.visibility = 'hidden';
-                    document.getElementById("arrow3").style.visibility = 'hidden';
-						
-					setTimeout(function() {
-					document.getElementById('che').checked = false;
-					document.getElementById('che2').checked = false;
-					document.getElementById('che3').checked = false;
-					document.getElementById('che4').checked = true;
-					
-						for(var i3 = 0;i3<127;i3++){
-			
-									if(haspureborder(i3) == true && imgteams[i3] != 4){
-									imgX(i3); i3 =128;
-								}
-							}
-					
-					
-						if(underattack == 0){
-							
-                            setTimeout(function() {	
-                            document.getElementById('attackbutton').click();
-							}, 1000);
-								
-						}
-						else if(underattack == 1){
-							randbot1 = Math.floor((Math.random() * Math.min(team4,team1)) + 1);
-							 raho = randbot1;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 1 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){imgX(i3);raho--;}
-									}
-								}
-							
-							raho = randbot1;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 4 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){imgX(i3);raho--;}
-									}
-									
-								}
-							
-								
-							
-							
-                            setTimeout(function() {	
-                            document.getElementById('attackbutton').click();
-							}, 1000);
-							
-						}
-						else if(underattack == 2){
-							randbot2 = Math.floor((Math.random() * Math.min(team4,team2)) + 1);
-							 raho = randbot2;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 2 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){imgX(i3);raho--;}
-									}
-								}
-							
-							raho = randbot2;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 4 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){imgX(i3);raho--;}
-									}
-									
-								}
-							
-								
-							
-							
-                            setTimeout(function() {	
-                            document.getElementById('attackbutton').click();
-							}, 1000);
-							
-						}
-						else if(underattack == 3){
-							randbot4 = Math.floor((Math.random() * Math.min(team3,team4) ) + 1);
-							 raho = randbot4;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 3 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){imgX(i3);raho--;}
-									}
-									
-								}
-							
-							raho = randbot4;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 4 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){imgX(i3);raho--;}
-									}
-									
-								}
-							
-								
-								
-							
-							
-                            setTimeout(function() {	
-                            document.getElementById('attackbutton').click();
-							}, 1000);
-							
-						}
-						}, 1000);
-					}
-					else if(document.getElementById('che4').checked == true){
-						
-					document.getElementById("h15").innerHTML = document.getElementById("h15").innerHTML + "&#13;&#10;Waiting for Bot1's move";
-					setTimeout(function() {
-                            document.getElementById("h15").scrollTop = document.getElementById("h15").scrollHeight;
-                    }, 10);
-					document.getElementById("arrow1").style.visibility = 'visible';
-                    document.getElementById("arrow2").style.visibility = 'hidden';
-                    document.getElementById("arrow3").style.visibility = 'hidden';
-                    document.getElementById("arrow4").style.visibility = 'hidden';
-						
-					if(p1lost == true){
-						setTimeout(function() {	
-                            document.getElementById('attackbutton').click();
-							}, 1000);
-					}	else{
-						document.getElementById("attackbutton").style.visibility = 'visible';
-						document.getElementById("chooserandomly").style.visibility = 'visible';
-					}
-					
-					document.getElementById('che3').checked = false;
-					document.getElementById('che2').checked = false;
-					document.getElementById('che').checked = true;
-					document.getElementById('che4').checked = false;
-					
-					
-					}
-					else{}
-					
-					team1 = 0; team2 = 0; team3 = 0; team4 = 0;
-					//calculateteam();
-					
-					for(var i = 1;i<127;i++){
-					if(imgteams[i] == 1){team1++;}
-					else if(imgteams[i] == 2){team2++;}
-					else if(imgteams[i] == 3){team3++;}
-					else if(imgteams[i] == 4){team4++;}
-					else{}
-					}
-				if (team1 == 0 && team2 == 0 && team3 == 0){document.getElementById('attackbutton').disabled = "disabled";errortext.className = "errortext";document.getElementById("errortext").innerHTML = "Player 4 won ! <br>";}
-				else if(team2 == 0 && team3 == 0 && team4 == 0){document.getElementById('attackbutton').disabled = "disabled";errortext.className = "errortext";document.getElementById("errortext").innerHTML = "Player 1 won ! <br>";}
-				else if(team1 == 0 && team3 == 0 && team4 == 0){document.getElementById('attackbutton').disabled = "disabled";errortext.className = "errortext";document.getElementById("errortext").innerHTML = "Player 2 won ! <br>";}
-				else if(team1 == 0 && team2 == 0 && team4 == 0){document.getElementById('attackbutton').disabled = "disabled";errortext.className = "errortext";document.getElementById("errortext").innerHTML = "Player 3 won ! <br>";}
-				else{}
-					
-					underattack = 0;
-					calculateteam();
-					printcounter();
-				//--- if biter
-				}else{
-					errortext.className = "errortext";document.getElementById("errortext").innerHTML = "Number of choosen target countries and your countries are not equal !";
-				errortext.className = "errortextop";}
-					
-				
 	}
 	function buton33(){
 			
 					
 	}
+
+		
 	function imgX(data,permision){
+		var stra = data.toString();
+		var rect = document.getElementById("img".concat(stra)).getBoundingClientRect();
+
+		if(towerchoosen == true && hastower[data] != 1){
+			
+			var imgr1 = document.createElement('img');
+			document.body.appendChild(imgr1);
+			imgr1.src = "countries/galata.png";
+			imgr1.style.position = "absolute";
+			imgr1.style.zIndex = "190";
+			imgr1.style.width ="40px";
+			imgr1.style.height = "40px";
+			imgr1.id = "tower".concat(stra);
+			
+			imgr1.style.left = -20+rect.left+rect.width/2+"px";
+			imgr1.style.top = rect.top+rect.height/2-30+"px";
+			
+			towerchoosen = false;
+			
+			hastower[data] = 1;
+			
+		}
+		else if(hastower[data] == 1) {
+			document.body.removeChild(document.getElementById( "tower".concat(data.toString()) ) );
+			hastower[data] = 0;
+			towerchoosen = true;
+		}
+		else{}
 		
-		var stringdata = data.toString();
-		var stringa = underattack.toString();
-		var axx;
 		
-		//This is for border
-		if((hasborder(data) == true) || permision == 1){
-		// onceden secilmis bos topraga tiklaniyor
-		if(choosentogive[data] == 1 && imgteams[data] == 0){choosentogive[data] = 0;
-				document.getElementById("img".concat(stringdata)).src = "countries/img".concat(stringdata).concat(".png");clicked = false;clicked1 = false;}
-		// onceden secilmemis bos topraga tiklaniyor
-		else{
-					if(clicked == false){
-						
-						if(imgteams[data] == 0){
-						clicked1 = true;
-						clicked = true;
-						
-						
-						document.getElementById("img".concat(stringdata)).src = "countries/img".concat(stringdata).concat("choosen.png");
-						choosentogive[data] = 1;
-						recentboxstr = "img1";
-						recentbox = data;
-						underattack = 0;
-						//******seçme olayını kapat.Sadece bir tane boşluga saldirilir----------- 
-						
-						}
-						else{}	
-			}
-				// Devamina toprak miktarini saymayi yap-----------
-				if(clicked1 == false){
-					if(imgteams[data] == 1 && document.getElementById('che').checked == false && (underattack == 0 || underattack == 1)){
-						
-						if(choosentogive[data] == 1 && imgteams[data] == 1){
-							choosentogive[data] = 0;
-							document.getElementById("img".concat(stringdata)).src = "countries/img".concat(stringdata).concat("red.png");clicked = false;
-							counter1--;a1 = counter1;
-							if(a1 != 0){underattack = 1;stringa = underattack.toString();}else{underattack = 0;stringa = underattack.toString();}
-							printcounter();
-							disselectborders(data);}
-						else{
-							document.getElementById("img".concat(stringdata)).src = "countries/img".concat(stringdata).concat("choosenred.png");
-							counter1++;
-							
-							choosentogive[data] = 1;
-							clicked = true;
-							a1 = counter1;
-							underattack = 1;printcounter();stringa = underattack.toString();
-							}
-						}
-					else if(imgteams[data] == 2 && document.getElementById('che2').checked == false && (underattack == 0 || underattack == 2)){
-								if(choosentogive[data] == 1 && imgteams[data] == 2){
-								choosentogive[data] = 0;
-								document.getElementById("img".concat(stringdata)).src = "countries/img".concat(stringdata).concat("blue.png");clicked = false;
-								counter2--;a2 = counter2;
-								if(a2 != 0){underattack = 2;stringa = underattack.toString();}else{underattack = 0;stringa = underattack.toString();}
-								printcounter();disselectborders(data);
-								}else{
-								document.getElementById("img".concat(stringdata)).src = "countries/img".concat(stringdata).concat("choosenblue.png");
-								choosentogive[data] = 1;
-								counter2++;
-								
-								clicked = true;
-					
-								a2 = counter2;
-								underattack = 2;printcounter();stringa = underattack.toString();
-									}
-						}
-					else if(imgteams[data] == 3 && document.getElementById('che3').checked == false && (underattack == 0 || underattack == 3)){
-								if(choosentogive[data] == 1 && imgteams[data] == 3){
-									choosentogive[data] = 0;
-								document.getElementById("img".concat(stringdata)).src = "countries/img".concat(stringdata).concat("green.png");clicked = false;
-								counter3--;a3 = counter3;
-								if(a3 != 0){underattack = 3;stringa = underattack.toString();}else{underattack = 0;stringa = underattack.toString();}
-								printcounter();disselectborders(data);
-								}else{
-								document.getElementById("img".concat(stringdata)).src = "countries/img".concat(stringdata).concat("choosengreen.png");
-								choosentogive[data] = 1;
-								counter3++;underattack = 3;
-								printcounter();
-								clicked = true;
-					
-								a3 = counter3;
-								stringa = underattack.toString();
-									}
-						}
-					else if(imgteams[data] == 4 && document.getElementById('che4').checked == false  && (underattack == 0 || underattack == 4)){
-								if(choosentogive[data] == 1 && imgteams[data] == 4){
-									choosentogive[data] = 0;
-								document.getElementById("img".concat(stringdata)).src = "countries/img".concat(stringdata).concat("yellow.png");clicked = false;
-								counter4--;a4 = counter4;
-								if(a4 != 0){underattack = 4;stringa = underattack.toString();}else{underattack = 0;stringa = underattack.toString();}
-								printcounter();
-								disselectborders(data);
-								}else{
-								document.getElementById("img".concat(stringdata)).src = "countries/img".concat(stringdata).concat("choosenyellow.png");
-								choosentogive[data] = 1;
-								counter4++;underattack = 4;
-								printcounter();
-								clicked = true;
-					
-								a4 = counter4;
-								stringa = underattack.toString();
-									}
-						}
-				else if(imgteams[data] == 1 && document.getElementById('che').checked == true){
-					
-					if(choosentogive1[data] == 1 && imgteams[data] == 1){choosentogive1[data] = 0;
-					document.getElementById("img".concat(stringdata)).src = "countries/img".concat(stringdata).concat("red.png");clicked1 = false;
-						if(underattack == 2){a2++;}else if(underattack == 3){a3++;}else {a4++;}counter1--;
-					printcounter();}else{
-						if(underattack == 2){axx=a2;}else if(underattack == 3){axx=a3;}else {axx = a4;}
-					a1 = counter1;	
-					a2 = counter2;
-					a3 = counter3;
-					a4 = counter4;
-					var xxaa = axx;
-					if(xxaa > counter1 ){
-						counter1++;
-						printcounter();
-						axx--;
-						choosentogive1[data] = 1;
-						document.getElementById("img".concat(stringdata)).src = "countries/img".concat(stringdata).concat("choosenred.png");}else{}}}
-				else if(imgteams[data] == 2 && document.getElementById('che2').checked == true){
-					if(choosentogive1[data] == 1 && imgteams[data] == 2){choosentogive1[data] = 0;
-					document.getElementById("img".concat(stringdata)).src = "countries/img".concat(stringdata).concat("blue.png");clicked1 = false;
-						if(underattack == 1){a1++;}else if(underattack == 3){a3++;}else {a4++;}counter2--;
-					printcounter();}else{
-						if(underattack == 1){axx=a1;}else if(underattack == 3){axx=a3;}else {axx = a4;}
-					a1 = counter1;	
-					a2 = counter2;	
-					a3 = counter3;
-					a4 = counter4;
-					var xxaa = axx;
-					if(xxaa > counter2 ){
-						counter2++;printcounter();
-						axx--;
-						choosentogive1[data] = 1;
-						document.getElementById("img".concat(stringdata)).src = "countries/img".concat(stringdata).concat("choosenblue.png");}}}
-				else if(imgteams[data] == 3 && document.getElementById('che3').checked == true){
-					if(choosentogive1[data] == 1 && imgteams[data] == 3){choosentogive1[data] = 0;
-					document.getElementById("img".concat(stringdata)).src = "countries/img".concat(stringdata).concat("green.png");clicked1 = false;
-						if(underattack == 1){a1++;}else if(underattack == 2){a2++;}else {a4++;}counter3--;
-					printcounter();}else{
-						if(underattack == 1){axx=a1;}else if(underattack == 2){axx=a2;}else {axx = a4;}
-					a1 = counter1;	
-					a2 = counter2;
-					a3 = counter3;
-					a4 = counter4;
-					var xxaa = axx;
-					if(xxaa > counter3 ){
-						counter3++;
-						printcounter();
-						axx--;
-						choosentogive1[data] = 1;
-						document.getElementById("img".concat(stringdata)).src = "countries/img".concat(stringdata).concat("choosengreen.png");}else{}}}
-				else if(imgteams[data] == 4 && document.getElementById('che4').checked == true){
-					if(choosentogive1[data] == 1 && imgteams[data] == 4){choosentogive1[data] = 0;
-					document.getElementById("img".concat(stringdata)).src = "countries/img".concat(stringdata).concat("yellow.png");clicked1 = false;
-						if(underattack == 1){a1++;}else if(underattack == 2){a2++;}else {a3++;}counter4--;
-					printcounter();}else{
-						if(underattack == 1){axx=a1;}else if(underattack == 2){axx=a2;}else {axx = a3;}
-					a1 = counter1;	
-					a2 = counter2;
-					a3 = counter3;
-					a4 = counter4;
-					var xxaa = axx;
-					if(xxaa > counter4 ){
-						counter4++;
-						printcounter();
-						axx--;
-						choosentogive1[data] = 1;
-						document.getElementById("img".concat(stringdata)).src = "countries/img".concat(stringdata).concat("choosenyellow.png");}else{}}}
-				else{}}}
-		}else{document.getElementById("errortext").innerHTML = "You don't have border with this country !";
-				errortext.className = "errortextop";setTimeout(function(){document.getElementById("errortext").innerHTML = "";errortext.className = "errortext";}, 6000); }
+		//document.body.removeChild(document.getElementById("tower1"));
 		
 	}
 	
-	function chooserandomlyfu(){
-		//---
-	//Functions above act as a "Player switcher" and as aBOT
-					if(document.getElementById('che2').checked == true){
-					
-						for(var i3 = 0;i3<127;i3++){
-		
-								if(haspureborder(i3) == true && imgteams[i3] != 2){
-								imgX(i3);i3 =128;
-							}
-						}
-					 
-						setTimeout(function() {
-						if(underattack == 0){
-								
-								
-						}
-						else if(underattack == 1){
-							randbot1 = Math.floor((Math.random() * Math.min(team2,team1)) + 1);
-							raho = randbot1;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 1 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){imgX(i3);raho--;}
-									}
-								}
-							
-							raho = randbot1;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 2 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){imgX(i3);raho--;}
-									}
-									
-								}
-							
-								
-						}
-						else if(underattack == 3){
-							randbot3 = Math.floor((Math.random() * Math.min(team2,team3)) + 1);
-							raho = randbot3;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 3 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){imgX(i3);raho--;}
-									}
-								}
-							raho = randbot3;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 2 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){imgX(i3);raho--;}
-									}
-									
-									}
-								
-							
-								
-						}
-						else if(underattack == 4){
-							randbot4 = Math.floor((Math.random() * Math.min(team2,team4)) + 1);
-							 raho = randbot4;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 4 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){imgX(i3);raho--;}
-									}
-								}
-							
-							raho = randbot4;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 2 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){imgX(i3);raho--;}
-									}
-									
-								}
-							
-								
-								
-						}
-						}, 500);
-						
-					}
-					else if(document.getElementById('che3').checked == true){
-					
-					
-					
-					
-						for(var i3 = 0;i3<127;i3++){
-			
-									if(haspureborder(i3) == true && imgteams[i3] != 3){
-									imgX(i3);
-									i3 =128;
-								}
-							}
-					
-					
-						setTimeout(function() {
-						
-						if(underattack == 0){
-							
-								
-						}
-						else if(underattack == 1){
-							randbot1 = Math.floor((Math.random() * Math.min(team3,team1)) + 1);
-							 raho = randbot1;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 1 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){imgX(i3);raho--;}
-									}
-								}
-							
-							raho = randbot1;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 3 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){imgX(i3);raho--;}
-									}
-									
-								}
-							
-								
-								
-						}
-						else if(underattack == 2){
-							randbot2 = Math.floor((Math.random() * Math.min(team3,team2)) + 1);
-							 raho = randbot2;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 2 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){imgX(i3);raho--;}
-									}
-								}
-							
-							raho = randbot2;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 3 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){imgX(i3);raho--;}
-									}
-									
-								}
-							
-								
-						}
-						else if(underattack == 4){
-							randbot4 = Math.floor((Math.random() * Math.min(team3,team4)) + 1);
-							 raho = randbot4;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 4 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){imgX(i3);raho--;}
-									}
-								}
-								
-							raho = randbot4;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 3 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){imgX(i3);raho--;}
-									}
-									
-								}
-								
-								
-							
-						}
-						
-						}, 500);
-					}
-					else if(document.getElementById('che4').checked == true){
-						
-						for(var i3 = 0;i3<127;i3++){
-			
-									if(haspureborder(i3) == true && imgteams[i3] != 4){
-									imgX(i3);i3 =128;
-								}
-							}
-					
-					
-					setTimeout(function() {
-					
-						if(underattack == 0){
-							
-								
-						}
-						else if(underattack == 1){
-							randbot1 = Math.floor((Math.random() * Math.min(team4,team1)) + 1);
-							 raho = randbot1;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 1 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){imgX(i3);raho--;}
-									}
-								}
-							
-							raho = randbot1;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 4 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){imgX(i3);raho--;}
-									}
-									
-								}
-							
-								
-							
-						}
-						else if(underattack == 2){
-							randbot2 = Math.floor((Math.random() * Math.min(team4,team2)) + 1);
-							 raho = randbot2;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 2 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){imgX(i3);raho--;}
-									}
-								}
-							
-							raho = randbot2;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 4 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){imgX(i3);raho--;}
-									}
-									
-								}
-							
-								
-							
-						}
-						else if(underattack == 3){
-							randbot4 = Math.floor((Math.random() * Math.min(team3,team4) ) + 1);
-							 raho = randbot4;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 3 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){imgX(i3);raho--;}
-									}
-									
-								}
-							
-							raho = randbot4;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 4 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){imgX(i3);raho--;}
-									}
-									
-								}
-							
-							
-						}
-						}, 500);
-						
-					}
-					else if(document.getElementById('che').checked == true){
-						for(var i3 = 0;i3<127;i3++){
-			
-									if(haspureborder(i3) == true && imgteams[i3] != 1){
-									imgX(i3); i3 =128;
-								}
-							}
-					
-					
-					setTimeout(function() {
-						if(underattack == 0){
-							
-								
-						}
-						else if(underattack == 4){
-							randbot4 = Math.floor((Math.random() * Math.min(team4,team1)) + 1);
-							 raho = randbot4;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 4 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){imgX(i3);raho--;}
-									}
-								}
-							
-							raho = randbot4;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 1 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){imgX(i3);raho--;}
-									}
-									
-								}
-							
-								
-							
-						}
-						else if(underattack == 2){
-							randbot2 = Math.floor((Math.random() * Math.min(team1,team2)) + 1);
-							 raho = randbot2;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 2 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){imgX(i3);raho--;}
-									}
-								}
-							
-							raho = randbot2;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 1 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){imgX(i3);raho--;}
-									}
-									
-								}
-							
-								
-							
-						}
-						else if(underattack == 3){
-							randbot3 = Math.floor((Math.random() * Math.min(team3,team1) ) + 1);
-							 raho = randbot3;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 3 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){imgX(i3);raho--;}
-									}
-									
-								}
-							
-							raho = randbot3;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 1 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){imgX(i3);raho--;}
-									}
-									
-								}
-							
-							
-						}
-					
-						}, 500);
-					
-					}
-					else{}
-	//---
-					
-	}
+	
 	function hasborder(data1) {
 		borders = [];
 		

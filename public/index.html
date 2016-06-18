@@ -71,14 +71,8 @@
             document.getElementById("player3").style.visibility = 'hidden';
             document.getElementById("player4").style.visibility = 'hidden';
 
-            document.getElementById("attackbutton").style.visibility = 'hidden';
-			
 			document.getElementById("chooserandomly").style.visibility = 'hidden';
 
-            document.getElementById("arrow1").style.visibility = 'hidden';
-            document.getElementById("arrow2").style.visibility = 'hidden';
-            document.getElementById("arrow3").style.visibility = 'hidden';
-            document.getElementById("arrow4").style.visibility = 'hidden';
 
             document.getElementById("divreg").style.visibility = "hidden";
 
@@ -185,28 +179,25 @@
 						if ( (team1 == 0 || isp1left == 1) && (team2 == 0 || isp2left == 1) && (team3 == 0 || isp3left == 1) ){
 							document.getElementById("errortext").innerHTML = "Game is over !<br>Player 4 won ! <br>";
 							//clearTimeout(myVar);
-							document.getElementById("attackbutton").style.visibility = 'hidden';
+							
 							document.getElementById("chooserandomly").style.visibility = 'hidden';
 							document.getElementById("playhand").style.visibility = "visible";
 							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[SYSTEM] PLAYER 4 WON ! Click play again. ";}
 						else if( (team2 == 0 || isp2left == 1) && (team3 == 0 || isp3left == 1) && (team4 == 0 ||  isp4left == 1) ){
 						document.getElementById("errortext").innerHTML = "Game is over !<br>Player 1 won ! <br>";
 							//clearTimeout(myVar);
-							document.getElementById("attackbutton").style.visibility = 'hidden';
 							document.getElementById("chooserandomly").style.visibility = 'hidden';
 							document.getElementById("playhand").style.visibility = "visible";
 							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[SYSTEM] PLAYER 1 WON ! Click play again. ";}
 						else if( (team1 == 0 || isp1left == 1) && (team3 == 0 || isp3left == 1) && (team4 == 0 ||  isp4left == 1) ){
 						document.getElementById("errortext").innerHTML = "Game is over !<br>Player 2 won ! <br>";
 							//clearTimeout(myVar);
-							document.getElementById("attackbutton").style.visibility = 'hidden';
 							document.getElementById("chooserandomly").style.visibility = 'hidden';
 							document.getElementById("playhand").style.visibility = "visible";
 							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[SYSTEM] PLAYER 2 WON ! Click play again. ";}
 						else if( (team1 == 0 || isp1left == 1) && (team2 == 0 || isp2left == 1) && (team4 == 0 ||  isp4left == 1)){
 						document.getElementById("errortext").innerHTML = "Game is over !<br>Player 3 won ! <br>";
 							//clearTimeout(myVar);
-							document.getElementById("attackbutton").style.visibility = 'hidden';
 							document.getElementById("chooserandomly").style.visibility = 'hidden';
 							document.getElementById("playhand").style.visibility = "visible";
 							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[SYSTEM] PLAYER 3 WON ! Click play again. ";}
@@ -237,6 +228,33 @@
 				} else {}
 			});
 			
+			/*
+			$("#ZoomIn").click(ZoomIn());
+
+			$("#ZoomOut").click(ZoomOut());
+
+			function ZoomIn (event) {
+
+				$("#div img").width(
+					$("#div img").width() * 1.2
+				);
+
+				$("#div img").height(
+					$("#div img").height() * 1.2
+				);
+			},
+
+			function  ZoomOut (event) {
+
+				$("#div img").width(
+					$("#imgDtls").width() * 0.5
+				);
+
+				$("#div img").height(
+					$("#div img").height() * 0.5
+				);
+			}
+			*/
             socket.on('button1f', function(data) {
                 buton11();
                 if (document.getElementById("che").checked == true && data == 1) {
@@ -250,47 +268,9 @@
                     document.getElementById("playerwho").innerHTML = "player unknown played and the browser number is " + data;
                 }
 
-                //------
-                if (usercode == 1 && check1.checked == true) {
-                    document.getElementById("attackbutton").style.visibility = 'visible';
-                } else if (usercode == 2 && check2.checked == true) {
-                    document.getElementById("attackbutton").style.visibility = 'visible';
-                } else if (usercode == 3 && check3.checked == true) {
-                    document.getElementById("attackbutton").style.visibility = 'visible';
-                } else if (usercode == 4 && check4.checked == true) {
-                    document.getElementById("attackbutton").style.visibility = 'visible';
-                } else {
-                    document.getElementById("attackbutton").style.visibility = 'hidden';
-                }
+               
 
-                //------
-
-                if (check1.checked == true) {
-                    document.getElementById("arrow1").style.visibility = 'visible';
-                    document.getElementById("arrow2").style.visibility = 'hidden';
-                    document.getElementById("arrow4").style.visibility = 'hidden';
-                    document.getElementById("arrow3").style.visibility = 'hidden';
-                } else if (check2.checked == true) {
-                    document.getElementById("arrow2").style.visibility = 'visible';
-                    document.getElementById("arrow1").style.visibility = 'hidden';
-                    document.getElementById("arrow4").style.visibility = 'hidden';
-                    document.getElementById("arrow3").style.visibility = 'hidden';
-                } else if (check3.checked == true) {
-                    document.getElementById("arrow2").style.visibility = 'hidden';
-                    document.getElementById("arrow1").style.visibility = 'hidden';
-                    document.getElementById("arrow4").style.visibility = 'hidden';
-                    document.getElementById("arrow3").style.visibility = 'visible';
-                } else if (check4.checked == true) {
-                    document.getElementById("arrow2").style.visibility = 'hidden';
-                    document.getElementById("arrow1").style.visibility = 'hidden';
-                    document.getElementById("arrow3").style.visibility = 'hidden';
-                    document.getElementById("arrow4").style.visibility = 'visible';
-                } else {
-                    document.getElementById("arrow1").style.visibility = 'hidden';
-                    document.getElementById("arrow2").style.visibility = 'hidden';
-                    document.getElementById("arrow3").style.visibility = 'hidden';
-                    document.getElementById("arrow4").style.visibility = 'hidden';
-                }
+             
 
             });
 
@@ -311,47 +291,7 @@
                 socket.emit('getroom', room);
             });
 
-            var attackbutton = document.getElementById("attackbutton");
-            attackbutton.addEventListener('click', function() {
-				if (team1 == 0) {
-                    isp1left = 1;
-                } else {}
-                if (team2 == 0) {
-                    isp2left = 1;
-                } else {}
-                if (team3 == 0) {
-                    isp3left = 1;
-                } else {}
-                if (team4 == 0) {
-                    isp4left = 1;
-                } else {}
-				
-                if ((usercode % 4 == 1 && check1.checked == true) || (usercode % 4 == 2 && check2.checked == true) || (usercode % 4 == 3 && check3.checked == true) || (usercode % 4 == 0 && check4.checked == true)) {
-                   if(check1.checked == true){attacker = 1;}else if(check2.checked == true){attacker = 2;}else if(check3.checked == true){attacker = 3;}else if(check4.checked == true){attacker = 4;}else{}
-				   socket.emit('attackbuttonsocket', {r1: room, ua1: underattack, t1: team1, t2: team2, t3: team3, t4: team4, atr: attacker});
-
-                    /*
-				setTimeout(function(){
-						if(check1.checked == true && isp1left == 1 ){socket.emit('attackbuttonsocket',{r1: room, ua1: underattack});}
-						
-						if(check2.checked == true && isp2left == 1 ){socket.emit('attackbuttonsocket',{r1: room, ua1: underattack});}
-						
-						if(check3.checked == true && isp3left == 1 ){socket.emit('attackbuttonsocket',{r1: room, ua1: underattack});}
-						
-						if(check4.checked == true && isp4left == 1 ){socket.emit('attackbuttonsocket',{r1: room, ua1: underattack});}
-						
-				}, 600); 		
-				*/
-                } else {
-                    errortext.className = "errortext";
-                    document.getElementById("errortext").innerHTML = "It is NOT your turn !";
-                    errortext.className = "errortextop";
-                }
-				document.getElementById("attackdiv").style.display = "none";
-				
-
-            });
-
+            
             var globaltext = document.getElementById("globaltext");
             globaltext.addEventListener('click', function() {
 
@@ -509,26 +449,14 @@
 					var str5 = i.toString();
 					var int1 = i;
 					document.getElementById("area".concat(str5)).addEventListener('click', function() {
-					if (document.getElementById("che").checked == true && usercode % 4 == 1) {
-						socket.emit('imgclick', {
-							num: int1,
-							numroom: room
-						});
-					} else if (document.getElementById("che2").checked == true && usercode % 4 == 2) {
-						socket.emit('imgclick', {
-							num: int1,
-							numroom: room
-						});
-					} else if (document.getElementById("che3").checked == true && usercode % 4 == 3) {
-						socket.emit('imgclick', {
-							num: int1,
-							numroom: room
-						});
-					} else if (document.getElementById("che4").checked == true && usercode % 4 == 0) {
-						socket.emit('imgclick', {
-							num: int1,
-							numroom: room
-						});
+					if (usercode % 4 == 1) {
+						socket.emit('imgclick', {num: int1,numroom: room});
+					} else if (usercode % 4 == 2) {
+						socket.emit('imgclick', {num: int1,numroom: room});
+					} else if (usercode % 4 == 3) {
+						socket.emit('imgclick', {num: int1,numroom: room});
+					} else if (usercode % 4 == 0) {
+						socket.emit('imgclick', {num: int1,numroom: room});
 					} else {}
 					});
 				}());
@@ -542,229 +470,7 @@
 
             });
 
-            socket.on('attackbuttonsocketf', function(data) {
-
-
-                // ????????????????? socket attackbutton birden fazla kez çalışıyor ?????????????????????
-                if (data.realroom == room) {
-                    timess = 100;
-					
-					if(check1.checked == true){attacker = 1;}else if(check2.checked == true){attacker = 2;}else if(check3.checked == true){attacker = 3;}else if(check4.checked == true){attacker = 4;}else{}
-				  
-					var holdteams = [];
-					holdteams[1] = team1;
-					holdteams[2] = team2;
-					holdteams[3] = team3;
-					holdteams[4] = team4;
-					
-					var holdteams1 = [];
-					holdteams1[1] = "RED";
-					holdteams1[2] = "BLUE";
-					holdteams1[3] = "GREEN";
-					holdteams1[4] = "YELLOW";
-					
-					document.getElementById("attackdiv").style.backgroundColor =  "grey";
-					
-					document.getElementById("attackdivtext").innerHTML = "ATTACKER: "+holdteams1[attacker]+"<br>AGAINS TO: "+holdteams1[underattack]+"<br>Number of Attacker's Countries: "+holdteams[attacker]+"<br>Number of Target's Countries:"+holdteams[underattack]+"<br>CHANGE TO WIN FOR "+holdteams1[attacker]+" :"+( holdteams[attacker]*100/(holdteams[attacker]+holdteams[underattack]) ).toString().substring(0,4)+"%<br>CHANGE TO WIN FOR "+holdteams1[underattack]+" :"+( holdteams[underattack]*100/(holdteams[attacker]+holdteams[underattack]) ).toString().substring(0,4);
-					if(underattack == 0){
-					document.getElementById("attackdivtext").innerHTML = "ATTACKER: "+holdteams1[attacker]+"<br>AGAINS TO: EMPTY COUNTRY<br>Number of Countries: "+holdteams[attacker]+"<br>CHANGE TO WIN IS 70% ";
-					}else{}
-					document.getElementById("attackdiv").style.display = "block";
-					
-				setTimeout(function() {
-					setTimeout(function() {
-					document.getElementById("attackdiv").style.display = "none";
-					}, 2000);
-					
-                    if (data.winorloose == 1) {
-                        buton11();
-                        document.getElementById("playerwho").innerHTML = data;
-						document.getElementById("attackdiv").style.backgroundColor =  "#3ADF00";
-						document.getElementById("attackdivtext").innerHTML = document.getElementById("attackdivtext").innerHTML + "<br> WON  !!!";
-					
-                    } else if (data.winorloose == 2) {
-                        buton22();
-						document.getElementById("attackdiv").style.backgroundColor = "#FE2E2E";
-                        document.getElementById("playerwho").innerHTML = data;
-						document.getElementById("attackdivtext").innerHTML = document.getElementById("attackdivtext").innerHTML + "<br> LOST !!!";
-                    } else {
-                        document.getElementById("playerwho").innerHTML = data.winorloose;
-                    }
-                    //------
-
-                    if (usercode % 4 == 1 && check1.checked == true) {
-                        document.getElementById("h16").innerHTML = "IT IS YOUR TURN!";
-                        document.getElementById("attackbutton").style.visibility = 'visible';
-						document.getElementById("chooserandomly").style.visibility = 'visible';
-
-
-                    } else if (usercode % 4 == 2 && check2.checked == true) {
-                        document.getElementById("h16").innerHTML = "IT IS YOUR TURN!";
-                        document.getElementById("attackbutton").style.visibility = 'visible';
-						document.getElementById("chooserandomly").style.visibility = 'visible';
-
-
-                    } else if (usercode % 4 == 3 && check3.checked == true) {
-                        document.getElementById("h16").innerHTML = "IT IS YOUR TURN!";
-                        document.getElementById("attackbutton").style.visibility = 'visible';
-						document.getElementById("chooserandomly").style.visibility = 'visible';
-
-
-                    } else if (usercode % 4 == 0 && check4.checked == true) {
-                        document.getElementById("h16").innerHTML = "IT IS YOUR TURN!";
-                        document.getElementById("attackbutton").style.visibility = 'visible';
-						document.getElementById("chooserandomly").style.visibility = 'visible';
-
-
-
-                    } else {
-                        document.getElementById("attackbutton").style.visibility = 'hidden';
-						document.getElementById("chooserandomly").style.visibility = 'hidden';
-                        document.getElementById("h16").innerHTML = "";
-                    }
-
-                    //------
-
-                    if (check1.checked == true) {
-                        setTimeout(function() {
-                            document.getElementById("h15").scrollTop = document.getElementById("h15").scrollHeight;
-                        }, 10);
-
-
-
-                        if (data.winorloose == 1) {
-                            document.getElementById("h15").innerHTML = document.getElementById("h15").innerHTML + "&#13;&#10;Player 4 Won!";
-                        } else {
-                            document.getElementById("h15").innerHTML = document.getElementById("h15").innerHTML + "&#13;&#10;Player 4 lost!";
-                        }
-                        document.getElementById("h15").innerHTML = document.getElementById("h15").innerHTML + "&#13;&#10;Waiting for Player1's move";
-                        document.getElementById("arrow1").style.visibility = 'visible';
-                        document.getElementById("arrow2").style.visibility = 'hidden';
-                        document.getElementById("arrow3").style.visibility = 'hidden';
-                        document.getElementById("arrow4").style.visibility = 'hidden';
-
-
-
-
-                    } else if (check2.checked == true) {
-                        setTimeout(function() {
-                            document.getElementById("h15").scrollTop = document.getElementById("h15").scrollHeight;
-                        }, 10);
-
-
-
-                        if (data.winorloose == 1) {
-                            document.getElementById("h15").innerHTML = document.getElementById("h15").innerHTML + "&#13;&#10;Player 1 Won!";
-                        } else {
-                            document.getElementById("h15").innerHTML = document.getElementById("h15").innerHTML + "&#13;&#10;Player 1 lost!";
-                        }
-                        document.getElementById("h15").innerHTML = document.getElementById("h15").innerHTML + "&#13;&#10;Waiting for Player2's move";
-                        document.getElementById("arrow2").style.visibility = 'visible';
-                        document.getElementById("arrow1").style.visibility = 'hidden';
-                        document.getElementById("arrow3").style.visibility = 'hidden';
-                        document.getElementById("arrow4").style.visibility = 'hidden';
-
-
-
-                    } else if (check3.checked == true) {
-                        setTimeout(function() {
-                            document.getElementById("h15").scrollTop = document.getElementById("h15").scrollHeight;
-                        }, 10);
-
-
-
-                        if (data.winorloose == 1) {
-                            document.getElementById("h15").innerHTML = document.getElementById("h15").innerHTML + "&#13;&#10;Player 2 Won!";
-                        } else {
-                            document.getElementById("h15").innerHTML = document.getElementById("h15").innerHTML + "&#13;&#10;Player 2 lost!";
-                        }
-                        document.getElementById("h15").innerHTML = document.getElementById("h15").innerHTML + "&#13;&#10;Waiting for Player3's move";
-                        document.getElementById("arrow2").style.visibility = 'hidden';
-                        document.getElementById("arrow1").style.visibility = 'hidden';
-                        document.getElementById("arrow3").style.visibility = 'visible';
-                        document.getElementById("arrow4").style.visibility = 'hidden';
-
-
-
-                    } else if (check4.checked == true) {
-                        setTimeout(function() {
-                            document.getElementById("h15").scrollTop = document.getElementById("h15").scrollHeight;
-                        }, 10);
-
-
-
-                        if (data.winorloose == 1) {
-                            document.getElementById("h15").innerHTML = document.getElementById("h15").innerHTML + "&#13;&#10;Player 3 Won!";
-                        } else {
-                            document.getElementById("h15").innerHTML = document.getElementById("h15").innerHTML + "&#13;&#10;Player 3 lost!";
-                        }
-                        document.getElementById("h15").innerHTML = document.getElementById("h15").innerHTML + "&#13;&#10;Waiting for Player4's move";
-                        document.getElementById("arrow4").style.visibility = 'visible';
-                        document.getElementById("arrow2").style.visibility = 'hidden';
-                        document.getElementById("arrow1").style.visibility = 'hidden';
-                        document.getElementById("arrow3").style.visibility = 'hidden';
-
-
-
-                    } else {
-                        document.getElementById("arrow1").style.visibility = 'hidden';
-                        document.getElementById("arrow2").style.visibility = 'hidden';
-                        document.getElementById("arrow4").style.visibility = 'hidden';
-                        document.getElementById("arrow3").style.visibility = 'hidden';
-                    }
-
-					
-					setTimeout(function() {
-					
-					
-						//TODO??????????????????????????????????????????
-						//??????????????????????????????????????????????
-						//BURAYA PLAY AGAIN TUSU EKLE
-						if ( (team1 == 0 || isp1left == 1) && (team2 == 0 || isp2left == 1) && (team3 == 0 || isp3left == 1) ){
-							document.getElementById("errortext").innerHTML = "Game is over !<br>Player 4 won ! <br>";
-							//clearTimeout(myVar);
-							document.getElementById("attackbutton").style.visibility = 'hidden';
-						document.getElementById("chooserandomly").style.visibility = 'hidden';
-							document.getElementById("playhand").style.visibility = "visible";
-							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[SYSTEM] PLAYER 4 WON ! Click play again. ";}
-						else if( (team2 == 0 || isp2left == 1) && (team3 == 0 || isp3left == 1) && (team4 == 0 ||  isp4left == 1) ){
-						document.getElementById("errortext").innerHTML = "Game is over !<br>Player 1 won ! <br>";
-							//clearTimeout(myVar);
-							document.getElementById("attackbutton").style.visibility = 'hidden';
-						document.getElementById("chooserandomly").style.visibility = 'hidden';
-							document.getElementById("playhand").style.visibility = "visible";
-							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[SYSTEM] PLAYER 1 WON ! Click play again. ";}
-						else if( (team1 == 0 || isp1left == 1) && (team3 == 0 || isp3left == 1) && (team4 == 0 ||  isp4left == 1) ){
-						document.getElementById("errortext").innerHTML = "Game is over !<br>Player 2 won ! <br>";
-							//clearTimeout(myVar);
-							document.getElementById("attackbutton").style.visibility = 'hidden';
-						document.getElementById("chooserandomly").style.visibility = 'hidden';
-							document.getElementById("playhand").style.visibility = "visible";
-							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[SYSTEM] PLAYER 2 WON ! Click play again. ";}
-						else if( (team1 == 0 || isp1left == 1) && (team2 == 0 || isp2left == 1) && (team4 == 0 ||  isp4left == 1)){
-						document.getElementById("errortext").innerHTML = "Game is over !<br>Player 3 won ! <br>";
-							//clearTimeout(myVar);
-							document.getElementById("attackbutton").style.visibility = 'hidden';
-						document.getElementById("chooserandomly").style.visibility = 'hidden';
-							document.getElementById("playhand").style.visibility = "visible";
-							document.getElementById("messagesr").innerHTML = document.getElementById("messagesr").innerHTML + "\n[SYSTEM] PLAYER 3 WON ! Click play again. ";}
-						else{}
-					
-					
-					
-					
-					
-						//todo
-						if ((check1.checked == true && isp1left == 1) || (check2.checked == true && isp2left == 1) || (check3.checked == true && isp3left == 1) || (check4.checked == true && isp4left == 1) ){
-						pass1();
-						
-						}
-					
-					}, 1000);
-				
-					}, 2500);
-                }
-            });
+           
 						
 			
             //This is only for making inputtext sent when enter was pressed
@@ -782,126 +488,7 @@
 			
 
 			
-			function pass1() {
-						
-					
-						if(document.getElementById('che').checked == true){
-						
-							setTimeout(function() {
-									document.getElementById("h15").scrollTop = document.getElementById("h15").scrollHeight;
-								}, 10);
-
-								document.getElementById("h15").innerHTML = document.getElementById("h15").innerHTML + "&#13;&#10;Player 1's turn passed!";
-								
-								document.getElementById("h15").innerHTML = document.getElementById("h15").innerHTML + "&#13;&#10;Waiting for Player2's move";
-								document.getElementById("arrow2").style.visibility = 'visible';
-								document.getElementById("arrow1").style.visibility = 'hidden';
-								document.getElementById("arrow3").style.visibility = 'hidden';
-								document.getElementById("arrow4").style.visibility = 'hidden';
-								
-								
-							document.getElementById('che').checked = false;
-							document.getElementById('che2').checked = true;
-							document.getElementById('che3').checked = false;
-							document.getElementById('che4').checked = false;}
-						else if(document.getElementById('che2').checked == true){
-						
-							setTimeout(function() {
-									document.getElementById("h15").scrollTop = document.getElementById("h15").scrollHeight;
-								}, 10);
-
-								document.getElementById("h15").innerHTML = document.getElementById("h15").innerHTML + "&#13;&#10;Player 2's turn passed!";
-								
-								document.getElementById("h15").innerHTML = document.getElementById("h15").innerHTML + "&#13;&#10;Waiting for Player3's move";
-								document.getElementById("arrow2").style.visibility = 'hidden';
-								document.getElementById("arrow1").style.visibility = 'hidden';
-								document.getElementById("arrow3").style.visibility = 'visible';
-								document.getElementById("arrow4").style.visibility = 'hidden';
-						
-							document.getElementById('che').checked = false;
-							document.getElementById('che2').checked = false;
-							document.getElementById('che3').checked = true;
-							document.getElementById('che4').checked = false;}
-						else if(document.getElementById('che3').checked == true){
-						
-							setTimeout(function() {
-									document.getElementById("h15").scrollTop = document.getElementById("h15").scrollHeight;
-								}, 10);
-
-
-								document.getElementById("h15").innerHTML = document.getElementById("h15").innerHTML + "&#13;&#10;Player 3's turn passed!";
-								
-								document.getElementById("h15").innerHTML = document.getElementById("h15").innerHTML + "&#13;&#10;Waiting for Player4's move";
-								document.getElementById("arrow4").style.visibility = 'visible';
-								document.getElementById("arrow2").style.visibility = 'hidden';
-								document.getElementById("arrow1").style.visibility = 'hidden';
-								document.getElementById("arrow3").style.visibility = 'hidden';
-								
-							document.getElementById('che').checked = false;
-							document.getElementById('che2').checked = false;
-							document.getElementById('che3').checked = false;
-							document.getElementById('che4').checked = true;}
-						else if(document.getElementById('che4').checked == true){
-							
-							setTimeout(function() {
-                            document.getElementById("h15").scrollTop = document.getElementById("h15").scrollHeight;
-								}, 10);
-
-							document.getElementById("h15").innerHTML = document.getElementById("h15").innerHTML + "&#13;&#10;Player 4's turn passed!";
-                        
-							document.getElementById("h15").innerHTML = document.getElementById("h15").innerHTML + "&#13;&#10;Waiting for Player1's move";
-							document.getElementById("arrow1").style.visibility = 'visible';
-							document.getElementById("arrow2").style.visibility = 'hidden';
-							document.getElementById("arrow3").style.visibility = 'hidden';
-							document.getElementById("arrow4").style.visibility = 'hidden';
-							
-							document.getElementById('che3').checked = false;
-							document.getElementById('che2').checked = false;
-							document.getElementById('che').checked = true;
-							document.getElementById('che4').checked = false;}
-						else{}
-						
-						if (ax % 4 == 1 && check1.checked == true) {
-                        document.getElementById("h16").innerHTML = "IT IS YOUR TURN!";
-                        document.getElementById("attackbutton").style.visibility = 'visible';
-						document.getElementById("chooserandomly").style.visibility = 'visible';
-
-
-                    } else if (ax % 4 == 2 && check2.checked == true) {
-                        document.getElementById("h16").innerHTML = "IT IS YOUR TURN!";
-                        document.getElementById("attackbutton").style.visibility = 'visible';
-						document.getElementById("chooserandomly").style.visibility = 'visible';
-
-
-                    } else if (ax % 4 == 3 && check3.checked == true) {
-                        document.getElementById("h16").innerHTML = "IT IS YOUR TURN!";
-                        document.getElementById("attackbutton").style.visibility = 'visible';
-						document.getElementById("chooserandomly").style.visibility = 'visible';
-
-
-                    } else if (ax % 4 == 0 && check4.checked == true) {
-                        document.getElementById("h16").innerHTML = "IT IS YOUR TURN!";
-                        document.getElementById("attackbutton").style.visibility = 'visible';
-						document.getElementById("chooserandomly").style.visibility = 'visible';
-
-
-
-                    } else {
-                        document.getElementById("attackbutton").style.visibility = 'hidden';
-						document.getElementById("chooserandomly").style.visibility = 'hidden';
-                        document.getElementById("h16").innerHTML = "";
-                    }
-					
-						//todo
-						setTimeout(function() {
-									if ((check1.checked == true && isp1left == 1) || (check2.checked == true && isp2left == 1) || (check3.checked == true && isp3left == 1) || (check4.checked == true && isp4left == 1) ){
-									pass1();
-									}
-								}, 1000);
-						
-						
-			
-			}
+		
             function getbrowser() {
                     var i;
                     socket.emit('getbrowser1', {});
@@ -918,346 +505,7 @@
                   
                 }
 			function chooserandom() {
-                   //Functions above act as a "Player switcher" and as aBOT
-					if(document.getElementById('che2').checked == true){
-					
-						for(var i3 = 0;i3<127;i3++){
-		
-								if(haspureborder(i3) == true && imgteams[i3] != 2){
-								document.getElementById("area".concat(i3)).click();i3 =128;
-							}
-						}
-					 
-						setTimeout(function() {
-						if(underattack == 0){
-								
-								
-						}
-						else if(underattack == 1){
-							randbot1 = Math.floor((Math.random() * Math.min(team2,team1)) + 1);
-							raho = randbot1;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 1 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){document.getElementById("area".concat(i3)).click();raho--;}
-									}
-								}
-							
-							raho = randbot1;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 2 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){document.getElementById("area".concat(i3)).click();raho--;}
-									}
-									
-								}
-							
-								
-						}
-						else if(underattack == 3){
-							randbot3 = Math.floor((Math.random() * Math.min(team2,team3)) + 1);
-							raho = randbot3;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 3 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){document.getElementById("area".concat(i3)).click();raho--;}
-									}
-								}
-							raho = randbot3;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 2 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){document.getElementById("area".concat(i3)).click();raho--;}
-									}
-									
-									}
-								
-							
-								
-						}
-						else if(underattack == 4){
-							randbot4 = Math.floor((Math.random() * Math.min(team2,team4)) + 1);
-							 raho = randbot4;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 4 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){document.getElementById("area".concat(i3)).click();raho--;}
-									}
-								}
-							
-							raho = randbot4;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 2 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){document.getElementById("area".concat(i3)).click();raho--;}
-									}
-									
-								}
-							
-								
-								
-						}
-						}, 500);
-						
-					}
-					else if(document.getElementById('che3').checked == true){
-					
-					
-					
-					
-						for(var i3 = 0;i3<127;i3++){
-			
-									if(haspureborder(i3) == true && imgteams[i3] != 3){
-									document.getElementById("area".concat(i3)).click();
-									i3 =128;
-								}
-							}
-					
-					
-						setTimeout(function() {
-						
-						if(underattack == 0){
-							
-								
-						}
-						else if(underattack == 1){
-							randbot1 = Math.floor((Math.random() * Math.min(team3,team1)) + 1);
-							 raho = randbot1;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 1 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){document.getElementById("area".concat(i3)).click();raho--;}
-									}
-								}
-							
-							raho = randbot1;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 3 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){document.getElementById("area".concat(i3)).click();raho--;}
-									}
-									
-								}
-							
-								
-								
-						}
-						else if(underattack == 2){
-							randbot2 = Math.floor((Math.random() * Math.min(team3,team2)) + 1);
-							 raho = randbot2;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 2 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){document.getElementById("area".concat(i3)).click();raho--;}
-									}
-								}
-							
-							raho = randbot2;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 3 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){document.getElementById("area".concat(i3)).click();raho--;}
-									}
-									
-								}
-							
-								
-						}
-						else if(underattack == 4){
-							randbot4 = Math.floor((Math.random() * Math.min(team3,team4)) + 1);
-							 raho = randbot4;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 4 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){document.getElementById("area".concat(i3)).click();raho--;}
-									}
-								}
-								
-							raho = randbot4;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 3 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){document.getElementById("area".concat(i3)).click();raho--;}
-									}
-									
-								}
-								
-								
-							
-						}
-						
-						}, 500);
-					}
-					else if(document.getElementById('che4').checked == true){
-						
-						for(var i3 = 0;i3<127;i3++){
-			
-									if(haspureborder(i3) == true && imgteams[i3] != 4){
-									document.getElementById("area".concat(i3)).click();i3 =128;
-								}
-							}
-					
-					
-					setTimeout(function() {
-					
-						if(underattack == 0){
-							
-								
-						}
-						else if(underattack == 1){
-							randbot1 = Math.floor((Math.random() * Math.min(team4,team1)) + 1);
-							 raho = randbot1;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 1 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){document.getElementById("area".concat(i3)).click();raho--;}
-									}
-								}
-							
-							raho = randbot1;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 4 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){document.getElementById("area".concat(i3)).click();raho--;}
-									}
-									
-								}
-							
-								
-							
-						}
-						else if(underattack == 2){
-							randbot2 = Math.floor((Math.random() * Math.min(team4,team2)) + 1);
-							 raho = randbot2;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 2 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){document.getElementById("area".concat(i3)).click();raho--;}
-									}
-								}
-							
-							raho = randbot2;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 4 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){document.getElementById("area".concat(i3)).click();raho--;}
-									}
-									
-								}
-							
-								
-							
-						}
-						else if(underattack == 3){
-							randbot4 = Math.floor((Math.random() * Math.min(team3,team4) ) + 1);
-							 raho = randbot4;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 3 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){document.getElementById("area".concat(i3)).click();raho--;}
-									}
-									
-								}
-							
-							raho = randbot4;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 4 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){document.getElementById("area".concat(i3)).click();raho--;}
-									}
-									
-								}
-							
-							
-						}
-						}, 500);
-						
-					}
-					else if(document.getElementById('che').checked == true){
-						for(var i3 = 0;i3<127;i3++){
-			
-									if(haspureborder(i3) == true && imgteams[i3] != 1){
-									document.getElementById("area".concat(i3)).click(); i3 =128;
-								}
-							}
-					
-					
-					setTimeout(function() {
-						if(underattack == 0){
-							
-								
-						}
-						else if(underattack == 4){
-							randbot4 = Math.floor((Math.random() * Math.min(team4,team1)) + 1);
-							 raho = randbot4;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 4 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){document.getElementById("area".concat(i3)).click();raho--;}
-									}
-								}
-							
-							raho = randbot4;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 1 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){document.getElementById("area".concat(i3)).click();raho--;}
-									}
-									
-								}
-							
-								
-							
-						}
-						else if(underattack == 2){
-							randbot2 = Math.floor((Math.random() * Math.min(team1,team2)) + 1);
-							 raho = randbot2;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 2 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){document.getElementById("area".concat(i3)).click();raho--;}
-									}
-								}
-							
-							raho = randbot2;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 1 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){document.getElementById("area".concat(i3)).click();raho--;}
-									}
-									
-								}
-							
-								
-							
-						}
-						else if(underattack == 3){
-							randbot3 = Math.floor((Math.random() * Math.min(team3,team1) ) + 1);
-							 raho = randbot3;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(hasborder(i3) == true && imgteams[i3] == 3 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 1){document.getElementById("area".concat(i3)).click();raho--;}
-									}
-									
-								}
-							
-							raho = randbot3;
-							for(var i3 = 0;i3<127;i3++){
-		
-									if(imgteams[i3] == 1 && choosentogive[i3] != 1 && choosentogive1[i3] != 1){
-										if(raho > 0){document.getElementById("area".concat(i3)).click();raho--;}
-									}
-									
-								}
-							
-							
-						}
-					
-						}, 500);
-					
-					}
-					else{}
+                  
                 }
 				
             //This function works as soon as a client is connected 
@@ -1283,16 +531,13 @@
                     document.getElementById("player2").style.visibility = 'visible';
                     document.getElementById("player3").style.visibility = 'visible';
                     document.getElementById("player4").style.visibility = 'visible';
-                    document.getElementById("waitmap1").style.visibility = 'hidden';
                     
                     //************************************* OYUNUN BASLADIGI YER BURASI **********************************************************
                     //****
                     setTimeout(function() {
                         if (room == data.ro) {
 							document.getElementById("roomtext").click();
-							if (ax % 4 == 1) {document.getElementById("attackbutton").style.visibility = 'visible';
-							document.getElementById("chooserandomly").style.visibility = 'visible';document.getElementById("h16").innerHTML = "IT IS YOUR TURN!";
-							}
+							
                             var stra1 = data.rand1.toString();
                             var stra2 = data.rand2.toString();
                             var stra3 = data.rand3.toString();
@@ -1315,29 +560,10 @@
 
                             if (isp1left == true) {
                                 if(check1.checked == true){attacker = 1;}else if(check2.checked == true){attacker = 2;}else if(check3.checked == true){attacker = 3;}else if(check4.checked == true){attacker = 4;}else{}
-								socket.emit('attackbuttonsocket', {r1: room, ua1: underattack, t1: team1, t2: team2, t3: team3, t4: team4, atr: attacker});
 								}
                             fourthcame = true;
 
-					/*
-					if (data.unu % 4 == 1 && check1.checked == true) {
-						document.getElementById("attackbutton").style.visibility = 'visible';
-                    } else if (data.u1 % 4 == 2 && check2.checked == true) {
-                        document.getElementById("attackbutton").style.visibility = 'visible';
-                    } else if (data.u1 % 4 == 3 && check3.checked == true) {
-                        document.getElementById("attackbutton").style.visibility = 'visible';
-                    } else if (data.u1 % 4 == 0 && check4.checked == true) {
-                        document.getElementById("attackbutton").style.visibility = 'visible';
-                    } else {
-                        document.getElementById("attackbutton").style.visibility = 'hidden';
-                    }
-					*/
-					/*
-						if (ax == 1 && check1.checked == true) {
-							document.getElementById("attackbutton").style.visibility = 'visible';
-							
-								}
-					*/
+				
 					}
 					document.getElementById("playbotsbutton").style.visibility = 'hidden';
 					document.getElementById("dontwannawait").style.visibility = 'hidden';
@@ -1351,26 +577,7 @@
 
                     }
 
-                    setTimeout(function() {
-                        if (check1.checked == true) {
-                            document.getElementById("h15").innerHTML = "Waiting for Player1's move";
-                            document.getElementById("arrow1").style.visibility = 'visible';
-                        } else if (check2.checked == true) {
-                            document.getElementById("h15").innerHTML = "Waiting for Player2's move";
-                            document.getElementById("arrow2").style.visibility = 'visible';
-                        } else if (check3.checked == true) {
-                            document.getElementById("h15").innerHTML = "Waiting for Player3's move";
-                            document.getElementById("arrow3").style.visibility = 'visible';
-                        } else if (check4.checked == true) {
-                            document.getElementById("h15").innerHTML = "Waiting for Player4's move";
-                            document.getElementById("arrow4").style.visibility = 'visible';
-                        } else {
-                            document.getElementById("arrow1").style.visibility = 'hidden';
-                            document.getElementById("arrow2").style.visibility = 'hidden';
-                            document.getElementById("arrow3").style.visibility = 'hidden';
-                            document.getElementById("arrow4").style.visibility = 'hidden';
-                        }
-                    }, 100);
+                    
 
                     setTimeout(function() {
                         document.getElementById("h15").scrollTop = document.getElementById("h15").scrollHeight;
@@ -1398,8 +605,7 @@
 						socket.emit('disselectAll1',{});
 						 setTimeout(function() {
 							if(check1.checked == true){attacker = 1;}else if(check2.checked == true){attacker = 2;}else if(check3.checked == true){attacker = 3;}else if(check4.checked == true){attacker = 4;}else{}
-							socket.emit('attackbuttonsocket', {r1: room, ua1: underattack, t1: team1, t2: team2, t3: team3, t4: team4, atr: attacker});
-
+							
 						}, 100);
                 }
 
@@ -1480,14 +686,6 @@
         <img class="player2flor" id="player1flor" src="countries/playerwait2.gif"></img>
         <img class="player3flor" id="player3flor" src="countries/playerwait2.gif"></img>
         <img class="player4flor" id="player4flor" src="countries/playerwait2.gif"></img>
-
-        <img class="attackbutton" id="attackbutton" src="countries/attackbutton1.png" onmouseover="this.src='countries/attackbutton2.png';" onmouseout="this.src='countries/attackbutton1.png';" style="box-shadow: 0px"></img>
-
-		
-        <img class="arrow1" id="arrow1" src="countries/arrowgif.gif"></img>
-        <img class="arrow2" id="arrow2" src="countries/arrowgif.gif"></img>
-        <img class="arrow3" id="arrow3" src="countries/arrowgif.gif"></img>
-        <img class="arrow4" id="arrow4" src="countries/arrowgif.gif"></img>
 
         <img class="player1" id="player1" src="countries/player1.png" onmouseover="this.src='countries/player11.png';" onmouseout="this.src='countries/player1.png';"></img>
         <img class="player2" id="player2" src="countries/player2.png" onmouseover="this.src='countries/player21.png';" onmouseout="this.src='countries/player2.png';"></img>
@@ -1762,7 +960,7 @@
 		<img id="leftico3"  src="countries/left.png"></img>
 		<img id="leftico4"  src="countries/left.png"></img>
 		
-        <img class="waitmap1" id="waitmap1" src="countries/waitmap1.png"></img>
+      
 
 		<img class="playbotsbutton" id="playbotsbutton" onclick="window.open('/withbots.html', '_blank');" src="countries/cooltext168746259234793.png" onmouseover="this.src='countries/cooltext168746259234793MouseOver.png';" onmouseout="this.src='countries/cooltext168746259234793.png';" />;
 		<img class="chooserandomly" id="chooserandomly" src="countries/cooltext169260562999627.png" onmouseover="this.src='countries/cooltext169260562999627MouseOver.png';" onmouseout="this.src='countries/cooltext169260562999627.png';" />;
@@ -1922,7 +1120,7 @@ Type /c to see commands"></textarea>
 		 
         <div id="sea" style="background-color:#D6F6FF; position:absolute; top:10px;left:10px; width:1350px; height:850px; opacity:0.4; z-index:-1; border: 2px solid #FFFFFF;box-shadow: 1px 1px 1px #888888;"></div>
 
-		<div id="attackdiv" style="position:absolute;left:250px;top:150px;background-color:grey;width:800px;height:300px;opacity:0.9;z-index:199;display:none">
+		<div id="attackdiv" style="position:absolute;left:250px;top:150px;background-color:#1C1C1C;width:800px;height:300px;opacity:0.9;z-index:199;display:none">
 			<text id="attackdivtext" style="color: white; font-size: 30px; text-shadow: 2px 2px 2px black;"><text>
 		</div>
 		

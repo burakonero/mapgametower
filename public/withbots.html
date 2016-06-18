@@ -19,11 +19,6 @@
             jQuery('#ImageMap1').maphilight();
 			
 			document.getElementById('che').checked = true;
-			
-			document.getElementById("arrow1").style.visibility = 'visible';
-            document.getElementById("arrow2").style.visibility = 'hidden';
-            document.getElementById("arrow3").style.visibility = 'hidden';
-            document.getElementById("arrow4").style.visibility = 'hidden';
 
             document.getElementById("divreg").style.visibility = "hidden";
 			
@@ -36,10 +31,12 @@
 			document.getElementById("input").style.visibility = "hidden";
 			document.getElementById("sendbutton").style.visibility = "hidden";
 			document.getElementById("globaltext").style.visibility = "hidden";
-			document.getElementById("roomtext").style.width = "405px";
+			document.getElementById("roomtext1").style.width = "405px";
 			document.getElementById("messagesr").style.backgroundColor = "#F9FAC5";
 			document.getElementById("messagesr").style.top = "50px";
-			document.getElementById("roomtext").style.backgroundColor = "#F9FAC5";
+			document.getElementById("messagesr").style.height = "300px";
+			document.getElementById("roomtext1").style.backgroundColor = "#F9FAC5";
+			document.getElementById("roomtext1").style.height = "40px";
 			
 			document.getElementById("allstuff").style.zoom = window.screen.width / 1920;
 			
@@ -120,25 +117,6 @@
 
 
         <div id="gameDiv"> </div>
-
-		
-        <img class="player1flor" id="player1flor" src="countries/playerwait2.gif"></img>
-        <img class="player2flor" id="player1flor" src="countries/playerwait2.gif"></img>
-        <img class="player3flor" id="player3flor" src="countries/playerwait2.gif"></img>
-        <img class="player4flor" id="player4flor" src="countries/playerwait2.gif"></img>
-
-        <img class="attackbutton" id="attackbutton" src="countries/attackbutton1.png" onmouseover="this.src='countries/attackbutton2.png';" onmouseout="this.src='countries/attackbutton1.png';" style="box-shadow: 0px"></img>
-
-		   
-        <img class="arrow1" id="arrow1" src="countries/arrowgif.gif"></img>
-        <img class="arrow2" id="arrow2" src="countries/arrowgif.gif"></img>
-        <img class="arrow3" id="arrow3" src="countries/arrowgif.gif"></img>
-        <img class="arrow4" id="arrow4" src="countries/arrowgif.gif"></img>
-
-        <img class="player1" id="player1" src="countries/player1.png" onmouseover="this.src='countries/player11.png';" onmouseout="this.src='countries/player1.png';"></img>
-        <img class="player2" id="player2" src="countries/player2.png" onmouseover="this.src='countries/player21.png';" onmouseout="this.src='countries/player2.png';"></img>
-        <img class="player3" id="player3" src="countries/player3.png" onmouseover="this.src='countries/player31.png';" onmouseout="this.src='countries/player3.png';"></img>
-        <img class="player4" id="player4" src="countries/player4.png" onmouseover="this.src='countries/player41.png';" onmouseout="this.src='countries/player4.png';"></img>
 
 
         <img id="img1" class="country" style="position:absolute;left:558px;top:238px;width:54px;height:38px;z-index:1;"></img>
@@ -401,11 +379,16 @@
 
         </map>
 
-		<img class="playbotsbutton" id="playbotsbutton" href="withbots.html" target="_blank" src="countries/cooltext168746259234793.png" onmouseover="this.src='countries/cooltext168746259234793MouseOver.png';" onmouseout="this.src='countries/cooltext168746259234793.png';" />;
-		<img class="chooserandomly" id="chooserandomly" src="countries/cooltext169260562999627.png" onmouseover="this.src='countries/cooltext169260562999627MouseOver.png';" onmouseout="this.src='countries/cooltext169260562999627.png';" />;
-        
+		<img class="playbotsbutton" id="playbotsbutton" href="withbots.html" target="_blank" src="countries/cooltext168746259234793.png" onmouseover="this.src='countries/cooltext168746259234793MouseOver.png';" onmouseout="this.src='countries/cooltext168746259234793.png';" />
+		
         <img id="chartlines" style="position:absolute;top:12px; left: 1435px;" src="countries/chartlines1.png"></img>
 
+		<img id="galatainven" class="country" style="position:absolute;top:700px; left: 30px; z-index:199;" src="countries/galata.png"></img>
+
+		<div id="content"></div>
+		
+		
+		
         <div class="console">
 
             <div class="gred0" id="gred"></div>
@@ -431,7 +414,7 @@
         <text id="timetext" style="font-family: Comic Sans MS;font-size:20px;position:absolute;top:770px;left:1120px;text-shadow:1px 1px 1px #FFFFFF;"></text>
         <div id="chat">
             <img id="globaltext" src="countries/global1.png" style="border: 0px; width:208px;height:38px; position:absolute; left:203px; top:-35px;" onmouseover="this.src='countries/global2.png';" onmouseout="this.src='countries/global1.png';"></img>
-			<img id="roomtext" src="countries/cooltext169047147963323.png" onmouseover="this.src='countries/cooltext169047147963323MouseOver.png';" onmouseout="this.src='countries/cooltext169047147963323.png';" />;
+			<div id="roomtext1" style="box-border: 3px black; text-align: center;"> <text style="text-shadow: 1px 1px 1px black; font-size:35px" >BOT ROOM </text></div>
 			 
             <textarea disabled id="messagesr" placeholder="Send a messages to your opponents !
 Type /c to see commands"></textarea>
@@ -440,12 +423,10 @@ Type /c to see commands"></textarea>
             <button type="submit" id="sendbutton">SEND</button>
         </div>
 		
-		<div id="attackdiv" style="position:absolute;left:250px;top:150px;background-color:grey;width:800px;height:300px;opacity:0.9;z-index:199;display:none">
-			<text id="attackdivtext" style="color: white; font-size: 40px;"><text>
-		</div>
+		
 		
         <div id="howtoplay" style="position:absolute; top:10px; left:1370px; width:40px;height:275px;background-color:#F5A9A9;z-index:190;opacity:0.5;">
-            <div id="howtotext" style="position:relative; top:10px; left:10px;display:none;font-size: 15px;font-family: Comic Sans MS;text-shadow:0.5px 0.5px 1px #000000;"><text>*You may attack only one empty country at once.
+            <div id="howtotext" style="position:relative; top:10px; left:10px;display:none;font-size: 15px;font-family: Comic Sans MS;text-shadow:0.5px 0.5px 1px #000000;"><text>*Place your inferno tower into your countries to start war.
 			<br>*Your change to win while attacking an empty country is 70%.
 			<br>*You may attack multiple countries if the target is an opppenent.
 			<br>*Your change to win is 50% while attacking an opponent.
@@ -518,42 +499,6 @@ Type /c to see commands"></textarea>
             <button>Play as a guest</button>
         </div>
 
-        <div id="usercard2" class="usercard2" style="background-color:#0014A9; width:140px; height:180px; position: absolute; top:567px; left:505px; z-index:178; border-radius: 15px; border:2px solid #000000; display:none;">
-            <text style="color:white;">
-                <br>Registiration feature is coming soon !!
-                <br>---
-                <br>username: ***
-                <br>games won: ***
-                <br>games played: ***
-                <br>Level: ***</text>
-        </div>
-        <div id="usercard1" class="usercard1" style="background-color:#E10000; width:140px; height:180px; position: absolute; top:567px; left:305px; z-index:178; border-radius: 15px; border:2px solid #000000; display:none;">
-            <text style="color:white;">
-                <br>Registiration feature is coming soon !!
-                <br>---
-                <br>username: ***
-                <br>games won: ***
-                <br>games played: ***
-                <br>Level: ***</text>
-        </div>
-        <div id="usercard3" class="usercard3" style="background-color:#009826; width:140px; height:180px; position: absolute; top:567px; left:705px; z-index:178; border-radius: 15px; border:2px solid #000000; display:none;">
-            <text style="color:white;">
-                <br>Registiration feature is coming soon !!
-                <br>---
-                <br>username: ***
-                <br>games won: ***
-                <br>games played: ***
-                <br>Level: ***</text>
-        </div>
-        <div id="usercard4" class="usercard4" style="background-color:#D6D600; width:140px; height:180px; position: absolute; top:567px; left:905px; z-index:178; border-radius: 15px; border:2px solid #000000; display:none;">
-            <text style="color:white;">
-                <br>Registiration feature is coming soon !!
-                <br>---
-                <br>username: ***
-                <br>games won: ***
-                <br>games played: ***
-                <br>Level: ***</text>
-        </div>
 
 		<img id="playhand" src="countries/playhand.gif" style="width:140px; height:30px; position: absolute; top:400px; left:1220px; z-index:170; "></img> 
 		 

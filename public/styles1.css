@@ -23,7 +23,7 @@
 			color: #FFFFFF;
         }
 		.country {
-           -webkit-filter: drop-shadow(0 1px 1px rgba(0,0,0,.5));
+           -webkit-filter: drop-shadow(0 2px 2px rgba(0,0,0,.5));
 			-moz-filter: drop-shadow(0 1px 1px rgba(0,0,0,.5));
 			-ms-filter: drop-shadow(0 1px 1px rgba(0,0,0,.5));
 			-o-filter: drop-shadow(0 1px 1px rgba(0,0,0,.5));
@@ -56,13 +56,23 @@
             opacity: 0.0;
             transition: opacity 5s ease-in-out;
         }
+		.disabled1{
+			
+			 filter: grayscale(100%);
+			-moz-filter: grayscale(100%);
+			-ms-filter: grayscale(100%);
+			-o-filter: grayscale(100%);
+			filter: gray; /* IE6-9 */
+			-webkit-filter: grayscale(50%); /* Chrome 19+, Safari 6+, Safari 6+ iOS */
+
+		}
         body {
-            background-image: url(countries/backpat3.jpg);
+            background-image: url(countries/green_cup.png);
         }
         .gred0 {
             background-color: #FF0000;
             width: 50px;
-            height: 15px;
+            height: 0px;
             position: absolute;
             left: 20px;
             top: 400px;
@@ -1585,7 +1595,7 @@
         .gblue0 {
             background-color: #0431E7;
             width: 50px;
-            height: 15px;
+            height: 0px;
             position: absolute;
             left: 90px;
             top: 400px;
@@ -3108,7 +3118,7 @@
         .ggreen0 {
             background-color: #38D200;
             width: 50px;
-            height: 15px;
+            height: 0px;
             position: absolute;
             left: 160px;
             top: 400px;
@@ -4631,7 +4641,7 @@
         .gyellow0 {
             background-color: #F6F200;
             width: 50px;
-            height: 15px;
+            height: 0px;
             position: absolute;
             left: 230px;
             top: 400px;
@@ -6166,7 +6176,7 @@
         .gwhite0 {
             background-color: #FFFFFF;
             width: 50px;
-            height: 15px;
+            height: 0px;
             position: absolute;
             left: 300px;
             top: 400px;
@@ -7835,7 +7845,7 @@
             position: absolute;
             left: 29px;
             top: 49px;
-            z-index: 140;
+            z-index: 201;
         }
 		
 		#gametrial {
@@ -7895,7 +7905,7 @@
             top: 660px;
 			color: white;
             font-family: Comic Sans MS;
-			text-shadow: 0px -2px 3px black;
+			text-shadow: 2px 2px 3px black;
         }
         #divreg {
             background-color: ##FBFBEF;
